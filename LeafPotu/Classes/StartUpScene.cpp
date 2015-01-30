@@ -1,5 +1,5 @@
 #include "StartUpScene.h"
-
+#include "GameScene.h"
 
 USING_NS_CC;
 
@@ -44,7 +44,8 @@ void StartUpScene::update(float delta)
 
 	if(hasLoaded)
 	{
-
+		Scene* gameScene = GameScene::scene();
+		Director::getInstance()->replaceScene(gameScene);
 	}
 	else
 	{
