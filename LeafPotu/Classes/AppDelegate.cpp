@@ -1,5 +1,5 @@
 #include "AppDelegate.h"
-#include "HelloWorldScene.h"
+#include "StartUpScene.h"
 
 USING_NS_CC;
 
@@ -11,12 +11,8 @@ AppDelegate::~AppDelegate()
 {
 }
 
-//if you want a different context,just modify the value of glContextAttrs
-//it will takes effect on all platforms
 void AppDelegate::initGLContextAttrs()
 {
-    //set OpenGL context attributions,now can only set six attributions:
-    //red,green,blue,alpha,depth,stencil
     GLContextAttrs glContextAttrs = {8, 8, 8, 8, 24, 8};
 
     GLView::setGLContextAttrs(glContextAttrs);
@@ -27,19 +23,54 @@ bool AppDelegate::applicationDidFinishLaunching() {
     auto director = Director::getInstance();
     auto glview = director->getOpenGLView();
     if(!glview) {
-        glview = GLViewImpl::create("My Game");
+        glview = GLViewImpl::create("Leaf View");
         director->setOpenGLView(glview);
+		
+		#if CC_TARGET_PLATFORM == CC_PLATFORM_WIN32
+			glview->setFrameSize(1536, 2048);
+			glview->setFrameZoomFactor(0.33f);
+		#endif
     }
 
-    // turn on display FPS
+    director->setOpenGLView(glview);
+	
     director->setDisplayStats(true);
 
-    // set FPS. the default value is 1.0/60 if you don't call this
     director->setAnimationInterval(1.0 / 60);
 
-    // create a scene. it's an autorelease object
-    auto scene = HelloWorld::createScene();
 
+	//RESOLUTION SETS
+	glview->setDesignResolutionSize(designResolutionSize.width, designResolutionSize.height, ResolutionPolicy::NO_BORDER);
+	cocos2d::Size frameSize = glview->getFrameSize();
+
+	if(frameSize.width > mediumResource.size.width)
+	{
+		FileUtils::getInstance()->addSearchPath(largeResource.directory);
+		director->setContentScaleFactor(largeResource.size.width/designResolutionSize.width);
+		FileUtils::getInstance()->addSearchPath("HDR/atlas");
+        CCLOG("Using HDR");
+	}
+	else if(frameSize.width > smallResource.size.width)
+	{
+		FileUtils::getInstance()->addSearchPath(mediumResource.directory);
+		director->setContentScaleFactor(mediumResource.size.width/designResolutionSize.width);
+		FileUtils::getInstance()->addSearchPath("HD/atlas");
+        CCLOG("Using HD");
+	}
+	else
+	{
+		FileUtils::getInstance()->addSearchPath(smallResource.directory);
+		director->setContentScaleFactor(smallResource.size.width/designResolutionSize.width);
+		FileUtils::getInstance()->addSearchPath("SD/atlas");
+        CCLOG("Using SD");
+	}
+
+	FileUtils::getInstance()->addSearchPath("shaders");
+	FileUtils::getInstance()->addSearchPath("spine");
+	FileUtils::getInstance()->addSearchPath("UI");
+
+
+    Scene *scene = StartUpScene::scene();
     // run
     director->runWithScene(scene);
 
@@ -51,7 +82,7 @@ void AppDelegate::applicationDidEnterBackground() {
     Director::getInstance()->stopAnimation();
 
     // if you use SimpleAudioEngine, it must be pause
-    // SimpleAudioEngine::getInstance()->pauseBackgroundMusic();
+	//CocosDenshion::SimpleAudioEngine::getInstance()->pauseBackgroundMusic();
 }
 
 // this function will be called when the app is active again
@@ -59,5 +90,6 @@ void AppDelegate::applicationWillEnterForeground() {
     Director::getInstance()->startAnimation();
 
     // if you use SimpleAudioEngine, it must resume here
-    // SimpleAudioEngine::getInstance()->resumeBackgroundMusic();
+	//CocosDenshion::SimpleAudioEngine::getInstance()->resumeBackgroundMusic();
 }
+
