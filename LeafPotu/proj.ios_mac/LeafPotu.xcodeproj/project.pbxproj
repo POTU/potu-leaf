@@ -20,6 +20,7 @@
 		32A1820A1A7D3C12004A32BE /* Rock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 32A182081A7D3C12004A32BE /* Rock.cpp */; };
 		32A1820C1A7D6741004A32BE /* spine in Resources */ = {isa = PBXBuildFile; fileRef = 32A1820B1A7D6741004A32BE /* spine */; };
 		32A182111A7D71D2004A32BE /* PauseScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 32A1820F1A7D71D2004A32BE /* PauseScene.cpp */; };
+		32A182131A7D7325004A32BE /* Audio in Resources */ = {isa = PBXBuildFile; fileRef = 32A182121A7D7325004A32BE /* Audio */; };
 		32C50E011A7CEA0100C812FF /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 32C50DFF1A7CEA0100C812FF /* Player.cpp */; };
 		32C50E041A7CEC8200C812FF /* GameManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 32C50E021A7CEC8200C812FF /* GameManager.cpp */; };
 		32C50E0B1A7D05C200C812FF /* GB2ShapeCache-x.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 32C50E051A7D05C200C812FF /* GB2ShapeCache-x.cpp */; };
@@ -139,6 +140,7 @@
 		32A1820B1A7D6741004A32BE /* spine */ = {isa = PBXFileReference; lastKnownFileType = folder; path = spine; sourceTree = "<group>"; };
 		32A1820F1A7D71D2004A32BE /* PauseScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PauseScene.cpp; sourceTree = "<group>"; };
 		32A182101A7D71D2004A32BE /* PauseScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PauseScene.h; sourceTree = "<group>"; };
+		32A182121A7D7325004A32BE /* Audio */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Audio; sourceTree = "<group>"; };
 		32C50DFF1A7CEA0100C812FF /* Player.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Player.cpp; sourceTree = "<group>"; };
 		32C50E001A7CEA0100C812FF /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
 		32C50E021A7CEC8200C812FF /* GameManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameManager.cpp; sourceTree = "<group>"; };
@@ -318,6 +320,7 @@
 		46880B7519C43A67006E1F66 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				32A182121A7D7325004A32BE /* Audio */,
 				32A1820B1A7D6741004A32BE /* spine */,
 				32C50E351A7D168200C812FF /* HD */,
 				32C50E361A7D168200C812FF /* HDR */,
@@ -539,6 +542,7 @@
 				5087E78217EB970100C73F5D /* Icon-144.png in Resources */,
 				32C50E291A7D164900C812FF /* physSheet.plist in Resources */,
 				3EACC98F19EE6D4300EB3C5E /* res in Resources */,
+				32A182131A7D7325004A32BE /* Audio in Resources */,
 				50EF629817ECD46A001EB2F8 /* Icon-80.png in Resources */,
 				5087E78417EB970100C73F5D /* Icon-57.png in Resources */,
 				5087E77E17EB970100C73F5D /* Default.png in Resources */,
