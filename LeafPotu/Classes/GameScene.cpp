@@ -18,7 +18,15 @@ bool GameScene::init()
     {
         return false;
     }
-	this->scheduleUpdate();
+
+	listener = EventListenerTouchOneByOne::create();
+    listener->setSwallowTouches(true);
+	listener->onTouchBegan = CC_CALLBACK_2(GameScene::potuTouchBegan, this);
+	listener->onTouchMoved = CC_CALLBACK_2(GameScene::potuTouchMoved, this);
+	listener->onTouchEnded = CC_CALLBACK_2(GameScene::potuTouchEnded, this);
+	_eventDispatcher->addEventListenerWithSceneGraphPriority(listener, this);
+
+	
 
 	mBgLayer = Layer::create();
 	this->addChild(mBgLayer);
@@ -32,7 +40,8 @@ bool GameScene::init()
 	auto gravityVec = b2Vec2(0, 0);
 	mWorld = new b2World(gravityVec);
     
-    auto tw = new TileableWorld();
+	tw = NULL;
+    tw = new TileableWorld();
     tw->init(mBgLayer, mWorld);
 
 #ifdef DEBUG_PHYSICS
@@ -48,17 +57,27 @@ bool GameScene::init()
 	debugDraw->SetFlags(flags);
 #endif
 
+
+	mGameManager = NULL;
+	mGameManager = new GameManager();
+
+	this->scheduleUpdate();
+
     return true;
 }
 
 void GameScene::onExit()
 {
+	if(mGameManager) delete mGameManager;
+	if(tw) delete tw;
 	delete mWorld;
 	Layer::onExit();
 }
 
 void GameScene::update(float delta)
 {
+	tw->update(delta);
+
 	static double UPDATE_INTERVAL = 1.0f/60.0f;
 	static double MAX_CYCLES_PER_FRAME = 5;
 	static double timeAccumulator = 0;
@@ -79,6 +98,25 @@ void GameScene::update(float delta)
 	this->custdraw();
 #endif
 }
+
+
+void GameScene::potuTouchMoved(cocos2d::Touch* touch, cocos2d::Event* event)
+{
+}
+
+bool GameScene::potuTouchBegan(cocos2d::Touch* touch, cocos2d::Event* event)
+{
+	return true;
+}
+
+void GameScene::potuTouchEnded(cocos2d::Touch* touch, cocos2d::Event* event)
+{
+}
+
+void GameScene::potuTouchCanceled(cocos2d::Touch* touch, cocos2d::Event* event)
+{
+}
+
 
 
 #ifdef DEBUG_PHYSICS
