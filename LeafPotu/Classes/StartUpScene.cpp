@@ -60,7 +60,6 @@ void StartUpScene::update(float delta)
         Director::getInstance()->replaceScene(gameScene);
         return true;
     };
-    
     _eventDispatcher->addEventListenerWithSceneGraphPriority(startLstnr, startLbl);
     
     showingStartMenu = true;
