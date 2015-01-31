@@ -7,9 +7,13 @@
 #include "Box2D/Box2D.h"
 #include "Player.h"
 
+
 class GameManager
 {
 public:
+	GameManager();
+	~GameManager();
+
 	void init(cocos2d::Layer* gameLayer, TileableWorld* tileableWorld, b2World* physWorld);
 	void InputCoordinates(cocos2d::Vec2 coordinates);
 	void PauseGame();
@@ -23,5 +27,6 @@ private:
 	b2World* physWorld;
     Player* player;
 	bool Paused;
+
 };
 #endif

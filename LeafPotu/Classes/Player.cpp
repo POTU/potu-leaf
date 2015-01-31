@@ -43,6 +43,35 @@ void Player::update(float delta)
     auto x = pos.x;
     auto y = pos.y;
     if (mRoot) mRoot->setPosition(x*PTM_RATIO, y*PTM_RATIO);
+
+
+	//Update force timers
+	if(!mForceNodes.empty())
+	{
+		std::vector<ForceNode*>::iterator it;
+		for(it = mForceNodes.begin(); it < mForceNodes.end(); it++)
+		{
+			ForceNode* iNode = *it;
+			iNode->timer = iNode->timer - delta;
+		}
+	}
+
+	//Update force triggers
+	if(!mForceNodes.empty())
+	{
+		std::vector<ForceNode*>::iterator it;
+		for(it = mForceNodes.begin(); it < mForceNodes.end(); it++)
+		{
+			ForceNode* iNode = *it;
+			if(iNode->timer < 0)
+			{
+				mBody->ApplyForceToCenter(iNode->force, true);
+				mForceNodes.erase(it);
+				delete iNode;
+				break;
+			}
+		}
+	}
 }
 
 void Player::moveInResponseToTouchAt(cocos2d::Vec2 coordinates)
@@ -88,5 +117,8 @@ void Player::moveInResponseToTouchAt(cocos2d::Vec2 coordinates)
     auto forceY = -(maxForceY * distanceFactorY * distanceFactor);
     
     CCLOG("Leaf push: %4.2f %4.2f", forceX, forceY);
-    mBody->ApplyForceToCenter(b2Vec2(forceX, forceY), true);
+
+	float triggerTime = 1.0f;
+
+	this->addForceToQueue(b2Vec2(forceX, forceY), triggerTime);
 }

@@ -3,6 +3,21 @@
 
 using namespace cocos2d;
 
+
+GameManager::GameManager()
+{
+}
+GameManager::~GameManager()
+{
+	std::vector<ForceNode*>::iterator it;
+	for(it = mForceNodes.begin(); it < mForceNodes.end(); it++)
+	{
+		ForceNode* iNode = *it;
+		delete iNode;
+	}
+}
+
+
 void GameManager::init(cocos2d::Layer* gameLayer, TileableWorld* tileableWorld, b2World* physWorld)
 {
 	this->gameLayer = gameLayer;
@@ -16,6 +31,7 @@ void GameManager::init(cocos2d::Layer* gameLayer, TileableWorld* tileableWorld, 
 void GameManager::update(float delta)
 {
     player->update(delta);
+	
 }
 
 void GameManager::InputCoordinates(Vec2 coordinates)
@@ -23,6 +39,7 @@ void GameManager::InputCoordinates(Vec2 coordinates)
 	// If hits water, apply force to player.
     player->moveInResponseToTouchAt(coordinates);
 }
+
 
 void GameManager::PauseGame()
 {
