@@ -1,0 +1,13 @@
+
+skeletonSD.png
+size: 256,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+ripple
+  rotate: false
+  xy: 2, 2
+  size: 180, 161
+  orig: 180, 161
+  offset: 0, 0
+  index: -1

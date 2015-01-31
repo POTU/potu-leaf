@@ -5,7 +5,7 @@
 #include "Box2D/Box2D.h"
 #include "TileableWorld.h"
 #include "GameManager.h"
-#include "ui\CocosGUI.h"
+#include "ui/CocosGUI.h"
 
 #ifdef DEBUG_PHYSICS
 #include "GLES-Render.h"
@@ -49,6 +49,8 @@ private:
 	cocos2d::Layer* mOverLayer;
 	cocos2d::Layer* mUILayer;
 
+	Sprite* mWaterBg;
+
 	GameManager* mGameManager;
 	TileableWorld* mTileableWorld;
 	ui::Text* labelScore;
@@ -58,6 +60,8 @@ private:
 
 	void CallPause(Ref *pSender, ui::TouchEventType type);
 	void CallMute(Ref *pSender, ui::TouchEventType type);
+
+	void rippleDeleteCallback(cocos2d::Node* pSender);
 };
 
 

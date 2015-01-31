@@ -3,7 +3,9 @@
 #include "StartUpScene.h"
 #include "TileableWorld.h"
 #include "cocostudio/CocoStudio.h"
-#include "ui\CocosGUI.h"
+#include "ui/CocosGUI.h"
+#include "Helpers.h"
+#include "spine/spine-cocos2dx.h"
 #include "Helpers.h"
 
 USING_NS_CC;
@@ -25,6 +27,8 @@ bool GameScene::init()
     {
         return false;
     }
+
+	cocos2d::Size screen = Director::getInstance()->getWinSize();
 
 	listener = EventListenerTouchOneByOne::create();
     listener->setSwallowTouches(true);
@@ -50,7 +54,7 @@ bool GameScene::init()
     
 	mTileableWorld = NULL;
     mTileableWorld = new TileableWorld();
-    mTileableWorld->init(mOverLayer, mWorld);
+	mTileableWorld->init(mOverLayer, mWorld, mBgLayer);
 	
 	mGameManager = NULL;
 	mGameManager = new GameManager();
@@ -89,6 +93,12 @@ bool GameScene::init()
 	//flags += b2Draw::e_centerOfMassBit;
 	debugDraw->SetFlags(flags);
 #endif
+
+	//BG
+	mWaterBg = Sprite::createWithSpriteFrameName("water.png");
+	mWaterBg->setScale(4.0f);
+	mWaterBg->setPosition(screen.width/2, screen.height/2);
+	mBgLayer->addChild(mWaterBg, -1);
 
 	this->scheduleUpdate();
 
@@ -150,6 +160,20 @@ bool GameScene::potuTouchBegan(cocos2d::Touch* touch, cocos2d::Event* event)
 void GameScene::potuTouchEnded(cocos2d::Touch* touch, cocos2d::Event* event)
 {
     mGameManager->InputCoordinates(touch->getLocation());
+
+	//create ripple
+	cocos2d::Node* rippleNode = Node::create();
+	rippleNode->setPosition(touch->getLocation());
+	mBgLayer->addChild(rippleNode);
+
+	Sequence* nodeSeq = Sequence::createWithTwoActions(MoveBy::create(2.0f, cocos2d::Vec2(0,-600)), CallFuncN::create(CC_CALLBACK_1(GameScene::rippleDeleteCallback, this)));
+	rippleNode->runAction(nodeSeq);
+
+	spine::SkeletonAnimation* rippleAnimation = spine::SkeletonAnimation::createWithFile("skeleton.json", rd::atlasName("skeleton"));
+	rippleNode->addChild(rippleAnimation);
+	rippleAnimation->setAnimation(0, "animation", false);
+
+	rippleNode->setRotation(rd::RandFloat(-180, 180));
 }
 
 void GameScene::potuTouchCanceled(cocos2d::Touch* touch, cocos2d::Event* event)
@@ -219,3 +243,9 @@ void GameScene::onDraw()
     kmGLLoadMatrix(&oldMV);
 }
 #endif
+
+
+void GameScene::rippleDeleteCallback(cocos2d::Node* pSender)
+{
+	pSender->removeFromParentAndCleanup(true);
+}
