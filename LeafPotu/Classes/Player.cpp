@@ -41,9 +41,8 @@ void Player::init(cocos2d::Layer* layer, b2World* world)
     mRoot->setPosition(Vec2(mBody->GetPosition().x*PTM_RATIO, mBody->GetPosition().y*PTM_RATIO));
     layer->addChild(mRoot);
     
-    mSprite = Sprite::create("HelloWorld.png");
+	mSprite = Sprite::createWithSpriteFrameName("leaf.png");
     mSprite->setPosition(Vec2(0, 0));
-    mSprite->setScale(0.4f, 0.4f);
     mRoot->addChild(mSprite);
 }
 

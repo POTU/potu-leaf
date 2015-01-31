@@ -11,12 +11,13 @@ class TileableWorld
 public:
 	TileableWorld();
 	~TileableWorld();
-	void init(cocos2d::Layer* layer, b2World* world);
+	void init(cocos2d::Layer* layer, b2World* world, cocos2d::Layer* bgLayer_);
 	void update(float delta);
     b2World* physWorld;
 
 private:
 	cocos2d::Layer* gameLayer;
+	cocos2d::Layer* bgLayer;
 	float mOffset;
 	int mTileIndex;
 	void generateTiles();
