@@ -1,5 +1,6 @@
 #include "Player.h"
 #include "standards.h"
+#include "Helpers.h"
 
 USING_NS_CC;
 
@@ -15,6 +16,8 @@ void Player::init(cocos2d::Layer* layer, b2World* world)
     bd.position = b2Vec2(screen.width/2/PTM_RATIO, screen.height/2/PTM_RATIO);
     bd.type = b2BodyType::b2_dynamicBody;
     bd.linearDamping = 0.95f;
+    bd.angularDamping = 0.5f;
+    bd.fixedRotation = false;
     mBody = world->CreateBody(&bd);
     
     b2CircleShape shape;
@@ -23,6 +26,7 @@ void Player::init(cocos2d::Layer* layer, b2World* world)
     fd.shape = &shape;
     fd.restitution = 0.9f;
     fd.density = 0.75f;
+    fd.friction = 0.5f;
     mBody->CreateFixture(&fd);
     
     mRoot = Node::create();
@@ -39,10 +43,15 @@ void Player::update(float delta)
 {
     auto xx = mBody->GetLinearVelocity();
     mBody->SetLinearVelocity(b2Vec2(xx.x, xx.y - 0.01f));
+    auto fff = mBody->GetAngle();
     auto pos = mBody->GetPosition();
     auto x = pos.x;
     auto y = pos.y;
-    if (mRoot) mRoot->setPosition(x*PTM_RATIO, y*PTM_RATIO);
+    if (mRoot)
+    {
+        mRoot->setPosition(x*PTM_RATIO, y*PTM_RATIO);
+        mRoot->setRotation(-rd::RadToDeg(fff));
+    }
 }
 
 void Player::moveInResponseToTouchAt(cocos2d::Vec2 coordinates)
@@ -89,4 +98,10 @@ void Player::moveInResponseToTouchAt(cocos2d::Vec2 coordinates)
     
     CCLOG("Leaf push: %4.2f %4.2f", forceX, forceY);
     mBody->ApplyForceToCenter(b2Vec2(forceX, forceY), true);
+    
+    int torqueSign = 1;
+    if (difference.x < 0) {
+        torqueSign = -1;
+    }
+    mBody->ApplyTorque(0.01f * torqueSign, true);
 }
