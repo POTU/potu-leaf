@@ -12,9 +12,10 @@ public:
     Player();
     ~Player();
     void init(cocos2d::Layer* layer, b2World* world);
+    void update(float delta);
     void moveInResponseToTouchAt(cocos2d::Vec2 coordinates);
 private:
-    cocos2d::PhysicsBody* mBody; // TODO: change to box2d
+	b2Body* mBody;
     cocos2d::Sprite* mSprite;
     cocos2d::Node* mRoot;
 };

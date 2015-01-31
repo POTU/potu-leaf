@@ -1,17 +1,27 @@
 #include "GameManager.h"
+#include "Player.h"
 
 using namespace cocos2d;
 
-void GameManager::init(cocos2d::Layer* layer, TileableWorld* world, b2Body* Body)
+void GameManager::init(cocos2d::Layer* gameLayer, TileableWorld* tileableWorld, b2World* physWorld)
 {
-	gameLayer = layer;
-	tileableWorld = world;
-	boxBody = Body;
+	this->gameLayer = gameLayer;
+	this->tileableWorld = tileableWorld;
+	this->physWorld = physWorld;
+
+    player = new Player();
+    player->init(this->gameLayer, this->physWorld);
+}
+
+void GameManager::update(float delta)
+{
+    player->update(delta);
 }
 
 void GameManager::InputCoordinates(Vec2 coordinates)
 {
 	// If hits water, apply force to player.
+    player->moveInResponseToTouchAt(coordinates);
 }
 
 void GameManager::PauseGame()

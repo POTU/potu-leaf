@@ -33,8 +33,6 @@ bool GameScene::init()
 	listener->onTouchEnded = CC_CALLBACK_2(GameScene::potuTouchEnded, this);
 	_eventDispatcher->addEventListenerWithSceneGraphPriority(listener, this);
 
-	
-
 	mBgLayer = Layer::create();
 	this->addChild(mBgLayer);
 
@@ -47,9 +45,9 @@ bool GameScene::init()
 	auto gravityVec = b2Vec2(0, 0);
 	mWorld = new b2World(gravityVec);
     
-	tw = NULL;
-    tw = new TileableWorld();
-    tw->init(mBgLayer, mWorld);
+	mTileableWorld = NULL;
+    mTileableWorld = new TileableWorld();
+    mTileableWorld->init(mBgLayer, mWorld);
 
 	//Node* uiNode = CSLoader::createNode("MenuScene.csb");
 	//this->addChild(uiNode);
@@ -77,9 +75,9 @@ bool GameScene::init()
 	debugDraw->SetFlags(flags);
 #endif
 
-
 	mGameManager = NULL;
 	mGameManager = new GameManager();
+    mGameManager->init(mGameLayer, mTileableWorld, mWorld);
 
 	this->scheduleUpdate();
 
@@ -89,14 +87,15 @@ bool GameScene::init()
 void GameScene::onExit()
 {
 	if(mGameManager) delete mGameManager;
-	if(tw) delete tw;
+	if(mTileableWorld) delete mTileableWorld;
 	delete mWorld;
 	Layer::onExit();
 }
 
 void GameScene::update(float delta)
 {
-	tw->update(delta);
+	mTileableWorld->update(delta);
+    mGameManager->update(delta);
 
 	static double UPDATE_INTERVAL = 1.0f/60.0f;
 	static double MAX_CYCLES_PER_FRAME = 5;
@@ -131,6 +130,7 @@ bool GameScene::potuTouchBegan(cocos2d::Touch* touch, cocos2d::Event* event)
 
 void GameScene::potuTouchEnded(cocos2d::Touch* touch, cocos2d::Event* event)
 {
+    mGameManager->InputCoordinates(touch->getLocation());
 }
 
 void GameScene::potuTouchCanceled(cocos2d::Touch* touch, cocos2d::Event* event)
