@@ -55,7 +55,6 @@ bool GameScene::init()
 	debugDraw->SetFlags(flags);
 #endif
 
-
 	mGameManager = NULL;
 	mGameManager = new GameManager();
     mGameManager->init(mGameLayer, mTileableWorld, mWorld);
@@ -76,6 +75,7 @@ void GameScene::onExit()
 void GameScene::update(float delta)
 {
 	mTileableWorld->update(delta);
+    mGameManager->update(delta);
 
 	static double UPDATE_INTERVAL = 1.0f/60.0f;
 	static double MAX_CYCLES_PER_FRAME = 5;
@@ -110,6 +110,7 @@ bool GameScene::potuTouchBegan(cocos2d::Touch* touch, cocos2d::Event* event)
 
 void GameScene::potuTouchEnded(cocos2d::Touch* touch, cocos2d::Event* event)
 {
+    mGameManager->InputCoordinates(touch->getLocation());
 }
 
 void GameScene::potuTouchCanceled(cocos2d::Touch* touch, cocos2d::Event* event)

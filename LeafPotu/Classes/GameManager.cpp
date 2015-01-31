@@ -9,13 +9,19 @@ void GameManager::init(cocos2d::Layer* gameLayer, TileableWorld* tileableWorld, 
 	this->tileableWorld = tileableWorld;
 	this->physWorld = physWorld;
 
-    Player *player = new Player();
+    player = new Player();
     player->init(this->gameLayer, this->physWorld);
+}
+
+void GameManager::update(float delta)
+{
+    player->update(delta);
 }
 
 void GameManager::InputCoordinates(Vec2 coordinates)
 {
 	// If hits water, apply force to player.
+    player->moveInResponseToTouchAt(coordinates);
 }
 
 void GameManager::PauseGame()
