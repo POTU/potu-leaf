@@ -39,6 +39,9 @@ bool GameScene::init()
 	mGameLayer = Layer::create();
 	this->addChild(mGameLayer);
 
+	mOverLayer = Layer::create();
+	this->addChild(mOverLayer);
+
 	mUILayer = Layer::create();
 	this->addChild(mUILayer);
 
@@ -47,7 +50,7 @@ bool GameScene::init()
     
 	mTileableWorld = NULL;
     mTileableWorld = new TileableWorld();
-    mTileableWorld->init(mBgLayer, mWorld);
+    mTileableWorld->init(mOverLayer, mWorld);
 
 	//Node* uiNode = CSLoader::createNode("MenuScene.csb");
 	//this->addChild(uiNode);
