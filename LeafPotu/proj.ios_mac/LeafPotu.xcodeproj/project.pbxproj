@@ -22,6 +22,11 @@
 		32C50E0C1A7D05C200C812FF /* Helpers.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 32C50E071A7D05C200C812FF /* Helpers.cpp */; };
 		32C50E0D1A7D05C200C812FF /* WorldTile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 32C50E091A7D05C200C812FF /* WorldTile.cpp */; };
 		32C50E101A7D093200C812FF /* MenuScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 32C50E0E1A7D093200C812FF /* MenuScene.cpp */; };
+		32C50E291A7D164900C812FF /* physSheet.plist in Resources */ = {isa = PBXBuildFile; fileRef = 32C50E171A7D164900C812FF /* physSheet.plist */; };
+		32C50E391A7D168200C812FF /* HD in Resources */ = {isa = PBXBuildFile; fileRef = 32C50E351A7D168200C812FF /* HD */; };
+		32C50E3A1A7D168200C812FF /* HDR in Resources */ = {isa = PBXBuildFile; fileRef = 32C50E361A7D168200C812FF /* HDR */; };
+		32C50E3B1A7D168200C812FF /* SD in Resources */ = {isa = PBXBuildFile; fileRef = 32C50E371A7D168200C812FF /* SD */; };
+		32C50E3C1A7D168200C812FF /* UI in Resources */ = {isa = PBXBuildFile; fileRef = 32C50E381A7D168200C812FF /* UI */; };
 		3EACC98F19EE6D4300EB3C5E /* res in Resources */ = {isa = PBXBuildFile; fileRef = 3EACC98E19EE6D4300EB3C5E /* res */; };
 		3EACC99019EE6D4300EB3C5E /* res in Resources */ = {isa = PBXBuildFile; fileRef = 3EACC98E19EE6D4300EB3C5E /* res */; };
 		46880B7B19C43A67006E1F66 /* CloseNormal.png in Resources */ = {isa = PBXBuildFile; fileRef = 46880B7619C43A67006E1F66 /* CloseNormal.png */; };
@@ -135,6 +140,11 @@
 		32C50E0A1A7D05C200C812FF /* WorldTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorldTile.h; sourceTree = "<group>"; };
 		32C50E0E1A7D093200C812FF /* MenuScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MenuScene.cpp; sourceTree = "<group>"; };
 		32C50E0F1A7D093200C812FF /* MenuScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuScene.h; sourceTree = "<group>"; };
+		32C50E171A7D164900C812FF /* physSheet.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = physSheet.plist; sourceTree = "<group>"; };
+		32C50E351A7D168200C812FF /* HD */ = {isa = PBXFileReference; lastKnownFileType = folder; path = HD; sourceTree = "<group>"; };
+		32C50E361A7D168200C812FF /* HDR */ = {isa = PBXFileReference; lastKnownFileType = folder; path = HDR; sourceTree = "<group>"; };
+		32C50E371A7D168200C812FF /* SD */ = {isa = PBXFileReference; lastKnownFileType = folder; path = SD; sourceTree = "<group>"; };
+		32C50E381A7D168200C812FF /* UI */ = {isa = PBXFileReference; lastKnownFileType = folder; path = UI; sourceTree = "<group>"; };
 		3EACC98E19EE6D4300EB3C5E /* res */ = {isa = PBXFileReference; lastKnownFileType = folder; path = res; sourceTree = "<group>"; };
 		46880B7619C43A67006E1F66 /* CloseNormal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CloseNormal.png; sourceTree = "<group>"; };
 		46880B7719C43A67006E1F66 /* CloseSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CloseSelected.png; sourceTree = "<group>"; };
@@ -297,6 +307,11 @@
 		46880B7519C43A67006E1F66 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				32C50E351A7D168200C812FF /* HD */,
+				32C50E361A7D168200C812FF /* HDR */,
+				32C50E371A7D168200C812FF /* SD */,
+				32C50E381A7D168200C812FF /* UI */,
+				32C50E171A7D164900C812FF /* physSheet.plist */,
 				521A8EA819F11F5000D177D7 /* fonts */,
 				3EACC98E19EE6D4300EB3C5E /* res */,
 				46880B7619C43A67006E1F66 /* CloseNormal.png */,
@@ -485,6 +500,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				32C50E391A7D168200C812FF /* HD in Resources */,
+				32C50E3A1A7D168200C812FF /* HDR in Resources */,
 				5087E78117EB970100C73F5D /* Icon-120.png in Resources */,
 				5087E78617EB970100C73F5D /* Icon-76.png in Resources */,
 				5087E77F17EB970100C73F5D /* Default@2x.png in Resources */,
@@ -493,6 +510,7 @@
 				46880B8119C43A67006E1F66 /* HelloWorld.png in Resources */,
 				46880B7D19C43A67006E1F66 /* CloseSelected.png in Resources */,
 				5087E77D17EB970100C73F5D /* Default-568h@2x.png in Resources */,
+				32C50E3B1A7D168200C812FF /* SD in Resources */,
 				5087E78517EB970100C73F5D /* Icon-72.png in Resources */,
 				521A8E6519F0C34300D177D7 /* Default-736h@3x.png in Resources */,
 				521A8EA919F11F5000D177D7 /* fonts in Resources */,
@@ -501,10 +519,12 @@
 				50EF62A217ECD613001EB2F8 /* Icon-29.png in Resources */,
 				50EF629617ECD46A001EB2F8 /* Icon-40.png in Resources */,
 				5087E78217EB970100C73F5D /* Icon-144.png in Resources */,
+				32C50E291A7D164900C812FF /* physSheet.plist in Resources */,
 				3EACC98F19EE6D4300EB3C5E /* res in Resources */,
 				50EF629817ECD46A001EB2F8 /* Icon-80.png in Resources */,
 				5087E78417EB970100C73F5D /* Icon-57.png in Resources */,
 				5087E77E17EB970100C73F5D /* Default.png in Resources */,
+				32C50E3C1A7D168200C812FF /* UI in Resources */,
 				521A8E6419F0C34300D177D7 /* Default-667h@2x.png in Resources */,
 				46880B7B19C43A67006E1F66 /* CloseNormal.png in Resources */,
 				50EF629717ECD46A001EB2F8 /* Icon-58.png in Resources */,

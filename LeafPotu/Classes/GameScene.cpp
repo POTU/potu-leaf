@@ -26,8 +26,6 @@ bool GameScene::init()
 	listener->onTouchEnded = CC_CALLBACK_2(GameScene::potuTouchEnded, this);
 	_eventDispatcher->addEventListenerWithSceneGraphPriority(listener, this);
 
-	
-
 	mBgLayer = Layer::create();
 	this->addChild(mBgLayer);
 
