@@ -21,6 +21,7 @@
 		32C50E0B1A7D05C200C812FF /* GB2ShapeCache-x.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 32C50E051A7D05C200C812FF /* GB2ShapeCache-x.cpp */; };
 		32C50E0C1A7D05C200C812FF /* Helpers.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 32C50E071A7D05C200C812FF /* Helpers.cpp */; };
 		32C50E0D1A7D05C200C812FF /* WorldTile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 32C50E091A7D05C200C812FF /* WorldTile.cpp */; };
+		32C50E101A7D093200C812FF /* MenuScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 32C50E0E1A7D093200C812FF /* MenuScene.cpp */; };
 		3EACC98F19EE6D4300EB3C5E /* res in Resources */ = {isa = PBXBuildFile; fileRef = 3EACC98E19EE6D4300EB3C5E /* res */; };
 		3EACC99019EE6D4300EB3C5E /* res in Resources */ = {isa = PBXBuildFile; fileRef = 3EACC98E19EE6D4300EB3C5E /* res */; };
 		46880B7B19C43A67006E1F66 /* CloseNormal.png in Resources */ = {isa = PBXBuildFile; fileRef = 46880B7619C43A67006E1F66 /* CloseNormal.png */; };
@@ -132,6 +133,8 @@
 		32C50E081A7D05C200C812FF /* Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Helpers.h; sourceTree = "<group>"; };
 		32C50E091A7D05C200C812FF /* WorldTile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WorldTile.cpp; sourceTree = "<group>"; };
 		32C50E0A1A7D05C200C812FF /* WorldTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorldTile.h; sourceTree = "<group>"; };
+		32C50E0E1A7D093200C812FF /* MenuScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MenuScene.cpp; sourceTree = "<group>"; };
+		32C50E0F1A7D093200C812FF /* MenuScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuScene.h; sourceTree = "<group>"; };
 		3EACC98E19EE6D4300EB3C5E /* res */ = {isa = PBXFileReference; lastKnownFileType = folder; path = res; sourceTree = "<group>"; };
 		46880B7619C43A67006E1F66 /* CloseNormal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CloseNormal.png; sourceTree = "<group>"; };
 		46880B7719C43A67006E1F66 /* CloseSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CloseSelected.png; sourceTree = "<group>"; };
@@ -307,6 +310,8 @@
 		46880B8319C43A87006E1F66 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				32C50E0E1A7D093200C812FF /* MenuScene.cpp */,
+				32C50E0F1A7D093200C812FF /* MenuScene.h */,
 				32C50E051A7D05C200C812FF /* GB2ShapeCache-x.cpp */,
 				32C50E061A7D05C200C812FF /* GB2ShapeCache-x.h */,
 				32C50E071A7D05C200C812FF /* Helpers.cpp */,
@@ -539,6 +544,7 @@
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
+				32C50E101A7D093200C812FF /* MenuScene.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
