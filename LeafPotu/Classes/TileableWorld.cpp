@@ -63,7 +63,7 @@ void TileableWorld::update(float delta)
 void TileableWorld::stepTiles()
 {
 	mTileIndex++;
-	if(mTileIndex > 50) mTileIndex = 0;
+	if(mTileIndex >= 50) mTileIndex = 0;
 
 	mVisibleTiles[0]->cacheToPool();
 	mVisibleTiles[0] = mVisibleTiles[1];
