@@ -16,7 +16,7 @@ public:
 
 	void init(cocos2d::Layer* gameLayer, TileableWorld* tileableWorld, b2World* physWorld);
 	void InputCoordinates(cocos2d::Vec2 coordinates);
-	void PauseGame();
+	void PauseGame(bool Pause);
 	void MuteGame();
 	void ResetGame();
 	void EndGame();

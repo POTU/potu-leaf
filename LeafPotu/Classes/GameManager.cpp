@@ -44,19 +44,17 @@ void GameManager::InputCoordinates(Vec2 coordinates)
 }
 
 
-void GameManager::PauseGame()
+void GameManager::PauseGame(bool Pause)
 {
-	if (Paused == false)
+	if (Pause == true)
 	{
-		Paused = true;
 		// Pause Game
 		Director::getInstance()->pushScene(PauseScene::scene());
 	}
 	else
 	{
-		Paused = false;
 		// Un-pause Game
-		//Director::getInstance()->popScene();
+		Director::getInstance()->popScene();
 	}
 }
 

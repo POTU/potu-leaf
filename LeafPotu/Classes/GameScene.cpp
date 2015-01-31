@@ -4,7 +4,6 @@
 #include "TileableWorld.h"
 #include "cocostudio/CocoStudio.h"
 #include "ui/CocosGUI.h"
-#include "Helpers.h"
 #include "spine/spine-cocos2dx.h"
 #include "Helpers.h"
 
@@ -36,6 +35,8 @@ bool GameScene::init()
 	listener->onTouchMoved = CC_CALLBACK_2(GameScene::potuTouchMoved, this);
 	listener->onTouchEnded = CC_CALLBACK_2(GameScene::potuTouchEnded, this);
 	_eventDispatcher->addEventListenerWithSceneGraphPriority(listener, this);
+
+	shouldPause = false;
 
 	mBgLayer = Layer::create();
 	this->addChild(mBgLayer);
@@ -107,9 +108,16 @@ bool GameScene::init()
 
 void GameScene::onExit()
 {
-	if(mGameManager) delete mGameManager;
-	if(mTileableWorld) delete mTileableWorld;
-	delete mWorld;
+	if (shouldPause == true)
+	{
+		shouldPause = false;
+	}
+	else
+	{
+		if (mGameManager) delete mGameManager;
+		if (mTileableWorld) delete mTileableWorld;
+		delete mWorld;
+	}
 	Layer::onExit();
 }
 
@@ -145,6 +153,10 @@ void GameScene::update(float delta)
 #ifdef DEBUG_PHYSICS
 	this->custdraw();
 #endif
+	if (shouldPause == true)
+	{
+		mGameManager->PauseGame(true);
+	}
 }
 
 
@@ -190,7 +202,7 @@ void GameScene::CallPause(Ref *pSender, ui::TouchEventType type)
 		// TODO
 		break;
 	case ui::TouchEventType::TOUCH_EVENT_ENDED:
-		mGameManager->PauseGame();
+		shouldPause = true;
 		break;
 	case ui::TouchEventType::TOUCH_EVENT_CANCELED:
 		// TODO
