@@ -11,7 +11,7 @@ USING_NS_CC;
 using namespace cocos2d;
 using namespace cocos2d::ui;
 
-Scene* GameScene::scene()
+Scene* GameScene::scene(bool mute)
 {
     Scene *scene = Scene::createWithPhysics();
     GameScene *layer = GameScene::create();
@@ -66,6 +66,10 @@ bool GameScene::init()
 	ui::Button* pauseButton = (ui::Button*)uiNode->getChildByName("BTN_pause");
 	pauseButton->addTouchEventListener(this, toucheventselector(GameScene::CallPause));
 	pauseButton->setPosition(Vec2(pauseButton->getPosition().x, visibleSize.height - ((windowSize.height - visibleSize.height) / 2)));
+
+	ui::Button* muteButton = (ui::Button*)uiNode->getChildByName("BTN_mute");
+	muteButton->addTouchEventListener(this, toucheventselector(GameScene::CallPause));
+	muteButton->setPosition(Vec2(muteButton->getPosition().x, visibleSize.height - ((windowSize.height - visibleSize.height) / 2)));
 
 	Score = 0;
 	ScoreFloat = 0;
@@ -163,6 +167,27 @@ void GameScene::CallPause(Ref *pSender, ui::TouchEventType type)
 		break;
 	case ui::TouchEventType::TOUCH_EVENT_ENDED:
 		mGameManager->PauseGame();
+		break;
+	case ui::TouchEventType::TOUCH_EVENT_CANCELED:
+		// TODO
+		break;
+	default:
+		// TODO
+		break;
+	}
+}
+
+void GameScene::CallMute(Ref *pSender, ui::TouchEventType type)
+{
+	switch (type)
+	{
+	case ui::TouchEventType::TOUCH_EVENT_BEGAN:
+		break;
+	case ui::TouchEventType::TOUCH_EVENT_MOVED:
+		// TODO
+		break;
+	case ui::TouchEventType::TOUCH_EVENT_ENDED:
+		mGameManager->MuteGame();
 		break;
 	case ui::TouchEventType::TOUCH_EVENT_CANCELED:
 		// TODO

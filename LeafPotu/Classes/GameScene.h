@@ -17,7 +17,7 @@ class GameScene : public cocos2d::Layer
 {
 public:
     virtual bool init();
-    static cocos2d::Scene* scene();
+    static cocos2d::Scene* scene(bool mute);
     CREATE_FUNC(GameScene);
 	virtual void onExit();
 	virtual void update(float delta);
@@ -55,7 +55,9 @@ private:
 
 	float ScoreFloat;
 	int Score;
+
 	void CallPause(Ref *pSender, ui::TouchEventType type);
+	void CallMute(Ref *pSender, ui::TouchEventType type);
 };
 
 

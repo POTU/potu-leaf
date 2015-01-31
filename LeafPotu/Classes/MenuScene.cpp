@@ -5,6 +5,7 @@
 #include "GameScene.h"
 #include <SimpleAudioEngine.h>
 
+
 using namespace cocos2d;
 using namespace cocos2d::ui;
 
@@ -74,7 +75,7 @@ void MenuScene::PlayGame(Ref *pSender, ui::TouchEventType type)
 			// TODO
 			break;
 		case ui::TouchEventType::TOUCH_EVENT_ENDED:
-			Director::getInstance()->replaceScene(GameScene::scene());
+			Director::getInstance()->replaceScene(GameScene::scene(muted));
 			break;
 		case ui::TouchEventType::TOUCH_EVENT_CANCELED:
 			// TODO
@@ -95,6 +96,7 @@ void MenuScene::MuteGame(Ref *pSender, ui::TouchEventType type)
 		// TODO
 		break;
 	case ui::TouchEventType::TOUCH_EVENT_ENDED:
+	{
 		if (muted == true)
 		{
 			muted = false;
@@ -107,6 +109,8 @@ void MenuScene::MuteGame(Ref *pSender, ui::TouchEventType type)
 			CocosDenshion::SimpleAudioEngine::sharedEngine()->setBackgroundMusicVolume(0.0);
 			CocosDenshion::SimpleAudioEngine::sharedEngine()->setEffectsVolume(0.0);
 		}
+	}
+
 		break;
 	case ui::TouchEventType::TOUCH_EVENT_CANCELED:
 		// TODO

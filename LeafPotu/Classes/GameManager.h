@@ -17,6 +17,7 @@ public:
 	void init(cocos2d::Layer* gameLayer, TileableWorld* tileableWorld, b2World* physWorld);
 	void InputCoordinates(cocos2d::Vec2 coordinates);
 	void PauseGame();
+	void MuteGame();
 	void EndGame();
 	void update(float delta);
     
@@ -26,6 +27,6 @@ private:
 	b2World* physWorld;
     Player* player;
 	bool Paused;
-
+	bool Muted;
 };
 #endif
