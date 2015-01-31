@@ -18,6 +18,7 @@
 		3260AA191A7C21D900ED6ABE /* TileableWorld.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3260AA151A7C21D900ED6ABE /* TileableWorld.cpp */; };
 		32A182071A7D3964004A32BE /* Obstacle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 32A182051A7D3964004A32BE /* Obstacle.cpp */; };
 		32A1820A1A7D3C12004A32BE /* Rock.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 32A182081A7D3C12004A32BE /* Rock.cpp */; };
+		32A1820C1A7D6741004A32BE /* spine in Resources */ = {isa = PBXBuildFile; fileRef = 32A1820B1A7D6741004A32BE /* spine */; };
 		32C50E011A7CEA0100C812FF /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 32C50DFF1A7CEA0100C812FF /* Player.cpp */; };
 		32C50E041A7CEC8200C812FF /* GameManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 32C50E021A7CEC8200C812FF /* GameManager.cpp */; };
 		32C50E0B1A7D05C200C812FF /* GB2ShapeCache-x.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 32C50E051A7D05C200C812FF /* GB2ShapeCache-x.cpp */; };
@@ -134,6 +135,7 @@
 		32A182061A7D3964004A32BE /* Obstacle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Obstacle.h; sourceTree = "<group>"; };
 		32A182081A7D3C12004A32BE /* Rock.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Rock.cpp; sourceTree = "<group>"; };
 		32A182091A7D3C12004A32BE /* Rock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Rock.h; sourceTree = "<group>"; };
+		32A1820B1A7D6741004A32BE /* spine */ = {isa = PBXFileReference; lastKnownFileType = folder; path = spine; sourceTree = "<group>"; };
 		32C50DFF1A7CEA0100C812FF /* Player.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Player.cpp; sourceTree = "<group>"; };
 		32C50E001A7CEA0100C812FF /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
 		32C50E021A7CEC8200C812FF /* GameManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameManager.cpp; sourceTree = "<group>"; };
@@ -313,6 +315,7 @@
 		46880B7519C43A67006E1F66 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				32A1820B1A7D6741004A32BE /* spine */,
 				32C50E351A7D168200C812FF /* HD */,
 				32C50E361A7D168200C812FF /* HDR */,
 				32C50E371A7D168200C812FF /* SD */,
@@ -536,6 +539,7 @@
 				5087E77E17EB970100C73F5D /* Default.png in Resources */,
 				32C50E3C1A7D168200C812FF /* UI in Resources */,
 				521A8E6419F0C34300D177D7 /* Default-667h@2x.png in Resources */,
+				32A1820C1A7D6741004A32BE /* spine in Resources */,
 				46880B7B19C43A67006E1F66 /* CloseNormal.png in Resources */,
 				50EF629717ECD46A001EB2F8 /* Icon-58.png in Resources */,
 			);

@@ -58,7 +58,7 @@ void Player::update(float delta)
     }
 
 	// Update force timers
-	if(!mForceNodes.empty())
+	if (!mForceNodes.empty())
 	{
 		std::vector<ForceNode*>::iterator it;
 		for(it = mForceNodes.begin(); it < mForceNodes.end(); it++)
@@ -69,7 +69,7 @@ void Player::update(float delta)
 	}
 
 	// Update force triggers
-	if(!mForceNodes.empty())
+	if (!mForceNodes.empty())
 	{
 		std::vector<ForceNode*>::iterator it;
 		for(it = mForceNodes.begin(); it < mForceNodes.end(); it++)
@@ -127,13 +127,18 @@ void Player::moveInResponseToTouchAt(cocos2d::Vec2 coordinates)
     auto maxForceY = 5.0f;
     auto forceX = -(maxForceX * distanceFactorX * distanceFactor);
     auto forceY = -(maxForceY * distanceFactorY * distanceFactor);
-    
-    CCLOG("Leaf push: %4.2f %4.2f", forceX, forceY);
 
-
-	float triggerTime = 0.1f;
-
+    float maxTriggerTime = 1.0f;
+    float triggerTime;
+    if (distanceFactor > 0.8f) {
+        triggerTime = 0.0f;
+    }
+    else {
+        triggerTime = (maxTriggerTime * (1.0f - distanceFactor));
+    }
 	this->addForceToQueue(b2Vec2(forceX, forceY), triggerTime);
+    
+    CCLOG("Ripple: x = %4.2f y = %4.2f t = %4.2f", forceX, forceY, triggerTime);
     
     int torqueSign = 1;
     if (difference.x < 0) {
