@@ -43,7 +43,6 @@ void WorldTile::generate(cocos2d::Layer* layer, b2World* world)
 	GB2ShapeCache::sharedGB2ShapeCache()->addFixturesToBody(mBody, shapeStr);
 
 	Sprite* sprite = Sprite::createWithSpriteFrameName(spriteStr);
-	sprite->setAnchorPoint(cocos2d::Vec2(0,0));
 	sprite->setScale(2.0f);
 	mRoot->addChild(sprite);
 
@@ -52,8 +51,10 @@ void WorldTile::generate(cocos2d::Layer* layer, b2World* world)
 
 void WorldTile::update(float x, float y, float delta)
 {
-	if(mRoot) mRoot->setPosition(x,y);
-	if(mBody) mBody->SetTransform(b2Vec2(x/PTM_RATIO, y/PTM_RATIO), 0);
+	cocos2d::Size screen = Director::getInstance()->getWinSize();
+
+	if(mRoot) mRoot->setPosition(x+(screen.width/2),y);
+	if(mBody) mBody->SetTransform(b2Vec2((x+(screen.width/2))/PTM_RATIO, y/PTM_RATIO), 0);
 
 	//Obstacle update
 	std::vector<Obstacle*>::iterator it;
