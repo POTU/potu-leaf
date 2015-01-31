@@ -43,6 +43,7 @@ private:
 	b2World* mWorld;
 	cocos2d::Layer* mBgLayer;
 	cocos2d::Layer* mGameLayer;
+	cocos2d::Layer* mOverLayer;
 	cocos2d::Layer* mUILayer;
     
 	GameManager* mGameManager;
