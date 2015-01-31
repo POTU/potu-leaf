@@ -1150,7 +1150,7 @@ void b2World::DrawDebugData()
 			{
 				if (b->IsActive() == false)
 				{
-					DrawShape(f, xf, b2Color(0.5f, 0.5f, 0.3f));
+					//DrawShape(f, xf, b2Color(0.5f, 0.5f, 0.3f));
 				}
 				else if (b->GetType() == b2_staticBody)
 				{

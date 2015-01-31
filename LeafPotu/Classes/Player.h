@@ -1,10 +1,10 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
-#include <stdio.h>
-
 #include "cocos2d.h"
 #include "Box2D/Box2D.h"
+
+using namespace cocos2d;
 
 struct ForceNode
 {
@@ -17,13 +17,13 @@ class Player
 public:
     Player();
     ~Player();
-    void init(cocos2d::Layer* layer, b2World* world);
+    void init(Layer* layer, b2World* world);
     void update(float delta);
-    void moveInResponseToTouchAt(cocos2d::Vec2 coordinates);
+    void moveInResponseToTouchAt(Vec2 coordinates);
+    Node* mRoot;
 private:
 	b2Body* mBody;
-    cocos2d::Sprite* mSprite;
-    cocos2d::Node* mRoot;
+    Sprite* mSprite;
 
 	void addForceToQueue(b2Vec2 forceVec, float timeToTrigger);
 	std::vector<ForceNode*> mForceNodes;

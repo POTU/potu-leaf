@@ -12,6 +12,17 @@ using namespace CocosDenshion;
 GameManager::GameManager() { }
 GameManager::~GameManager() { }
 
+static GameManager *sharedGameManager = nullptr;
+GameManager* GameManager::getInstance()
+{
+    if (!sharedGameManager)
+    {
+        sharedGameManager = new (std::nothrow) GameManager();
+        CCASSERT(sharedGameManager, "FATAL: Not enough memory");
+    }
+    return sharedGameManager;
+}
+
 void GameManager::init(cocos2d::Layer* gameLayer, TileableWorld* tileableWorld, b2World* physWorld)
 {
 	this->gameLayer = gameLayer;

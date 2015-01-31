@@ -4,7 +4,7 @@
 #include "standards.h"
 #include "Helpers.h"
 
-USING_NS_CC;
+using namespace cocos2d;
 
 Rock::Rock() { }
 Rock::~Rock() { }
@@ -36,22 +36,19 @@ void Rock::init(cocos2d::Layer* gameLayer, b2World* physicWorld, float x, float 
     mSprite->setScale(0.4f, 0.4f);
     mRoot->addChild(mSprite);
 
-	mX = x;
-	mY = y;
+	spawnX = x;
+	spawnY = y;
 }
 
 void Rock::update(float delta, float x, float y)
 {
-    if (mBody && mRoot)
+    if (mBody && mBody->IsActive())
     {
 		b2Vec2 pos;
-		pos.x = (x + mX)/PTM_RATIO;
-		pos.y = (y + mY)/PTM_RATIO;
-
+		pos.x = (x + spawnX)/PTM_RATIO;
+		pos.y = (y + spawnY)/PTM_RATIO;
 		mBody->SetTransform(pos, 0);
-
         mRoot->setPosition(Vec2(pos.x*PTM_RATIO, pos.y*PTM_RATIO));
-        //mRoot->setRotation(-rd::RadToDeg(mBody->GetAngle()));
     }
 }
 

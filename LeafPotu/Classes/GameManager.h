@@ -13,7 +13,9 @@ class GameManager
 public:
 	GameManager();
 	~GameManager();
-
+    
+    static GameManager* getInstance();
+    
 	void init(cocos2d::Layer* gameLayer, TileableWorld* tileableWorld, b2World* physWorld);
 	void InputCoordinates(cocos2d::Vec2 coordinates);
 	void PauseGame(bool Pause);
@@ -22,11 +24,12 @@ public:
 	void EndGame();
 	void update(float delta);
     
+    Player* player;
+    
 private:
 	cocos2d::Layer* gameLayer;
 	TileableWorld* tileableWorld;
 	b2World* physWorld;
-    Player* player;
 	bool Paused;
 	bool Muted;
 };

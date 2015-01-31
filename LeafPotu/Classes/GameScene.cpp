@@ -59,8 +59,7 @@ bool GameScene::init()
     mTileableWorld = new TileableWorld();
 	mTileableWorld->init(mOverLayer, mWorld, mBgLayer);
 	
-	mGameManager = NULL;
-	mGameManager = new GameManager();
+    mGameManager = GameManager::getInstance();
 	mGameManager->init(mGameLayer, mTileableWorld, mWorld);
 
 	Node* uiNode = CSLoader::createNode("InGameScene.csb");
@@ -85,7 +84,7 @@ bool GameScene::init()
 	labelScore->setText(rd::StringFromInt(Score));
 
 #ifdef DEBUG_PHYSICS
-	debugDraw = new GLESDebugDraw( PTM_RATIO );
+	debugDraw = new GLESDebugDraw(PTM_RATIO);
 	mWorld->SetDebugDraw(debugDraw);
 
 	uint32 flags = 0;
@@ -101,7 +100,7 @@ bool GameScene::init()
 	mWaterBg = Sprite::createWithSpriteFrameName("water.png");
 	mWaterBg->setScale(4.0f);
 	mWaterBg->setPosition(screen.width/2, screen.height/2);
-	mBgLayer->addChild(mWaterBg, -1);
+	//mBgLayer->addChild(mWaterBg, -1);
 
 	this->scheduleUpdate();
 
