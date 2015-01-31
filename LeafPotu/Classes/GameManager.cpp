@@ -9,12 +9,6 @@ GameManager::GameManager()
 }
 GameManager::~GameManager()
 {
-	std::vector<ForceNode*>::iterator it;
-	for(it = mForceNodes.begin(); it < mForceNodes.end(); it++)
-	{
-		ForceNode* iNode = *it;
-		delete iNode;
-	}
 }
 
 
