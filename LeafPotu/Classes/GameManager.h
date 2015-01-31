@@ -10,7 +10,7 @@ class GameManager
 {
 public:
 	void init(cocos2d::Layer* layer, TileableWorld* world, b2Body* Body);
-	void InputCoordinates(Vec2 Coordinates);
+	void InputCoordinates(cocos2d::Vec2 Coordinates);
 	void PauseGame();
 	void EndGame();
 
