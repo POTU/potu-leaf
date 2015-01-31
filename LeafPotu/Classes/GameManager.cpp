@@ -23,6 +23,10 @@ void GameManager::init(cocos2d::Layer* gameLayer, TileableWorld* tileableWorld, 
 	this->tileableWorld = tileableWorld;
 	this->physWorld = physWorld;
     player = new Player();
+	if (CocosDenshion::SimpleAudioEngine::sharedEngine()->getEffectsVolume() == 0.0f)
+	{
+		Muted = true;
+	}
     player->init(this->gameLayer, this->physWorld);
 }
 
