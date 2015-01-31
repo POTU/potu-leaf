@@ -1,8 +1,15 @@
 #include "GameScene.h"
+#include "GameManager.h"
 #include "StartUpScene.h"
 #include "TileableWorld.h"
+#include "cocostudio/CocoStudio.h"
+#include "ui\CocosGUI.h"
+#include "Helpers.h"
 
 USING_NS_CC;
+
+using namespace cocos2d;
+using namespace cocos2d::ui;
 
 Scene* GameScene::scene()
 {
@@ -43,6 +50,19 @@ bool GameScene::init()
 	tw = NULL;
     tw = new TileableWorld();
     tw->init(mBgLayer, mWorld);
+
+	//Node* uiNode = CSLoader::createNode("MenuScene.csb");
+	//this->addChild(uiNode);
+
+	auto visibleSize = Director::getInstance()->getVisibleSize();
+	auto windowSize = Director::getInstance()->getWinSize();
+
+
+	//ui::Button* pauseButton = (ui::Button*)uiNode->getChildByName("BTN_pause");
+	//pauseButton->addTouchEventListener(this, toucheventselector(GameManager::PauseGame));
+
+	//ui::Text* labelScore = (ui::Text*)uiNode->getChildByName("LABEL_score");
+	//labelScore->setText(rd::StringFromInt(mGameManager->Score));
 
 #ifdef DEBUG_PHYSICS
 	debugDraw = new GLESDebugDraw( PTM_RATIO );

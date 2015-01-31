@@ -44,66 +44,97 @@ bool MenuScene::init()
 	exitButton->setPosition(Vec2(exitButton->getPosition().x, visibleSize.height - ((windowSize.height - visibleSize.height) / 2)));
 
 	ui::Text* labelTop1Name = (ui::Text*)uiNode->getChildByName("LABEL_top1name");
-	labelTop1Name->setText("Hello Cocos!");
-	labelTop1Name->setFontName("Marker Felt");
-	labelTop1Name->setFontSize(30);
-	labelTop1Name->setColor(Color3B(159, 168, 176));
+	labelTop1Name->setText("ASD");
 
 	ui::Text* labelTop2Name = (ui::Text*)uiNode->getChildByName("LABEL_top2name");
-	labelTop2Name->setText("Hello Cocos!");
-	labelTop2Name->setFontName("Marker Felt");
-	labelTop2Name->setFontSize(30);
-	labelTop2Name->setColor(Color3B(159, 168, 176));
+	labelTop2Name->setText("DAS");
 
 	ui::Text* labelTop3Name = (ui::Text*)uiNode->getChildByName("LABEL_top3name");
-	labelTop3Name->setText("Hello Cocos!");
-	labelTop3Name->setFontName("Marker Felt");
-	labelTop3Name->setFontSize(30);
-	labelTop3Name->setColor(Color3B(159, 168, 176));
+	labelTop3Name->setText("SDA");
 
 	ui::Text* labelTop1Score = (ui::Text*)uiNode->getChildByName("LABEL_top1score");
-	labelTop1Score->setText("Hello Cocos!");
-	labelTop1Score->setFontName("Marker Felt");
-	labelTop1Score->setFontSize(30);
-	labelTop1Score->setColor(Color3B(159, 168, 176));
+	labelTop1Score->setText("321");
 
 	ui::Text* labelTop2Score = (ui::Text*)uiNode->getChildByName("LABEL_top2score");
-	labelTop2Score->setText("Hello Cocos!");
-	labelTop2Score->setFontName("Marker Felt");
-	labelTop2Score->setFontSize(30);
-	labelTop2Score->setColor(Color3B(159, 168, 176));
+	labelTop2Score->setText("231");
 
 	ui::Text* labelTop3Score = (ui::Text*)uiNode->getChildByName("LABEL_top3score");
-	labelTop3Score->setText("Hello Cocos!");
-	labelTop3Score->setFontName("Marker Felt");
-	labelTop3Score->setFontSize(30);
-	labelTop3Score->setColor(Color3B(159, 168, 176));
+	labelTop3Score->setText("123");
 
 	return true;
 }
 
 void MenuScene::PlayGame(Ref *pSender, ui::TouchEventType type)
 {
-	Director::getInstance()->runWithScene(GameScene::scene());
+	switch (type)
+	{
+		case ui::TouchEventType::TOUCH_EVENT_BEGAN:
+			break;
+		case ui::TouchEventType::TOUCH_EVENT_MOVED:
+			// TODO
+			break;
+		case ui::TouchEventType::TOUCH_EVENT_ENDED:
+			Director::getInstance()->replaceScene(GameScene::scene());
+			break;
+		case ui::TouchEventType::TOUCH_EVENT_CANCELED:
+			// TODO
+			break;
+		default:
+			// TODO
+			break;
+	}
 }
 
 void MenuScene::MuteGame(Ref *pSender, ui::TouchEventType type)
 {
-	if (muted == true)
+	switch (type)
 	{
-		muted = false;
-		CocosDenshion::SimpleAudioEngine::sharedEngine()->setBackgroundMusicVolume(1.0);
-		CocosDenshion::SimpleAudioEngine::sharedEngine()->setEffectsVolume(1.0);
-	}
-	else
-	{
-		muted = true;
-		CocosDenshion::SimpleAudioEngine::sharedEngine()->setBackgroundMusicVolume(0.0);
-		CocosDenshion::SimpleAudioEngine::sharedEngine()->setEffectsVolume(0.0);
+	case ui::TouchEventType::TOUCH_EVENT_BEGAN:
+		break;
+	case ui::TouchEventType::TOUCH_EVENT_MOVED:
+		// TODO
+		break;
+	case ui::TouchEventType::TOUCH_EVENT_ENDED:
+		if (muted == true)
+		{
+			muted = false;
+			CocosDenshion::SimpleAudioEngine::sharedEngine()->setBackgroundMusicVolume(1.0);
+			CocosDenshion::SimpleAudioEngine::sharedEngine()->setEffectsVolume(1.0);
+		}
+		else
+		{
+			muted = true;
+			CocosDenshion::SimpleAudioEngine::sharedEngine()->setBackgroundMusicVolume(0.0);
+			CocosDenshion::SimpleAudioEngine::sharedEngine()->setEffectsVolume(0.0);
+		}
+		break;
+	case ui::TouchEventType::TOUCH_EVENT_CANCELED:
+		// TODO
+		break;
+	default:
+		// TODO
+		break;
 	}
 }
 
 void MenuScene::ExitGame(Ref *pSender, ui::TouchEventType type)
 {
-	exit(0);
+	switch (type)
+	{
+	case ui::TouchEventType::TOUCH_EVENT_BEGAN:
+		break;
+	case ui::TouchEventType::TOUCH_EVENT_MOVED:
+		// TODO
+		break;
+	case ui::TouchEventType::TOUCH_EVENT_ENDED:
+		exit(0);
+		break;
+	case ui::TouchEventType::TOUCH_EVENT_CANCELED:
+		// TODO
+		break;
+	default:
+		// TODO
+		break;
+	}
+
 }

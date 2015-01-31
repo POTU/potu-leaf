@@ -5,6 +5,7 @@
 #include "Box2D/Box2D.h"
 #include "TileableWorld.h"
 #include "GameManager.h"
+#include "ui\CocosGUI.h"
 
 #ifdef DEBUG_PHYSICS
 #include "GLES-Render.h"
