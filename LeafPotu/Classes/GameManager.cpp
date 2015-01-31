@@ -26,6 +26,7 @@ void GameManager::init(cocos2d::Layer* gameLayer, TileableWorld* tileableWorld, 
 	{
         MuteGame();
 	}
+    SimpleAudioEngine::getInstance()->playEffect("Audio/start.mp3");
     
     player = new Player();
     player->init(this->gameLayer, this->physWorld);
