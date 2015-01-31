@@ -87,5 +87,16 @@ namespace rd
 		if(tmpVal > maxVal) tmpVal = maxVal;
 		*value = tmpVal;
 	}
+
+	float RadToDeg(float rad)
+	{
+		float deg = (rad/(2*RD_PI))*360.0;
+		return deg;
+	}
+	float DegToRad(float deg)
+	{
+		float rad = (deg/360.0)*(2*RD_PI);
+		return rad;
+	}
 };
 

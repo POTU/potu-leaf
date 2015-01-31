@@ -3,7 +3,7 @@
 
 #include "cocos2d.h"
 
-
+#define RD_PI 3.14159f
 
 namespace rd
 {
@@ -21,6 +21,9 @@ namespace rd
 	std::string atlasName(std::string fileName);
 
 	void limit(float *value, float minVal, float maxVal);
+
+	float RadToDeg(float rad);
+	float DegToRad(float deg);
 };
 
 #endif
