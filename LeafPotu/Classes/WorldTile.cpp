@@ -27,6 +27,8 @@ WorldTile::~WorldTile()
 
 void WorldTile::generate(cocos2d::Layer* layer, b2World* world, cocos2d::Layer* bgLayer)
 {
+	Size screen = Director::getInstance()->getWinSize();
+
 	mRoot = Node::create();
 	mRoot->setPosition(0,0);
 	layer->addChild(mRoot);
@@ -43,7 +45,7 @@ void WorldTile::generate(cocos2d::Layer* layer, b2World* world, cocos2d::Layer* 
 	randomTileValue = 1;
     
     auto r = new Rock();
-    r->init(layer, world);
+	r->init(layer, world, screen.width/2, screen.height/2);
     mObstacles.push_back(r);
 
 	std::string tileStr = "Tile" + rd::StringFromInt(randomTileValue);
@@ -55,8 +57,6 @@ void WorldTile::generate(cocos2d::Layer* layer, b2World* world, cocos2d::Layer* 
 	Sprite* sprite = Sprite::createWithSpriteFrameName(spriteStr);
 	sprite->setScale(2.0f);
 	mRoot->addChild(sprite);
-
-	Size screen = Director::getInstance()->getWinSize();
 
 	mWaterWave1 = Sprite::createWithSpriteFrameName("waterAlpha1.png");
 	mWaterWave1->setScale(2.0f, 3.511f);
@@ -80,7 +80,7 @@ void WorldTile::update(float x, float y, float delta)
 	for (it = mObstacles.begin(); it < mObstacles.end(); it++)
 	{
 		Obstacle* iObs = *it;
-        iObs->update(delta);
+        iObs->update(delta,x,y);
 	}
 }
 
