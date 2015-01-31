@@ -15,7 +15,6 @@ public:
 	void PauseGame();
 	void EndGame();
 	void update(float delta);
-	int Score;
     
 private:
 	cocos2d::Layer* gameLayer;

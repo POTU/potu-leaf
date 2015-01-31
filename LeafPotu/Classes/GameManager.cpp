@@ -1,5 +1,7 @@
 #include "GameManager.h"
+#include "GameScene.h"
 #include "Player.h"
+#include "Helpers.h"
 
 using namespace cocos2d;
 
