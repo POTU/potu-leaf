@@ -41,7 +41,9 @@ void WorldTile::generate(cocos2d::Layer* layer, b2World* world)
 
 	GB2ShapeCache::sharedGB2ShapeCache()->addFixturesToBody(mBody, shapeStr);
 
-	Sprite* sprite = Sprite::createWithSpriteFrameName("");
+	Sprite* sprite = Sprite::createWithSpriteFrameName(spriteStr);
+	sprite->setAnchorPoint(cocos2d::Vec2(0,0));
+	mRoot->addChild(sprite);
 
 	this->cacheToPool();
 }
