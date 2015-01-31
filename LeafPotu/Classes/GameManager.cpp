@@ -4,30 +4,30 @@
 #include "Player.h"
 #include "Helpers.h"
 #include "PauseScene.h"
-#include <SimpleAudioEngine.h>
+#include "SimpleAudioEngine.h"
 
 using namespace cocos2d;
+using namespace CocosDenshion;
 
-
-GameManager::GameManager()
-{
-}
-GameManager::~GameManager()
-{
-}
-
+GameManager::GameManager() { }
+GameManager::~GameManager() { }
 
 void GameManager::init(cocos2d::Layer* gameLayer, TileableWorld* tileableWorld, b2World* physWorld)
 {
 	this->gameLayer = gameLayer;
 	this->tileableWorld = tileableWorld;
 	this->physWorld = physWorld;
-    player = new Player();
-	if (CocosDenshion::SimpleAudioEngine::sharedEngine()->getEffectsVolume() == 0.0f)
-	{
-		Muted = true;
-	}
+    
+    Muted = false;
 	Paused = false;
+    
+    SimpleAudioEngine::getInstance()->playBackgroundMusic("Audio/taustaSolina.mp3", true);
+	if (SimpleAudioEngine::getInstance()->getEffectsVolume() == 0.0f)
+	{
+        MuteGame();
+	}
+    
+    player = new Player();
     player->init(this->gameLayer, this->physWorld);
 }
 
@@ -49,13 +49,13 @@ void GameManager::PauseGame()
 	if (Paused == false)
 	{
 		Paused = true;
-		// Pause Game
+        SimpleAudioEngine::getInstance()->pauseBackgroundMusic();
 		Director::getInstance()->pushScene(PauseScene::scene());
 	}
 	else
 	{
 		Paused = false;
-		// Un-pause Game
+        SimpleAudioEngine::getInstance()->resumeBackgroundMusic();
 		//Director::getInstance()->popScene();
 	}
 }
@@ -65,14 +65,14 @@ void GameManager::MuteGame()
 	if (Muted == true)
 	{
 		Muted = false;
-		CocosDenshion::SimpleAudioEngine::sharedEngine()->setBackgroundMusicVolume(1.0);
-		CocosDenshion::SimpleAudioEngine::sharedEngine()->setEffectsVolume(1.0);
+		SimpleAudioEngine::getInstance()->setBackgroundMusicVolume(1.0);
+        SimpleAudioEngine::getInstance()->setEffectsVolume(1.0);
 	}
 	else
 	{
 		Muted = true;
-		CocosDenshion::SimpleAudioEngine::sharedEngine()->setBackgroundMusicVolume(0.0);
-		CocosDenshion::SimpleAudioEngine::sharedEngine()->setEffectsVolume(0.0);
+		SimpleAudioEngine::getInstance()->setBackgroundMusicVolume(0.0);
+		SimpleAudioEngine::getInstance()->setEffectsVolume(0.0);
 	}
 }
 

@@ -1,8 +1,11 @@
 #include "Player.h"
 #include "standards.h"
 #include "Helpers.h"
+#include "SimpleAudioEngine.h"
 
 USING_NS_CC;
+
+using namespace CocosDenshion;
 
 Player::Player() { }
 Player::~Player() 
@@ -130,11 +133,13 @@ void Player::moveInResponseToTouchAt(cocos2d::Vec2 coordinates)
 
     float maxTriggerTime = 1.0f;
     float triggerTime;
-    if (distanceFactor > 0.8f) {
+    if (distanceFactor > 0.7f) {
         triggerTime = 0.0f;
+        SimpleAudioEngine::getInstance()->playEffect("Audio/ripple_iso.mp3");
     }
     else {
         triggerTime = (maxTriggerTime * (1.0f - distanceFactor));
+        SimpleAudioEngine::getInstance()->playEffect("Audio/ripple_pieni.mp3");
     }
 	this->addForceToQueue(b2Vec2(forceX, forceY), triggerTime);
     
