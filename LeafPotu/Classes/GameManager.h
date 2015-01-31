@@ -1,5 +1,5 @@
-#ifndef GAMEMANAGER
-#define GAMEMANAGER
+#ifndef GAME_MANAGER_H
+#define GAME_MANAGER_H
 
 #include "standards.h"
 #include "cocos2d.h"
@@ -10,13 +10,13 @@ class GameManager
 {
 public:
 	void init(cocos2d::Layer* layer, TileableWorld* world, b2Body* Body);
-	void InputCoordinates(Vec2 Coordinates);
+	void InputCoordinates(cocos2d::Vec2 coordinates);
 	void PauseGame();
 	void EndGame();
 
 	int Score;
 
-
+    
 private:
 	cocos2d::Layer* gameLayer;
 	TileableWorld* tileableWorld;

@@ -17,6 +17,7 @@
 		3260AA181A7C21D900ED6ABE /* StartUpScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3260AA131A7C21D900ED6ABE /* StartUpScene.cpp */; };
 		3260AA191A7C21D900ED6ABE /* TileableWorld.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3260AA151A7C21D900ED6ABE /* TileableWorld.cpp */; };
 		32C50E011A7CEA0100C812FF /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 32C50DFF1A7CEA0100C812FF /* Player.cpp */; };
+		32C50E041A7CEC8200C812FF /* GameManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 32C50E021A7CEC8200C812FF /* GameManager.cpp */; };
 		3EACC98F19EE6D4300EB3C5E /* res in Resources */ = {isa = PBXBuildFile; fileRef = 3EACC98E19EE6D4300EB3C5E /* res */; };
 		3EACC99019EE6D4300EB3C5E /* res in Resources */ = {isa = PBXBuildFile; fileRef = 3EACC98E19EE6D4300EB3C5E /* res */; };
 		46880B7B19C43A67006E1F66 /* CloseNormal.png in Resources */ = {isa = PBXBuildFile; fileRef = 46880B7619C43A67006E1F66 /* CloseNormal.png */; };
@@ -120,6 +121,8 @@
 		3260AA151A7C21D900ED6ABE /* TileableWorld.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TileableWorld.cpp; sourceTree = "<group>"; };
 		32C50DFF1A7CEA0100C812FF /* Player.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Player.cpp; sourceTree = "<group>"; };
 		32C50E001A7CEA0100C812FF /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
+		32C50E021A7CEC8200C812FF /* GameManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameManager.cpp; sourceTree = "<group>"; };
+		32C50E031A7CEC8200C812FF /* GameManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameManager.h; sourceTree = "<group>"; };
 		3EACC98E19EE6D4300EB3C5E /* res */ = {isa = PBXFileReference; lastKnownFileType = folder; path = res; sourceTree = "<group>"; };
 		46880B7619C43A67006E1F66 /* CloseNormal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CloseNormal.png; sourceTree = "<group>"; };
 		46880B7719C43A67006E1F66 /* CloseSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CloseSelected.png; sourceTree = "<group>"; };
@@ -295,6 +298,8 @@
 		46880B8319C43A87006E1F66 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				32C50E021A7CEC8200C812FF /* GameManager.cpp */,
+				32C50E031A7CEC8200C812FF /* GameManager.h */,
 				3260AA0E1A7C21D900ED6ABE /* GameScene.cpp */,
 				3260AA0F1A7C21D900ED6ABE /* GameScene.h */,
 				3260AA101A7C21D900ED6ABE /* GLES-Render.cpp */,
@@ -507,6 +512,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3260AA171A7C21D900ED6ABE /* GLES-Render.cpp in Sources */,
+				32C50E041A7CEC8200C812FF /* GameManager.cpp in Sources */,
 				3260AA161A7C21D900ED6ABE /* GameScene.cpp in Sources */,
 				32C50E011A7CEA0100C812FF /* Player.cpp in Sources */,
 				3260AA181A7C21D900ED6ABE /* StartUpScene.cpp in Sources */,

@@ -9,7 +9,7 @@ void GameManager::init(cocos2d::Layer* layer, TileableWorld* world, b2Body* Body
 	boxBody = Body;
 }
 
-void GameManager::InputCoordinates(Vec2 Coordinates)
+void GameManager::InputCoordinates(Vec2 coordinates)
 {
 	
 }
