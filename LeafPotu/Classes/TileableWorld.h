@@ -10,7 +10,6 @@ class TileableWorld
 public:
 	TileableWorld();
 	~TileableWorld();
-
 	void init(cocos2d::Layer* layer, b2World* world);
 
 private:

@@ -6,17 +6,15 @@
 class StartUpScene : public cocos2d::Layer
 {
 public:
-    virtual bool init();  
-
+    virtual bool init();
     static cocos2d::Scene* scene();
-    
     CREATE_FUNC(StartUpScene);
-
 	virtual void update(float delta);
 
 private:
-	bool skip;
+	bool isFirstUpdate;
 	bool hasLoaded;
+    bool showingStartMenu;
 };
 
 #endif

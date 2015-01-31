@@ -3,7 +3,6 @@
 
 #include "cocos2d.h"
 
-
 enum
 {
 	kResourceSetSD = 1,

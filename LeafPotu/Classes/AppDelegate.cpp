@@ -3,8 +3,8 @@
 
 USING_NS_CC;
 
-AppDelegate::AppDelegate() {
-
+AppDelegate::AppDelegate()
+{
 }
 
 AppDelegate::~AppDelegate() 
@@ -14,18 +14,17 @@ AppDelegate::~AppDelegate()
 void AppDelegate::initGLContextAttrs()
 {
     GLContextAttrs glContextAttrs = {8, 8, 8, 8, 24, 8};
-
     GLView::setGLContextAttrs(glContextAttrs);
 }
 
-bool AppDelegate::applicationDidFinishLaunching() {
-    // initialize director
+bool AppDelegate::applicationDidFinishLaunching()
+{
+    // Initialize Director
     auto director = Director::getInstance();
     auto glview = director->getOpenGLView();
     if(!glview) {
         glview = GLViewImpl::create("Leaf View");
         director->setOpenGLView(glview);
-		
 		#if CC_TARGET_PLATFORM == CC_PLATFORM_WIN32
 			glview->setFrameSize(1536, 2048);
 			glview->setFrameZoomFactor(0.33f);
@@ -33,14 +32,15 @@ bool AppDelegate::applicationDidFinishLaunching() {
     }
 
     director->setOpenGLView(glview);
-	
     director->setDisplayStats(true);
-
     director->setAnimationInterval(1.0 / 60);
 
 
-	//RESOLUTION SETS
-	glview->setDesignResolutionSize(designResolutionSize.width, designResolutionSize.height, ResolutionPolicy::NO_BORDER);
+	// Resolution Sets
+	glview->setDesignResolutionSize(
+        designResolutionSize.width,
+        designResolutionSize.height,
+        ResolutionPolicy::NO_BORDER);
 	cocos2d::Size frameSize = glview->getFrameSize();
 
 	if(frameSize.width > mediumResource.size.width)
@@ -69,24 +69,25 @@ bool AppDelegate::applicationDidFinishLaunching() {
 	FileUtils::getInstance()->addSearchPath("spine");
 	FileUtils::getInstance()->addSearchPath("UI");
 
-
     Scene *scene = StartUpScene::scene();
-    // run
     director->runWithScene(scene);
 
     return true;
 }
 
-// This function will be called when the app is inactive. When comes a phone call,it's be invoked too
-void AppDelegate::applicationDidEnterBackground() {
+// This function will be called when the app is inactive.
+// When comes a phone call,i t's be invoked too
+void AppDelegate::applicationDidEnterBackground()
+{
     Director::getInstance()->stopAnimation();
 
     // if you use SimpleAudioEngine, it must be pause
 	//CocosDenshion::SimpleAudioEngine::getInstance()->pauseBackgroundMusic();
 }
 
-// this function will be called when the app is active again
-void AppDelegate::applicationWillEnterForeground() {
+// This function will be called when the app is active again
+void AppDelegate::applicationWillEnterForeground()
+{
     Director::getInstance()->startAnimation();
 
     // if you use SimpleAudioEngine, it must resume here
