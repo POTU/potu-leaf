@@ -41,15 +41,11 @@ void Player::init(cocos2d::Layer* layer, b2World* world)
 
 void Player::update(float delta)
 {
-    auto xx = mBody->GetLinearVelocity();
-    mBody->SetLinearVelocity(b2Vec2(xx.x, xx.y - 0.01f));
-    auto fff = mBody->GetAngle();
-    auto pos = mBody->GetPosition();
-    auto x = pos.x;
-    auto y = pos.y;
     if (mRoot)
     {
-        mRoot->setPosition(x*PTM_RATIO, y*PTM_RATIO);
+        auto pos = mBody->GetPosition();
+        mRoot->setPosition(pos.x*PTM_RATIO, pos.y*PTM_RATIO);
+        auto fff = mBody->GetAngle();
         mRoot->setRotation(-rd::RadToDeg(fff));
     }
 }

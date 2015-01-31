@@ -38,7 +38,7 @@ bool GameScene::init()
 	mUILayer = Layer::create();
 	this->addChild(mUILayer);
 
-	auto gravityVec = b2Vec2(0, 0);
+	auto gravityVec = b2Vec2(0, -0.5f); // Flow of water
 	mWorld = new b2World(gravityVec);
     
 	mTileableWorld = NULL;
