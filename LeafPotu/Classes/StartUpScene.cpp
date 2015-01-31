@@ -1,5 +1,5 @@
 #include "StartUpScene.h"
-#include "GameScene.h"
+#include "MenuScene.h"
 
 USING_NS_CC;
 
@@ -56,8 +56,8 @@ void StartUpScene::update(float delta)
     
     auto startLstnr = EventListenerTouchOneByOne::create();
     startLstnr->onTouchBegan = [](Touch* touch, Event* event){
-        Scene* gameScene = GameScene::scene();
-        Director::getInstance()->replaceScene(gameScene);
+        Scene* menuScene = MenuScene::scene();
+        Director::getInstance()->replaceScene(menuScene);
         return true;
     };
     _eventDispatcher->addEventListenerWithSceneGraphPriority(startLstnr, startLbl);
