@@ -1,4 +1,5 @@
 #include "StartUpScene.h"
+#include "MenuScene.h"
 #include "GameScene.h"
 #include "GB2ShapeCache-x.h"
 
@@ -62,8 +63,8 @@ void StartUpScene::update(float delta)
     
     auto startLstnr = EventListenerTouchOneByOne::create();
     startLstnr->onTouchBegan = [](Touch* touch, Event* event){
-        Scene* gameScene = GameScene::scene();
-        Director::getInstance()->replaceScene(gameScene);
+        Scene* menuScene = MenuScene::scene();
+        Director::getInstance()->replaceScene(menuScene);
         return true;
     };
     _eventDispatcher->addEventListenerWithSceneGraphPriority(startLstnr, startLbl);

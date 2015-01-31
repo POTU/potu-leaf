@@ -12,20 +12,16 @@ public:
 	TileableWorld();
 	~TileableWorld();
 	void init(cocos2d::Layer* layer, b2World* world);
-
 	void update(float delta);
+    b2World* physWorld;
 
 private:
 	cocos2d::Layer* gameLayer;
-	b2World* physWorld;
-
 	float mOffset;
 	int mTileIndex;
-
 	void generateTiles();
 	std::vector<WorldTile*> mTiles;
 	WorldTile* mVisibleTiles[3];
-
 	void stepTiles();
 };
 
