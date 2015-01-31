@@ -14,15 +14,15 @@ void Player::init(cocos2d::Layer* layer, b2World* world)
     b2BodyDef bd;
     bd.position = b2Vec2(screen.width/2/PTM_RATIO, screen.height/2/PTM_RATIO);
     bd.type = b2BodyType::b2_dynamicBody;
-    bd.linearDamping = 0.75f;
+    bd.linearDamping = 0.95f;
     mBody = world->CreateBody(&bd);
     
     b2CircleShape shape;
-    shape.m_radius = 0.1f;
+    shape.m_radius = 0.15f;
     b2FixtureDef fd;
     fd.shape = &shape;
-    fd.restitution = 0.75f;
-    fd.density = 1.0f;
+    fd.restitution = 0.9f;
+    fd.density = 0.75f;
     mBody->CreateFixture(&fd);
     
     mRoot = Node::create();
@@ -31,7 +31,7 @@ void Player::init(cocos2d::Layer* layer, b2World* world)
     
     mSprite = Sprite::create("HelloWorld.png");
     mSprite->setPosition(Vec2(0, 0));
-    mSprite->setScale(0.25f, 0.25f);
+    mSprite->setScale(0.4f, 0.4f);
     mRoot->addChild(mSprite);
 }
 
