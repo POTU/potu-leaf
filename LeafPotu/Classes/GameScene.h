@@ -17,7 +17,7 @@ class GameScene : public cocos2d::Layer
 {
 public:
     virtual bool init();
-    static cocos2d::Scene* scene(bool mute);
+    static cocos2d::Scene* scene();
     CREATE_FUNC(GameScene);
 	virtual void onExit();
 	virtual void update(float delta);

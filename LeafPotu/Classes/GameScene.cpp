@@ -11,7 +11,7 @@ USING_NS_CC;
 using namespace cocos2d;
 using namespace cocos2d::ui;
 
-Scene* GameScene::scene(bool mute)
+Scene* GameScene::scene()
 {
     Scene *scene = Scene::createWithPhysics();
     GameScene *layer = GameScene::create();

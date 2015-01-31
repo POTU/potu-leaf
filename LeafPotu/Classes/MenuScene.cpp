@@ -75,7 +75,7 @@ void MenuScene::PlayGame(Ref *pSender, ui::TouchEventType type)
 			// TODO
 			break;
 		case ui::TouchEventType::TOUCH_EVENT_ENDED:
-			Director::getInstance()->replaceScene(GameScene::scene(muted));
+			Director::getInstance()->replaceScene(GameScene::scene());
 			break;
 		case ui::TouchEventType::TOUCH_EVENT_CANCELED:
 			// TODO
