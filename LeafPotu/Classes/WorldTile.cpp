@@ -33,9 +33,10 @@ void WorldTile::generate(cocos2d::Layer* layer, b2World* world)
 	bd.position = b2Vec2(0,0);
 	mBody = world->CreateBody(&bd);
 
-	int randomTileValue = rd::RandInt(1,8);
+	int randomTileValue = rd::RandInt(1,2);
+	randomTileValue = 1;
 
-	std::string tileStr = "tile" + rd::StringFromInt(randomTileValue);
+	std::string tileStr = "Tile" + rd::StringFromInt(randomTileValue);
 	std::string spriteStr = tileStr + ".png";
 	std::string shapeStr = tileStr;
 
@@ -43,6 +44,7 @@ void WorldTile::generate(cocos2d::Layer* layer, b2World* world)
 
 	Sprite* sprite = Sprite::createWithSpriteFrameName(spriteStr);
 	sprite->setAnchorPoint(cocos2d::Vec2(0,0));
+	sprite->setScale(2.0f);
 	mRoot->addChild(sprite);
 
 	this->cacheToPool();

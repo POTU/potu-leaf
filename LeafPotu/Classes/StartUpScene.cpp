@@ -44,6 +44,8 @@ void StartUpScene::update(float delta)
 
 		GB2ShapeCache::sharedGB2ShapeCache()->addShapesWithFile("physSheet.plist");
 
+		SpriteFrameCache::getInstance()->addSpriteFramesWithFile("envSheet1.plist");
+
         hasLoaded = true;
         return;
 	}
