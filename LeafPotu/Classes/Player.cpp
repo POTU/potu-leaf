@@ -135,7 +135,13 @@ void Player::moveInResponseToTouchAt(cocos2d::Vec2 coordinates)
     float triggerTime;
     if (distanceFactor > 0.7f) {
         triggerTime = 0.0f;
-        SimpleAudioEngine::getInstance()->playEffect("Audio/ripple_iso.mp3");
+        int r = rd::RandInt(0, 1);
+        if (r == 0) {
+            SimpleAudioEngine::getInstance()->playEffect("Audio/ripple_iso.mp3");
+        }
+        else {
+            SimpleAudioEngine::getInstance()->playEffect("Audio/ripple2.mp3");
+        }
     }
     else {
         triggerTime = (maxTriggerTime * (1.0f - distanceFactor));

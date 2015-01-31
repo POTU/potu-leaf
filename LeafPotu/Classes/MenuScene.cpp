@@ -1,13 +1,12 @@
 #include "MenuScene.h"
 #include "cocostudio/CocoStudio.h"
 #include "ui/CocosGUI.h"
-
 #include "GameScene.h"
-#include <SimpleAudioEngine.h>
-
+#include "SimpleAudioEngine.h"
 
 using namespace cocos2d;
 using namespace cocos2d::ui;
+using namespace CocosDenshion;
 
 Scene* MenuScene::scene()
 {
@@ -16,8 +15,6 @@ Scene* MenuScene::scene()
 	scene->addChild(layer);
 	return scene;
 }
-
-
 
 bool MenuScene::init()
 {
@@ -75,6 +72,7 @@ void MenuScene::PlayGame(Ref *pSender, ui::TouchEventType type)
 			// TODO
 			break;
 		case ui::TouchEventType::TOUCH_EVENT_ENDED:
+            SimpleAudioEngine::getInstance()->playEffect("Audio/button.mp3");
 			Director::getInstance()->replaceScene(GameScene::scene());
 			break;
 		case ui::TouchEventType::TOUCH_EVENT_CANCELED:
@@ -100,14 +98,16 @@ void MenuScene::MuteGame(Ref *pSender, ui::TouchEventType type)
 		if (muted == true)
 		{
 			muted = false;
-			CocosDenshion::SimpleAudioEngine::sharedEngine()->setBackgroundMusicVolume(1.0);
-			CocosDenshion::SimpleAudioEngine::sharedEngine()->setEffectsVolume(1.0);
+            SimpleAudioEngine::getInstance()->playEffect("Audio/button.mp3");
+			SimpleAudioEngine::getInstance()->setBackgroundMusicVolume(1.0);
+			SimpleAudioEngine::getInstance()->setEffectsVolume(1.0);
 		}
 		else
 		{
 			muted = true;
-			CocosDenshion::SimpleAudioEngine::sharedEngine()->setBackgroundMusicVolume(0.0);
-			CocosDenshion::SimpleAudioEngine::sharedEngine()->setEffectsVolume(0.0);
+            SimpleAudioEngine::getInstance()->playEffect("Audio/button.mp3");
+			SimpleAudioEngine::getInstance()->setBackgroundMusicVolume(0.0);
+			SimpleAudioEngine::getInstance()->setEffectsVolume(0.0);
 		}
 	}
 
@@ -131,6 +131,7 @@ void MenuScene::ExitGame(Ref *pSender, ui::TouchEventType type)
 		// TODO
 		break;
 	case ui::TouchEventType::TOUCH_EVENT_ENDED:
+        SimpleAudioEngine::getInstance()->playEffect("Audio/button.mp3");
 		exit(0);
 		break;
 	case ui::TouchEventType::TOUCH_EVENT_CANCELED:

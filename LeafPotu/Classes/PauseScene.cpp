@@ -3,12 +3,11 @@
 #include "ui/CocosGUI.h"
 #include "MenuScene.h"
 #include "GameManager.h"
-
-#include <SimpleAudioEngine.h>
-
+#include "SimpleAudioEngine.h"
 
 using namespace cocos2d;
 using namespace cocos2d::ui;
+using namespace CocosDenshion;
 
 Scene* PauseScene::scene()
 {
@@ -56,6 +55,7 @@ void PauseScene::CallResetGame(Ref *pSender, ui::TouchEventType type)
 		// TODO
 		break;
 	case ui::TouchEventType::TOUCH_EVENT_ENDED:
+        SimpleAudioEngine::getInstance()->playEffect("Audio/button.mp3");
 		gameManager.ResetGame();
 		break;
 	case ui::TouchEventType::TOUCH_EVENT_CANCELED:
@@ -80,6 +80,7 @@ void PauseScene::CallPauseGame(Ref *pSender, ui::TouchEventType type)
 		// TODO
 		break;
 	case ui::TouchEventType::TOUCH_EVENT_ENDED:
+        SimpleAudioEngine::getInstance()->playEffect("Audio/button.mp3");
 		gameManager.PauseGame();
 		break;
 	case ui::TouchEventType::TOUCH_EVENT_CANCELED:
@@ -102,6 +103,7 @@ void PauseScene::ExitGame(Ref *pSender, ui::TouchEventType type)
 		// TODO
 		break;
 	case ui::TouchEventType::TOUCH_EVENT_ENDED:
+        SimpleAudioEngine::getInstance()->playEffect("Audio/button.mp3");
 		Director::getInstance()->replaceScene(MenuScene::scene());
 		break;
 	case ui::TouchEventType::TOUCH_EVENT_CANCELED:

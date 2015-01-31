@@ -7,11 +7,13 @@
 #include "Helpers.h"
 #include "spine/spine-cocos2dx.h"
 #include "Helpers.h"
+#include "SimpleAudioEngine.h"
 
 USING_NS_CC;
 
 using namespace cocos2d;
 using namespace cocos2d::ui;
+using namespace CocosDenshion;
 
 Scene* GameScene::scene()
 {
@@ -161,7 +163,7 @@ void GameScene::potuTouchEnded(cocos2d::Touch* touch, cocos2d::Event* event)
 {
     mGameManager->InputCoordinates(touch->getLocation());
 
-	//create ripple
+	// Create ripple
 	cocos2d::Node* rippleNode = Node::create();
 	rippleNode->setPosition(touch->getLocation());
 	mBgLayer->addChild(rippleNode);
@@ -190,6 +192,7 @@ void GameScene::CallPause(Ref *pSender, ui::TouchEventType type)
 		// TODO
 		break;
 	case ui::TouchEventType::TOUCH_EVENT_ENDED:
+        SimpleAudioEngine::getInstance()->playEffect("Audio/button.mp3");
 		mGameManager->PauseGame();
 		break;
 	case ui::TouchEventType::TOUCH_EVENT_CANCELED:
@@ -211,6 +214,7 @@ void GameScene::CallMute(Ref *pSender, ui::TouchEventType type)
 		// TODO
 		break;
 	case ui::TouchEventType::TOUCH_EVENT_ENDED:
+        SimpleAudioEngine::getInstance()->playEffect("Audio/button.mp3");
 		mGameManager->MuteGame();
 		break;
 	case ui::TouchEventType::TOUCH_EVENT_CANCELED:
