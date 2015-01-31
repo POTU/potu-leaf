@@ -23,9 +23,9 @@ void TileableWorld::doStuff()
     auto sprite = Sprite::create("HelloWorld.png");
     auto screen = dir->getWinSize();
     sprite->setPosition(Vec2(screen.width / 2, screen.height / 2));
-    sprite->setScale(0.5f, 0.5f);
+    sprite->setScale(0.25f, 0.25f);
     
-    auto body = PhysicsBody::createBox(Size(1.0f , 1.0f ), PhysicsMaterial(0.0f, 0.0f, 0.0f));
+    auto body = PhysicsBody::createBox(Size(1.0f , 1.0f ), PhysicsMaterial(0.1f, 0.1f, 0.0f));
     body->setGravityEnable(false);
     sprite->setPhysicsBody(body);
     
@@ -35,13 +35,14 @@ void TileableWorld::doStuff()
     listener->onTouchBegan = [](Touch* touch, Event* event){
         auto node = event->getCurrentTarget(); // TODO: Fix, not the right way to pass this.
         
+        auto maxInteractionDistance = 400.0f;
         auto distance = node->getPosition().distance(touch->getLocation());
         float distanceFactor;
-        if (distance > 300) {
+        if (distance > maxInteractionDistance) {
             distanceFactor = 0.0f;
         }
         else {
-            auto t = (distance / 300.0f);
+            auto t = (distance / maxInteractionDistance);
             if (t > 1.0f) { t = 1.0f; }
             t = (1.0f - t);
             distanceFactor = t;
@@ -50,7 +51,7 @@ void TileableWorld::doStuff()
         auto difference = touch->getLocation() - node->getPosition();
         
         float distanceX = abs(difference.x);
-        auto tt = (distanceX / 300.0f);
+        auto tt = (distanceX / maxInteractionDistance);
         if (tt > 1.0f) { tt = 1.0f; }
         if (tt < -1.0f) { tt = -1.0f; }
         tt = (1.0f - tt);
@@ -60,7 +61,7 @@ void TileableWorld::doStuff()
         }
         
         float distanceY = abs(difference.y);
-        auto ttt = (distanceY / 300.0f);
+        auto ttt = (distanceY / maxInteractionDistance);
         if (ttt > 1.0f) { ttt = 1.0f; }
         if (ttt < -1.0f) { ttt = -1.0f; }
         ttt = (1.0f - ttt);
@@ -69,13 +70,13 @@ void TileableWorld::doStuff()
             distanceFactorY = -distanceFactorY;
         }
         
-        auto forceX = -(300.0f * distanceFactorX * distanceFactor);
-        auto forceY = -(300.0f * distanceFactorY * distanceFactor);
+        auto maxForce = 25.0f;
+        auto forceX = -(maxForce * distanceFactorX * distanceFactor);
+        auto forceY = -(maxForce * distanceFactorY * distanceFactor);
         
-        CCLOG("%4.2f %4.2f %4.2f", distanceFactor, forceX, forceY);
+        CCLOG("Leaf push: %4.2f %4.2f", forceX, forceY);
+        node->getPhysicsBody()->applyImpulse(Vec2(forceX, forceY));
         
-        node->getPhysicsBody()->setVelocity(Vec2(forceX, forceY));
-        CCLOG("Clicked.");
         return true;
     };
     listener->setSwallowTouches(true);
