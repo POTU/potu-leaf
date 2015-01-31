@@ -3,6 +3,7 @@
 #include "MenuScene.h"
 #include "Player.h"
 #include "Helpers.h"
+#include "PauseScene.h"
 #include <SimpleAudioEngine.h>
 
 using namespace cocos2d;
@@ -10,7 +11,6 @@ using namespace cocos2d;
 
 GameManager::GameManager()
 {
-
 }
 GameManager::~GameManager()
 {
@@ -27,6 +27,7 @@ void GameManager::init(cocos2d::Layer* gameLayer, TileableWorld* tileableWorld, 
 	{
 		Muted = true;
 	}
+	Paused = false;
     player->init(this->gameLayer, this->physWorld);
 }
 
@@ -49,11 +50,13 @@ void GameManager::PauseGame()
 	{
 		Paused = true;
 		// Pause Game
+		Director::getInstance()->pushScene(PauseScene::scene());
 	}
 	else
 	{
 		Paused = false;
 		// Un-pause Game
+		//Director::getInstance()->popScene();
 	}
 }
 
@@ -71,6 +74,11 @@ void GameManager::MuteGame()
 		CocosDenshion::SimpleAudioEngine::sharedEngine()->setBackgroundMusicVolume(0.0);
 		CocosDenshion::SimpleAudioEngine::sharedEngine()->setEffectsVolume(0.0);
 	}
+}
+
+void GameManager::ResetGame()
+{
+	Director::getInstance()->replaceScene(GameScene::scene());
 }
 
 void GameManager::EndGame()
