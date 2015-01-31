@@ -9,8 +9,8 @@ class Obstacle
 public:
     Obstacle();
     ~Obstacle();
-    virtual void init(cocos2d::Layer* gameLayer, b2World* physicWorld) = 0;
-    virtual void update(float delta) = 0;
+    virtual void init(cocos2d::Layer* gameLayer, b2World* physicWorld, float x, float y) = 0;
+    virtual void update(float delta, float x, float y) = 0;
     virtual void setActive(bool isActive) = 0;
 protected:
     b2Body* mBody;

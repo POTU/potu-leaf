@@ -9,14 +9,14 @@ USING_NS_CC;
 Rock::Rock() { }
 Rock::~Rock() { }
 
-void Rock::init(cocos2d::Layer* gameLayer, b2World* physicWorld)
+void Rock::init(cocos2d::Layer* gameLayer, b2World* physicWorld, float x, float y)
 {
     auto dir = Director::getInstance();
     auto screen = dir->getWinSize();
     
     b2BodyDef bd;
-    bd.position.Set(screen.width/2/PTM_RATIO, screen.height/2/PTM_RATIO);
-    bd.type = b2BodyType::b2_kinematicBody;
+    bd.position.Set(x/PTM_RATIO, y/PTM_RATIO);
+	bd.type = b2BodyType::b2_staticBody;
     bd.fixedRotation = true;
     mBody = physicWorld->CreateBody(&bd);
     
@@ -35,15 +35,21 @@ void Rock::init(cocos2d::Layer* gameLayer, b2World* physicWorld)
     mSprite->setPosition(Vec2(0, 0));
     mSprite->setScale(0.4f, 0.4f);
     mRoot->addChild(mSprite);
+
+	mX = x;
+	mY = y;
 }
 
-void Rock::update(float delta)
+void Rock::update(float delta, float x, float y)
 {
     if (mBody && mRoot)
     {
-        auto velocity = mBody->GetLinearVelocity();
-        mBody->SetLinearVelocity(b2Vec2(velocity.x, velocity.y - 0.01f));
-        auto pos = mBody->GetPosition();
+		b2Vec2 pos;
+		pos.x = (x + mX)/PTM_RATIO;
+		pos.y = (y + mY)/PTM_RATIO;
+
+		mBody->SetTransform(pos, 0);
+
         mRoot->setPosition(Vec2(pos.x*PTM_RATIO, pos.y*PTM_RATIO));
         //mRoot->setRotation(-rd::RadToDeg(mBody->GetAngle()));
     }
