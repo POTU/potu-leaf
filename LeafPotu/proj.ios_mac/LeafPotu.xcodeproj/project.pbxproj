@@ -17,6 +17,11 @@
 		3260AA181A7C21D900ED6ABE /* StartUpScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3260AA131A7C21D900ED6ABE /* StartUpScene.cpp */; };
 		3260AA191A7C21D900ED6ABE /* TileableWorld.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3260AA151A7C21D900ED6ABE /* TileableWorld.cpp */; };
 		32C50E011A7CEA0100C812FF /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 32C50DFF1A7CEA0100C812FF /* Player.cpp */; };
+		32C50E041A7CEC8200C812FF /* GameManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 32C50E021A7CEC8200C812FF /* GameManager.cpp */; };
+		32C50E0B1A7D05C200C812FF /* GB2ShapeCache-x.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 32C50E051A7D05C200C812FF /* GB2ShapeCache-x.cpp */; };
+		32C50E0C1A7D05C200C812FF /* Helpers.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 32C50E071A7D05C200C812FF /* Helpers.cpp */; };
+		32C50E0D1A7D05C200C812FF /* WorldTile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 32C50E091A7D05C200C812FF /* WorldTile.cpp */; };
+		32C50E101A7D093200C812FF /* MenuScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 32C50E0E1A7D093200C812FF /* MenuScene.cpp */; };
 		3EACC98F19EE6D4300EB3C5E /* res in Resources */ = {isa = PBXBuildFile; fileRef = 3EACC98E19EE6D4300EB3C5E /* res */; };
 		3EACC99019EE6D4300EB3C5E /* res in Resources */ = {isa = PBXBuildFile; fileRef = 3EACC98E19EE6D4300EB3C5E /* res */; };
 		46880B7B19C43A67006E1F66 /* CloseNormal.png in Resources */ = {isa = PBXBuildFile; fileRef = 46880B7619C43A67006E1F66 /* CloseNormal.png */; };
@@ -120,6 +125,16 @@
 		3260AA151A7C21D900ED6ABE /* TileableWorld.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TileableWorld.cpp; sourceTree = "<group>"; };
 		32C50DFF1A7CEA0100C812FF /* Player.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Player.cpp; sourceTree = "<group>"; };
 		32C50E001A7CEA0100C812FF /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
+		32C50E021A7CEC8200C812FF /* GameManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameManager.cpp; sourceTree = "<group>"; };
+		32C50E031A7CEC8200C812FF /* GameManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameManager.h; sourceTree = "<group>"; };
+		32C50E051A7D05C200C812FF /* GB2ShapeCache-x.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "GB2ShapeCache-x.cpp"; sourceTree = "<group>"; };
+		32C50E061A7D05C200C812FF /* GB2ShapeCache-x.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GB2ShapeCache-x.h"; sourceTree = "<group>"; };
+		32C50E071A7D05C200C812FF /* Helpers.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Helpers.cpp; sourceTree = "<group>"; };
+		32C50E081A7D05C200C812FF /* Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Helpers.h; sourceTree = "<group>"; };
+		32C50E091A7D05C200C812FF /* WorldTile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WorldTile.cpp; sourceTree = "<group>"; };
+		32C50E0A1A7D05C200C812FF /* WorldTile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorldTile.h; sourceTree = "<group>"; };
+		32C50E0E1A7D093200C812FF /* MenuScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MenuScene.cpp; sourceTree = "<group>"; };
+		32C50E0F1A7D093200C812FF /* MenuScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuScene.h; sourceTree = "<group>"; };
 		3EACC98E19EE6D4300EB3C5E /* res */ = {isa = PBXFileReference; lastKnownFileType = folder; path = res; sourceTree = "<group>"; };
 		46880B7619C43A67006E1F66 /* CloseNormal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CloseNormal.png; sourceTree = "<group>"; };
 		46880B7719C43A67006E1F66 /* CloseSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CloseSelected.png; sourceTree = "<group>"; };
@@ -295,6 +310,16 @@
 		46880B8319C43A87006E1F66 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				32C50E0E1A7D093200C812FF /* MenuScene.cpp */,
+				32C50E0F1A7D093200C812FF /* MenuScene.h */,
+				32C50E051A7D05C200C812FF /* GB2ShapeCache-x.cpp */,
+				32C50E061A7D05C200C812FF /* GB2ShapeCache-x.h */,
+				32C50E071A7D05C200C812FF /* Helpers.cpp */,
+				32C50E081A7D05C200C812FF /* Helpers.h */,
+				32C50E091A7D05C200C812FF /* WorldTile.cpp */,
+				32C50E0A1A7D05C200C812FF /* WorldTile.h */,
+				32C50E021A7CEC8200C812FF /* GameManager.cpp */,
+				32C50E031A7CEC8200C812FF /* GameManager.h */,
 				3260AA0E1A7C21D900ED6ABE /* GameScene.cpp */,
 				3260AA0F1A7C21D900ED6ABE /* GameScene.h */,
 				3260AA101A7C21D900ED6ABE /* GLES-Render.cpp */,
@@ -507,14 +532,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				3260AA171A7C21D900ED6ABE /* GLES-Render.cpp in Sources */,
+				32C50E041A7CEC8200C812FF /* GameManager.cpp in Sources */,
 				3260AA161A7C21D900ED6ABE /* GameScene.cpp in Sources */,
+				32C50E0C1A7D05C200C812FF /* Helpers.cpp in Sources */,
 				32C50E011A7CEA0100C812FF /* Player.cpp in Sources */,
 				3260AA181A7C21D900ED6ABE /* StartUpScene.cpp in Sources */,
 				46880B8819C43A87006E1F66 /* AppDelegate.cpp in Sources */,
+				32C50E0D1A7D05C200C812FF /* WorldTile.cpp in Sources */,
 				3260AA191A7C21D900ED6ABE /* TileableWorld.cpp in Sources */,
+				32C50E0B1A7D05C200C812FF /* GB2ShapeCache-x.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
+				32C50E101A7D093200C812FF /* MenuScene.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

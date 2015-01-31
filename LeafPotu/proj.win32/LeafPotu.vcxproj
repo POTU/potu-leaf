@@ -140,7 +140,10 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
     <ClCompile Include="..\Classes\AppDelegate.cpp" />
     <ClCompile Include="..\Classes\GameManager.cpp" />
     <ClCompile Include="..\Classes\GameScene.cpp" />
+    <ClCompile Include="..\Classes\GB2ShapeCache-x.cpp" />
     <ClCompile Include="..\Classes\GLES-Render.cpp" />
+    <ClCompile Include="..\Classes\Helpers.cpp" />
+    <ClCompile Include="..\Classes\Player.cpp" />
     <ClCompile Include="..\Classes\StartUpScene.cpp" />
     <ClCompile Include="..\Classes\TileableWorld.cpp" />
     <ClCompile Include="..\Classes\WorldTile.cpp" />
@@ -150,7 +153,10 @@ xcopy /Y /Q "$(EngineRoot)external\websockets\prebuilt\win32\*.*" "$(OutDir)"</C
     <ClInclude Include="..\Classes\AppDelegate.h" />
     <ClInclude Include="..\Classes\GameManager.h" />
     <ClInclude Include="..\Classes\GameScene.h" />
+    <ClInclude Include="..\Classes\GB2ShapeCache-x.h" />
     <ClInclude Include="..\Classes\GLES-Render.h" />
+    <ClInclude Include="..\Classes\Helpers.h" />
+    <ClInclude Include="..\Classes\Player.h" />
     <ClInclude Include="..\Classes\standards.h" />
     <ClInclude Include="..\Classes\StartUpScene.h" />
     <ClInclude Include="..\Classes\TileableWorld.h" />

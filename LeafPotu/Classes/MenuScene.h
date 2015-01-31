@@ -3,6 +3,7 @@
 
 
 #include "cocos2d.h"
+#include "ui\CocosGUI.h"
 
 USING_NS_CC;
 
@@ -13,9 +14,9 @@ public:
 	static cocos2d::Scene* scene();
 	CREATE_FUNC(MenuScene);
 private:
-	void PlayGame(Ref *pSender, TouchEventType type);
-	void MuteGame(Ref *pSender, TouchEventType type);
-	void ExitGame(Ref *pSender, TouchEventType type);
+	void PlayGame(Ref *pSender, ui::TouchEventType type);
+	void MuteGame(Ref *pSender, ui::TouchEventType type);
+	void ExitGame(Ref *pSender, ui::TouchEventType type);
 	bool muted;
 };
 

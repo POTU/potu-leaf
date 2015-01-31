@@ -1,5 +1,7 @@
 #include "StartUpScene.h"
 #include "MenuScene.h"
+#include "GameScene.h"
+#include "GB2ShapeCache-x.h"
 
 USING_NS_CC;
 
@@ -40,6 +42,11 @@ void StartUpScene::update(float delta)
 	if (!hasLoaded)
 	{
         // Keep loading resources until we are ready to show the real title screen.
+
+		GB2ShapeCache::sharedGB2ShapeCache()->addShapesWithFile("physSheet.plist");
+
+		SpriteFrameCache::getInstance()->addSpriteFramesWithFile("envSheet1.plist");
+
         hasLoaded = true;
         return;
 	}

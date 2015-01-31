@@ -13,7 +13,6 @@ Scene* MenuScene::scene()
 	Scene *scene = Scene::create();
 	MenuScene *layer = MenuScene::create();
 	scene->addChild(layer);
-	Director::getInstance()->runWithScene(scene);
 	return scene;
 }
 
@@ -26,7 +25,7 @@ bool MenuScene::init()
 		return false;
 	}
 
-	Node* uiNode = CSLoader::createNode("");
+	Node* uiNode = CSLoader::createNode("MenuScene.csb");
 	this->addChild(uiNode);
 
 	ui::Button* playButton = (ui::Button*)uiNode->getChildByName("BTN_play");
@@ -93,7 +92,7 @@ void MenuScene::PlayGame(Ref *pSender, ui::TouchEventType type)
 
 void MenuScene::MuteGame(Ref *pSender, ui::TouchEventType type)
 {
-	if (muted)
+	if (muted == true)
 	{
 		muted = false;
 		CocosDenshion::SimpleAudioEngine::sharedEngine()->setBackgroundMusicVolume(1.0);
