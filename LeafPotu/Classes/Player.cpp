@@ -58,7 +58,7 @@ void Player::update(float delta)
         mRoot->setRotation(-rd::RadToDeg(mBody->GetAngle()));
     }
 
-	//Update force timers
+	// Update force timers
 	if(!mForceNodes.empty())
 	{
 		std::vector<ForceNode*>::iterator it;
@@ -69,7 +69,7 @@ void Player::update(float delta)
 		}
 	}
 
-	//Update force triggers
+	// Update force triggers
 	if(!mForceNodes.empty())
 	{
 		std::vector<ForceNode*>::iterator it;

@@ -39,7 +39,7 @@ void WorldTile::generate(cocos2d::Layer* layer, b2World* world)
 	randomTileValue = 1;
     
     auto r = new Rock();
-    r->init(mRoot, world);
+    r->init(layer, world);
     mObstacles.push_back(r);
 
 	std::string tileStr = "Tile" + rd::StringFromInt(randomTileValue);

@@ -10,7 +10,7 @@ class Rock : public Obstacle
 public:
     Rock();
     ~Rock();
-    virtual void init(cocos2d::Node* parentNode, b2World* physicWorld);
+    virtual void init(cocos2d::Layer* gameLayer, b2World* physicWorld);
     virtual void update(float delta);
     virtual void setActive(bool isActive);
 };
