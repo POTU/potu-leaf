@@ -23,7 +23,6 @@ bool StartUpScene::init()
 	
     isFirstUpdate = true;
 	hasLoaded = false;
-    showingStartMenu = false;
     
 	int seed = (int)time(NULL);
 	srand(seed);
@@ -34,7 +33,6 @@ void StartUpScene::update(float delta)
 {
 	if (isFirstUpdate)
 	{
-        // Don't do anything on first update, why? Only god knows.
 		isFirstUpdate = false;
 		return;
 	}
@@ -42,32 +40,12 @@ void StartUpScene::update(float delta)
 	if (!hasLoaded)
 	{
         // Keep loading resources until we are ready to show the real title screen.
-
 		GB2ShapeCache::sharedGB2ShapeCache()->addShapesWithFile("physSheet.plist");
-
 		SpriteFrameCache::getInstance()->addSpriteFramesWithFile("envSheet1.plist");
-
         hasLoaded = true;
         return;
 	}
     
-    if (showingStartMenu) {
-        return;
-    }
-    
-    auto startLbl = Label::createWithTTF("Start Game", "fonts/Marker Felt.ttf", 48);
-    cocos2d::Size screen = Director::getInstance()->getWinSize();
-    startLbl->setPosition(Vec2(screen.width / 2, screen.height / 2));
-    startLbl->setColor(cocos2d::Color3B::WHITE);
-    this->addChild(startLbl);
-    
-    auto startLstnr = EventListenerTouchOneByOne::create();
-    startLstnr->onTouchBegan = [](Touch* touch, Event* event){
-        Scene* menuScene = MenuScene::scene();
-        Director::getInstance()->replaceScene(menuScene);
-        return true;
-    };
-    _eventDispatcher->addEventListenerWithSceneGraphPriority(startLstnr, startLbl);
-    
-    showingStartMenu = true;
+    Scene* menuScene = MenuScene::scene();
+    Director::getInstance()->replaceScene(menuScene);
 }

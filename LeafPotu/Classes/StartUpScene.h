@@ -14,7 +14,6 @@ public:
 private:
 	bool isFirstUpdate;
 	bool hasLoaded;
-    bool showingStartMenu;
 };
 
 #endif

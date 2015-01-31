@@ -1,10 +1,19 @@
 #include "Player.h"
 #include "standards.h"
+#include "Helpers.h"
 
 USING_NS_CC;
 
 Player::Player() { }
-Player::~Player() { }
+Player::~Player() 
+{
+	std::vector<ForceNode*>::iterator it;
+	for(it = mForceNodes.begin(); it < mForceNodes.end(); it++)
+	{
+		ForceNode* iNode = *it;
+		delete iNode;
+	}
+}
 
 void Player::init(cocos2d::Layer* layer, b2World* world)
 {
@@ -14,15 +23,18 @@ void Player::init(cocos2d::Layer* layer, b2World* world)
     b2BodyDef bd;
     bd.position = b2Vec2(screen.width/2/PTM_RATIO, screen.height/2/PTM_RATIO);
     bd.type = b2BodyType::b2_dynamicBody;
-    bd.linearDamping = 0.75f;
+    bd.linearDamping = 0.95f;
+    bd.angularDamping = 0.5f;
+    bd.fixedRotation = false;
     mBody = world->CreateBody(&bd);
     
     b2CircleShape shape;
-    shape.m_radius = 0.1f;
+    shape.m_radius = 0.15f;
     b2FixtureDef fd;
     fd.shape = &shape;
-    fd.restitution = 0.75f;
-    fd.density = 1.0f;
+    fd.restitution = 0.9f;
+    fd.density = 0.75f;
+    fd.friction = 0.5f;
     mBody->CreateFixture(&fd);
     
     mRoot = Node::create();
@@ -31,7 +43,7 @@ void Player::init(cocos2d::Layer* layer, b2World* world)
     
     mSprite = Sprite::create("HelloWorld.png");
     mSprite->setPosition(Vec2(0, 0));
-    mSprite->setScale(0.25f, 0.25f);
+    mSprite->setScale(0.4f, 0.4f);
     mRoot->addChild(mSprite);
 }
 
@@ -39,10 +51,45 @@ void Player::update(float delta)
 {
     auto xx = mBody->GetLinearVelocity();
     mBody->SetLinearVelocity(b2Vec2(xx.x, xx.y - 0.01f));
+    auto fff = mBody->GetAngle();
     auto pos = mBody->GetPosition();
     auto x = pos.x;
     auto y = pos.y;
     if (mRoot) mRoot->setPosition(x*PTM_RATIO, y*PTM_RATIO);
+
+
+	//Update force timers
+	if(!mForceNodes.empty())
+	{
+		std::vector<ForceNode*>::iterator it;
+		for(it = mForceNodes.begin(); it < mForceNodes.end(); it++)
+		{
+			ForceNode* iNode = *it;
+			iNode->timer = iNode->timer - delta;
+		}
+	}
+
+	//Update force triggers
+	if(!mForceNodes.empty())
+	{
+		std::vector<ForceNode*>::iterator it;
+		for(it = mForceNodes.begin(); it < mForceNodes.end(); it++)
+		{
+			ForceNode* iNode = *it;
+			if(iNode->timer < 0)
+			{
+				mBody->ApplyForceToCenter(iNode->force, true);
+				mForceNodes.erase(it);
+				delete iNode;
+				break;
+			}
+		}
+	}
+    if (mRoot)
+    {
+        mRoot->setPosition(x*PTM_RATIO, y*PTM_RATIO);
+        mRoot->setRotation(-rd::RadToDeg(fff));
+    }
 }
 
 void Player::moveInResponseToTouchAt(cocos2d::Vec2 coordinates)
@@ -88,5 +135,24 @@ void Player::moveInResponseToTouchAt(cocos2d::Vec2 coordinates)
     auto forceY = -(maxForceY * distanceFactorY * distanceFactor);
     
     CCLOG("Leaf push: %4.2f %4.2f", forceX, forceY);
-    mBody->ApplyForceToCenter(b2Vec2(forceX, forceY), true);
+
+
+	float triggerTime = 0.1f;
+
+	this->addForceToQueue(b2Vec2(forceX, forceY), triggerTime);
+    
+    int torqueSign = 1;
+    if (difference.x < 0) {
+        torqueSign = -1;
+    }
+    mBody->ApplyTorque(0.01f * torqueSign, true);
+}
+
+void Player::addForceToQueue(b2Vec2 forceVec, float timeToTrigger)
+{
+	ForceNode* newForceNode = new ForceNode();
+	newForceNode->timer = timeToTrigger;
+	newForceNode->force = forceVec;
+
+	mForceNodes.push_back(newForceNode);
 }
