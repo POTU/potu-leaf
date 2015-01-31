@@ -39,14 +39,13 @@ void GameManager::update(float delta)
 
 void GameManager::InputCoordinates(Vec2 coordinates)
 {
-	// If hits water, apply force to player.
     player->moveInResponseToTouchAt(coordinates);
 }
 
 
-void GameManager::PauseGame()
+void GameManager::PauseGame(bool Pause)
 {
-	if (Paused == false)
+	if (Pause == true)
 	{
 		Paused = true;
         SimpleAudioEngine::getInstance()->pauseBackgroundMusic();
@@ -56,7 +55,7 @@ void GameManager::PauseGame()
 	{
 		Paused = false;
         SimpleAudioEngine::getInstance()->resumeBackgroundMusic();
-		//Director::getInstance()->popScene();
+		Director::getInstance()->popScene();
 	}
 }
 

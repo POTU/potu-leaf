@@ -2,6 +2,7 @@
 #include "cocostudio/CocoStudio.h"
 #include "ui/CocosGUI.h"
 #include "MenuScene.h"
+#include "GameScene.h"
 #include "GameManager.h"
 #include "SimpleAudioEngine.h"
 
@@ -81,7 +82,7 @@ void PauseScene::CallPauseGame(Ref *pSender, ui::TouchEventType type)
 		break;
 	case ui::TouchEventType::TOUCH_EVENT_ENDED:
         SimpleAudioEngine::getInstance()->playEffect("Audio/button.mp3");
-		gameManager.PauseGame();
+        gameManager.PauseGame(false);
 		break;
 	case ui::TouchEventType::TOUCH_EVENT_CANCELED:
 		// TODO
