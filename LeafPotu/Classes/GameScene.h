@@ -5,10 +5,13 @@
 #include "Box2D/Box2D.h"
 #include "TileableWorld.h"
 #include "GameManager.h"
+#include "ui/CocosGUI.h"
 
 #ifdef DEBUG_PHYSICS
 #include "GLES-Render.h"
 #endif
+
+USING_NS_CC;
 
 class GameScene : public cocos2d::Layer
 {
@@ -45,9 +48,16 @@ private:
 	cocos2d::Layer* mGameLayer;
 	cocos2d::Layer* mOverLayer;
 	cocos2d::Layer* mUILayer;
-    
+
 	GameManager* mGameManager;
 	TileableWorld* mTileableWorld;
+	ui::Text* labelScore;
+
+	float ScoreFloat;
+	int Score;
+
+	void CallPause(Ref *pSender, ui::TouchEventType type);
+	void CallMute(Ref *pSender, ui::TouchEventType type);
 };
 
 

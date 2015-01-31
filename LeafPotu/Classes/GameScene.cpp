@@ -1,8 +1,15 @@
 #include "GameScene.h"
+#include "GameManager.h"
 #include "StartUpScene.h"
 #include "TileableWorld.h"
+#include "cocostudio/CocoStudio.h"
+#include "ui/CocosGUI.h"
+#include "Helpers.h"
 
 USING_NS_CC;
+
+using namespace cocos2d;
+using namespace cocos2d::ui;
 
 Scene* GameScene::scene()
 {
@@ -44,6 +51,31 @@ bool GameScene::init()
 	mTileableWorld = NULL;
     mTileableWorld = new TileableWorld();
     mTileableWorld->init(mOverLayer, mWorld);
+	
+	mGameManager = NULL;
+	mGameManager = new GameManager();
+	mGameManager->init(mGameLayer, mTileableWorld, mWorld);
+
+	Node* uiNode = CSLoader::createNode("InGameScene.csb");
+	this->addChild(uiNode);
+
+	auto visibleSize = Director::getInstance()->getVisibleSize();
+	auto windowSize = Director::getInstance()->getWinSize();
+
+
+	ui::Button* pauseButton = (ui::Button*)uiNode->getChildByName("BTN_pause");
+	pauseButton->addTouchEventListener(this, toucheventselector(GameScene::CallPause));
+	pauseButton->setPosition(Vec2(pauseButton->getPosition().x, visibleSize.height - ((windowSize.height - visibleSize.height) / 2)));
+
+	ui::Button* muteButton = (ui::Button*)uiNode->getChildByName("BTN_mute");
+	muteButton->addTouchEventListener(this, toucheventselector(GameScene::CallMute));
+	muteButton->setPosition(Vec2(muteButton->getPosition().x, visibleSize.height - ((windowSize.height - visibleSize.height) / 2)));
+
+	Score = 0;
+	ScoreFloat = 0;
+	labelScore = (ui::Text*)uiNode->getChildByName("LABEL_score");
+	labelScore->setPosition(Vec2(labelScore->getPosition().x, visibleSize.height - ((windowSize.height - visibleSize.height) / 2)));
+	labelScore->setText(rd::StringFromInt(Score));
 
 #ifdef DEBUG_PHYSICS
 	debugDraw = new GLESDebugDraw( PTM_RATIO );
@@ -57,10 +89,6 @@ bool GameScene::init()
 	//flags += b2Draw::e_centerOfMassBit;
 	debugDraw->SetFlags(flags);
 #endif
-
-	mGameManager = NULL;
-	mGameManager = new GameManager();
-    mGameManager->init(mGameLayer, mTileableWorld, mWorld);
 
 	this->scheduleUpdate();
 
@@ -78,7 +106,7 @@ void GameScene::onExit()
 void GameScene::update(float delta)
 {
 	mTileableWorld->update(delta);
-    mGameManager->update(delta);
+	mGameManager->update(delta);
 
 	static double UPDATE_INTERVAL = 1.0f/60.0f;
 	static double MAX_CYCLES_PER_FRAME = 5;
@@ -94,6 +122,14 @@ void GameScene::update(float delta)
 		timeAccumulator -= UPDATE_INTERVAL;        
 		mWorld->Step(UPDATE_INTERVAL, velocityIterations, positionIterations);
 		mWorld->ClearForces();
+	}
+
+	ScoreFloat += delta;
+	if (ScoreFloat >= 1)
+	{
+		ScoreFloat = 0;
+		Score++;
+		labelScore->setText(rd::StringFromInt(Score));
 	}
 
 #ifdef DEBUG_PHYSICS
@@ -120,6 +156,47 @@ void GameScene::potuTouchCanceled(cocos2d::Touch* touch, cocos2d::Event* event)
 {
 }
 
+void GameScene::CallPause(Ref *pSender, ui::TouchEventType type)
+{
+	switch (type)
+	{
+	case ui::TouchEventType::TOUCH_EVENT_BEGAN:
+		break;
+	case ui::TouchEventType::TOUCH_EVENT_MOVED:
+		// TODO
+		break;
+	case ui::TouchEventType::TOUCH_EVENT_ENDED:
+		mGameManager->PauseGame();
+		break;
+	case ui::TouchEventType::TOUCH_EVENT_CANCELED:
+		// TODO
+		break;
+	default:
+		// TODO
+		break;
+	}
+}
+
+void GameScene::CallMute(Ref *pSender, ui::TouchEventType type)
+{
+	switch (type)
+	{
+	case ui::TouchEventType::TOUCH_EVENT_BEGAN:
+		break;
+	case ui::TouchEventType::TOUCH_EVENT_MOVED:
+		// TODO
+		break;
+	case ui::TouchEventType::TOUCH_EVENT_ENDED:
+		mGameManager->MuteGame();
+		break;
+	case ui::TouchEventType::TOUCH_EVENT_CANCELED:
+		// TODO
+		break;
+	default:
+		// TODO
+		break;
+	}
+}
 
 
 #ifdef DEBUG_PHYSICS

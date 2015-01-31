@@ -13,11 +13,11 @@ public:
 	virtual bool init();
 	static cocos2d::Scene* scene();
 	CREATE_FUNC(MenuScene);
+	bool muted;
 private:
 	void PlayGame(Ref *pSender, ui::TouchEventType type);
 	void MuteGame(Ref *pSender, ui::TouchEventType type);
 	void ExitGame(Ref *pSender, ui::TouchEventType type);
-	bool muted;
 };
 
 

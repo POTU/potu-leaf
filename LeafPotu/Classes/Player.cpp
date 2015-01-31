@@ -5,7 +5,15 @@
 USING_NS_CC;
 
 Player::Player() { }
-Player::~Player() { }
+Player::~Player() 
+{
+	std::vector<ForceNode*>::iterator it;
+	for(it = mForceNodes.begin(); it < mForceNodes.end(); it++)
+	{
+		ForceNode* iNode = *it;
+		delete iNode;
+	}
+}
 
 void Player::init(cocos2d::Layer* layer, b2World* world)
 {
@@ -41,13 +49,42 @@ void Player::init(cocos2d::Layer* layer, b2World* world)
 
 void Player::update(float delta)
 {
+    auto velocity = mBody->GetLinearVelocity();
+    mBody->SetLinearVelocity(b2Vec2(velocity.x, velocity.y - 0.01f));
     if (mRoot)
     {
         auto pos = mBody->GetPosition();
         mRoot->setPosition(pos.x*PTM_RATIO, pos.y*PTM_RATIO);
-        auto fff = mBody->GetAngle();
-        mRoot->setRotation(-rd::RadToDeg(fff));
+        mRoot->setRotation(-rd::RadToDeg(mBody->GetAngle()));
     }
+
+	//Update force timers
+	if(!mForceNodes.empty())
+	{
+		std::vector<ForceNode*>::iterator it;
+		for(it = mForceNodes.begin(); it < mForceNodes.end(); it++)
+		{
+			ForceNode* iNode = *it;
+			iNode->timer = iNode->timer - delta;
+		}
+	}
+
+	//Update force triggers
+	if(!mForceNodes.empty())
+	{
+		std::vector<ForceNode*>::iterator it;
+		for(it = mForceNodes.begin(); it < mForceNodes.end(); it++)
+		{
+			ForceNode* iNode = *it;
+			if(iNode->timer < 0)
+			{
+				mBody->ApplyForceToCenter(iNode->force, true);
+				mForceNodes.erase(it);
+				delete iNode;
+				break;
+			}
+		}
+	}
 }
 
 void Player::moveInResponseToTouchAt(cocos2d::Vec2 coordinates)
@@ -93,11 +130,24 @@ void Player::moveInResponseToTouchAt(cocos2d::Vec2 coordinates)
     auto forceY = -(maxForceY * distanceFactorY * distanceFactor);
     
     CCLOG("Leaf push: %4.2f %4.2f", forceX, forceY);
-    mBody->ApplyForceToCenter(b2Vec2(forceX, forceY), true);
+
+
+	float triggerTime = 0.1f;
+
+	this->addForceToQueue(b2Vec2(forceX, forceY), triggerTime);
     
     int torqueSign = 1;
     if (difference.x < 0) {
         torqueSign = -1;
     }
     mBody->ApplyTorque(0.01f * torqueSign, true);
+}
+
+void Player::addForceToQueue(b2Vec2 forceVec, float timeToTrigger)
+{
+	ForceNode* newForceNode = new ForceNode();
+	newForceNode->timer = timeToTrigger;
+	newForceNode->force = forceVec;
+
+	mForceNodes.push_back(newForceNode);
 }
