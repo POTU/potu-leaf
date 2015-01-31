@@ -134,7 +134,7 @@ void GameScene::update(float delta)
 		mWorld->ClearForces();
 	}
 
-	ScoreFloat += delta;
+	ScoreFloat += delta * 6.0f;
 	if (ScoreFloat >= 1)
 	{
 		ScoreFloat = 0;
