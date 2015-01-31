@@ -68,7 +68,7 @@ bool GameScene::init()
 	pauseButton->setPosition(Vec2(pauseButton->getPosition().x, visibleSize.height - ((windowSize.height - visibleSize.height) / 2)));
 
 	ui::Button* muteButton = (ui::Button*)uiNode->getChildByName("BTN_mute");
-	muteButton->addTouchEventListener(this, toucheventselector(GameScene::CallPause));
+	muteButton->addTouchEventListener(this, toucheventselector(GameScene::CallMute));
 	muteButton->setPosition(Vec2(muteButton->getPosition().x, visibleSize.height - ((windowSize.height - visibleSize.height) / 2)));
 
 	Score = 0;
