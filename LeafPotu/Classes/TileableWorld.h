@@ -11,7 +11,6 @@ public:
 	TileableWorld();
 	~TileableWorld();
 	void init(cocos2d::Layer* layer, b2World* world);
-    void doStuff();
 
 private:
 	cocos2d::Layer* gameLayer;
