@@ -4,8 +4,7 @@
 #include "standards.h"
 #include "cocos2d.h"
 #include "Box2D/Box2D.h"
-
-class Obstacle;
+#include "Obstacle.h"
 
 class WorldTile
 {
@@ -25,6 +24,7 @@ private:
 	b2Body* mBody;
 	cocos2d::Sprite* mSprite;
 	cocos2d::Node* mRoot;
+
 	cocos2d::Node* mBgRoot;
 
 	cocos2d::Sprite* mWaterWave1;

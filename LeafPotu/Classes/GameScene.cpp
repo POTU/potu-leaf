@@ -3,7 +3,7 @@
 #include "StartUpScene.h"
 #include "TileableWorld.h"
 #include "cocostudio/CocoStudio.h"
-#include "ui\CocosGUI.h"
+#include "ui/CocosGUI.h"
 #include "Helpers.h"
 #include "spine/spine-cocos2dx.h"
 #include "Helpers.h"

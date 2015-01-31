@@ -48,16 +48,16 @@ void Player::init(cocos2d::Layer* layer, b2World* world)
 
 void Player::update(float delta)
 {
-    auto xx = mBody->GetLinearVelocity();
-    mBody->SetLinearVelocity(b2Vec2(xx.x, xx.y - 0.01f));
-    auto fff = mBody->GetAngle();
-    auto pos = mBody->GetPosition();
-    auto x = pos.x;
-    auto y = pos.y;
-    if (mRoot) mRoot->setPosition(x*PTM_RATIO, y*PTM_RATIO);
+    auto velocity = mBody->GetLinearVelocity();
+    mBody->SetLinearVelocity(b2Vec2(velocity.x, velocity.y - 0.01f));
+    if (mRoot)
+    {
+        auto pos = mBody->GetPosition();
+        mRoot->setPosition(pos.x*PTM_RATIO, pos.y*PTM_RATIO);
+        mRoot->setRotation(-rd::RadToDeg(mBody->GetAngle()));
+    }
 
-
-	//Update force timers
+	// Update force timers
 	if(!mForceNodes.empty())
 	{
 		std::vector<ForceNode*>::iterator it;
@@ -68,7 +68,7 @@ void Player::update(float delta)
 		}
 	}
 
-	//Update force triggers
+	// Update force triggers
 	if(!mForceNodes.empty())
 	{
 		std::vector<ForceNode*>::iterator it;
@@ -84,11 +84,6 @@ void Player::update(float delta)
 			}
 		}
 	}
-    if (mRoot)
-    {
-        mRoot->setPosition(x*PTM_RATIO, y*PTM_RATIO);
-        mRoot->setRotation(-rd::RadToDeg(fff));
-    }
 }
 
 void Player::moveInResponseToTouchAt(cocos2d::Vec2 coordinates)
