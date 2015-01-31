@@ -38,9 +38,9 @@ bool GameScene::init()
 	auto gravityVec = b2Vec2(0, 0);
 	mWorld = new b2World(gravityVec);
     
-	tw = NULL;
-    tw = new TileableWorld();
-    tw->init(mBgLayer, mWorld);
+	mTileableWorld = NULL;
+    mTileableWorld = new TileableWorld();
+    mTileableWorld->init(mBgLayer, mWorld);
 
 #ifdef DEBUG_PHYSICS
 	debugDraw = new GLESDebugDraw( PTM_RATIO );
@@ -58,6 +58,7 @@ bool GameScene::init()
 
 	mGameManager = NULL;
 	mGameManager = new GameManager();
+    mGameManager->init(mGameLayer, mTileableWorld, mWorld);
 
 	this->scheduleUpdate();
 
@@ -67,14 +68,14 @@ bool GameScene::init()
 void GameScene::onExit()
 {
 	if(mGameManager) delete mGameManager;
-	if(tw) delete tw;
+	if(mTileableWorld) delete mTileableWorld;
 	delete mWorld;
 	Layer::onExit();
 }
 
 void GameScene::update(float delta)
 {
-	tw->update(delta);
+	mTileableWorld->update(delta);
 
 	static double UPDATE_INTERVAL = 1.0f/60.0f;
 	static double MAX_CYCLES_PER_FRAME = 5;

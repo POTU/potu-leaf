@@ -9,18 +9,16 @@
 class GameManager
 {
 public:
-	void init(cocos2d::Layer* layer, TileableWorld* world, b2Body* Body);
+	void init(cocos2d::Layer* gameLayer, TileableWorld* tileableWorld, b2World* physWorld);
 	void InputCoordinates(cocos2d::Vec2 coordinates);
 	void PauseGame();
 	void EndGame();
-
 	int Score;
-
     
 private:
 	cocos2d::Layer* gameLayer;
 	TileableWorld* tileableWorld;
-	b2Body* boxBody;
+	b2World* physWorld;
 	bool Paused;
 };
 #endif

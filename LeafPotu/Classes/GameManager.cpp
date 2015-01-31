@@ -3,15 +3,14 @@
 
 using namespace cocos2d;
 
-void GameManager::init(cocos2d::Layer* layer, TileableWorld* world, b2Body* Body)
+void GameManager::init(cocos2d::Layer* gameLayer, TileableWorld* tileableWorld, b2World* physWorld)
 {
-	gameLayer = layer;
-	tileableWorld = world;
-	boxBody = Body;
-    
-    CCLOG("DONE!");
+	this->gameLayer = gameLayer;
+	this->tileableWorld = tileableWorld;
+	this->physWorld = physWorld;
+
     Player *player = new Player();
-    player->init(layer, tileableWorld->physWorld);
+    player->init(this->gameLayer, this->physWorld);
 }
 
 void GameManager::InputCoordinates(Vec2 coordinates)

@@ -18,13 +18,10 @@ public:
     CREATE_FUNC(GameScene);
 	virtual void onExit();
 	virtual void update(float delta);
-
-
 	virtual bool potuTouchBegan(cocos2d::Touch* touch, cocos2d::Event* event);
 	virtual void potuTouchEnded(cocos2d::Touch* touch, cocos2d::Event* event);
 	virtual void potuTouchMoved(cocos2d::Touch* touch, cocos2d::Event* event);
 	virtual void potuTouchCanceled(cocos2d::Touch* touch, cocos2d::Event* event);
-
 
 #ifdef DEBUG_PHYSICS
 	virtual void custdraw();
@@ -47,10 +44,9 @@ private:
 	cocos2d::Layer* mBgLayer;
 	cocos2d::Layer* mGameLayer;
 	cocos2d::Layer* mUILayer;
-
+    
 	GameManager* mGameManager;
-
-	TileableWorld* tw;
+	TileableWorld* mTileableWorld;
 };
 
 
