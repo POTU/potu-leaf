@@ -28,8 +28,6 @@ private:
 	cocos2d::Node* mBgRoot;
 
 	cocos2d::Sprite* mWaterWave1;
-	cocos2d::Sprite* mWaterWave2;
-	cocos2d::Sprite* mWaterWave3;
 
 	std::vector<Obstacle*> mObstacles;
 };

@@ -60,27 +60,8 @@ void WorldTile::generate(cocos2d::Layer* layer, b2World* world, cocos2d::Layer* 
 
 	mWaterWave1 = Sprite::createWithSpriteFrameName("waterAlpha1.png");
 	mWaterWave1->setScale(2.0f, 3.511f);
+	mWaterWave1->setOpacity(180);
 	mBgRoot->addChild(mWaterWave1);
-
-	mWaterWave2 = Sprite::createWithSpriteFrameName("waterAlpha2.png");
-	mWaterWave2->setScale(2.0f, 3.511f);
-	mWaterWave2->setOpacity(0);
-	mBgRoot->addChild(mWaterWave2);
-
-	mWaterWave3 = Sprite::createWithSpriteFrameName("waterAlpha3.png");
-	mWaterWave3->setScale(2.0f, 3.511f);
-	mWaterWave3->setOpacity(0);
-	mBgRoot->addChild(mWaterWave3);
-
-	float fadeTime = 2.0f;
-	int maxOpa = 170;
-	Sequence* water1Seq = Sequence::create(FadeTo::create(fadeTime, 0), DelayTime::create(fadeTime), FadeTo::create(fadeTime, maxOpa), NULL);
-	Sequence* water2Seq = Sequence::create(FadeTo::create(fadeTime, maxOpa), FadeTo::create(fadeTime, 0), DelayTime::create(fadeTime), NULL);
-	Sequence* water3Seq = Sequence::create(DelayTime::create(fadeTime), FadeTo::create(fadeTime, maxOpa), FadeTo::create(fadeTime, 0), NULL);
-	
-	mWaterWave1->runAction(RepeatForever::create(water1Seq));
-	mWaterWave2->runAction(RepeatForever::create(water2Seq));
-	mWaterWave3->runAction(RepeatForever::create(water3Seq));
 
 	this->cacheToPool();
 }

@@ -18,6 +18,7 @@ public:
 	void InputCoordinates(cocos2d::Vec2 coordinates);
 	void PauseGame();
 	void MuteGame();
+	void ResetGame();
 	void EndGame();
 	void update(float delta);
     
