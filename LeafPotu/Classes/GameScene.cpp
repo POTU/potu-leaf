@@ -204,7 +204,7 @@ void GameScene::CallPause(Ref *pSender, ui::TouchEventType type)
 		// TODO
 		break;
 	case ui::TouchEventType::TOUCH_EVENT_ENDED:
-        SimpleAudioEngine::getInstance()->playEffect("Audio/button.mp3");
+        SimpleAudioEngine::getInstance()->playEffect("button.mp3");
 		shouldPause = true;
 		break;
 	case ui::TouchEventType::TOUCH_EVENT_CANCELED:
@@ -226,7 +226,7 @@ void GameScene::CallMute(Ref *pSender, ui::TouchEventType type)
 		// TODO
 		break;
 	case ui::TouchEventType::TOUCH_EVENT_ENDED:
-        SimpleAudioEngine::getInstance()->playEffect("Audio/button.mp3");
+        SimpleAudioEngine::getInstance()->playEffect("button.mp3");
 		mGameManager->MuteGame();
 		break;
 	case ui::TouchEventType::TOUCH_EVENT_CANCELED:

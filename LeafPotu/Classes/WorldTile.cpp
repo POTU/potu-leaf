@@ -45,8 +45,7 @@ void WorldTile::generate(GameManager* gameManager)
 	bd.position = b2Vec2(0,0);
 	mBody = gameManager->physWorld->CreateBody(&bd);
 
-	int randomTileValue = rd::RandInt(1,2);
-	randomTileValue = 1;
+	int randomTileValue = rd::RandInt(1,3);
     
     auto r = new Rock();
 	r->init(gameManager, screen.width/2, screen.height/2);

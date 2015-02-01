@@ -72,7 +72,7 @@ void MenuScene::PlayGame(Ref *pSender, ui::TouchEventType type)
 			// TODO
 			break;
 		case ui::TouchEventType::TOUCH_EVENT_ENDED:
-            SimpleAudioEngine::getInstance()->playEffect("Audio/button.mp3");
+            SimpleAudioEngine::getInstance()->playEffect("button.mp3");
 			Director::getInstance()->replaceScene(GameScene::scene());
 			break;
 		case ui::TouchEventType::TOUCH_EVENT_CANCELED:
@@ -98,14 +98,14 @@ void MenuScene::MuteGame(Ref *pSender, ui::TouchEventType type)
 		if (muted == true)
 		{
 			muted = false;
-            SimpleAudioEngine::getInstance()->playEffect("Audio/button.mp3");
+            SimpleAudioEngine::getInstance()->playEffect("button.mp3");
 			SimpleAudioEngine::getInstance()->setBackgroundMusicVolume(1.0);
 			SimpleAudioEngine::getInstance()->setEffectsVolume(1.0);
 		}
 		else
 		{
 			muted = true;
-            SimpleAudioEngine::getInstance()->playEffect("Audio/button.mp3");
+            SimpleAudioEngine::getInstance()->playEffect("button.mp3");
 			SimpleAudioEngine::getInstance()->setBackgroundMusicVolume(0.0);
 			SimpleAudioEngine::getInstance()->setEffectsVolume(0.0);
 		}
@@ -131,7 +131,7 @@ void MenuScene::ExitGame(Ref *pSender, ui::TouchEventType type)
 		// TODO
 		break;
 	case ui::TouchEventType::TOUCH_EVENT_ENDED:
-        SimpleAudioEngine::getInstance()->playEffect("Audio/button.mp3");
+        SimpleAudioEngine::getInstance()->playEffect("button.mp3");
 		exit(0);
 		break;
 	case ui::TouchEventType::TOUCH_EVENT_CANCELED:
