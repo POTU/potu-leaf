@@ -20,7 +20,7 @@ public:
     void init(Layer* layer, b2World* world);
     void update(float delta);
     void moveInResponseToTouchAt(Vec2 coordinates);
-    void gainEnergy(float amount);
+    void changeEnergy(float amount);
     bool isDead();
     Node* mRoot;
 private:

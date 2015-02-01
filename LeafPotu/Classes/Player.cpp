@@ -71,7 +71,7 @@ bool Player::isDead()
     return (currentEnergy < 0.0f);
 }
 
-void Player::gainEnergy(float amount)
+void Player::changeEnergy(float amount)
 {
     currentEnergy = currentEnergy + amount;
     if (currentEnergy > maxEnergy) {

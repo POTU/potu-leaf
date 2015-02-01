@@ -1,4 +1,4 @@
-#include "Chlorophyll.h"
+#include "WaterStrider.h"
 #include "cocos2d.h"
 #include "Box2D/Box2D.h"
 #include "standards.h"
@@ -7,10 +7,10 @@
 
 using namespace cocos2d;
 
-Chlorophyll::Chlorophyll() { }
-Chlorophyll::~Chlorophyll() { }
+WaterStrider::WaterStrider() { }
+WaterStrider::~WaterStrider() { }
 
-void Chlorophyll::init(GameManager* gameManager, float x, float y)
+void WaterStrider::init(GameManager* gameManager, float x, float y)
 {
     this->gameManager = gameManager;
     
@@ -23,14 +23,14 @@ void Chlorophyll::init(GameManager* gameManager, float x, float y)
     
     mSprite = Sprite::create("HelloWorld.png");
     mSprite->setPosition(Vec2(0, 0));
-    mSprite->setScale(0.25f, 0.25f);
+    mSprite->setScale(0.1f, 0.1f);
     mRoot->addChild(mSprite);
     
     spawnX = x;
     spawnY = y;
 }
 
-void Chlorophyll::update(float delta, float x, float y)
+void WaterStrider::update(float delta, float x, float y)
 {
     if (mRoot && mRoot->isVisible())
     {
@@ -42,23 +42,21 @@ void Chlorophyll::update(float delta, float x, float y)
         
         auto player = this->gameManager->player;
         auto distanceToPlayer = player->mRoot->getPosition().distance(cocoPos);
-        if (distanceToPlayer < 150) {
-            CCLOG("+CHROLOPHYLL+");
-            player->changeEnergy(10.0f);
+        if (distanceToPlayer < 50) {
+            player->changeEnergy(-10.0f);
             mRoot->setVisible(false);
         }
     }
 }
 
-void Chlorophyll::setActive(bool isActive)
+void WaterStrider::setActive(bool isActive)
 {
     if (isActive) {
-        CCLOG("ACTIVATE CHROLOPHYLL");
-        //mBody->SetTransform(b2Vec2(screen.width/2/PTM_RATIO, screen.height/2/PTM_RATIO), 0.0f);
+        CCLOG("ACTIVATE WATER STRIDER");
         mRoot->setVisible(true);
     }
     else {
-        CCLOG("DEACTIVATE CHROLOPHYLL");
+        CCLOG("DEACTIVATE WATER STRIDER");
         mRoot->setVisible(false);
     }
 }
