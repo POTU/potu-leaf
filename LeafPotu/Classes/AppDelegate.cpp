@@ -27,7 +27,7 @@ bool AppDelegate::applicationDidFinishLaunching()
         glview = GLViewImpl::create("Leaf View");
         director->setOpenGLView(glview);
 		#if CC_TARGET_PLATFORM == CC_PLATFORM_WIN32
-			glview->setFrameSize(1536, 2048);
+			glview->setFrameSize(720, 1280);
 			glview->setFrameZoomFactor(0.33f);
 		#endif
     }
