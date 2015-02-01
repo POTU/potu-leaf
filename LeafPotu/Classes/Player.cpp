@@ -201,6 +201,5 @@ void Player::addForceToQueue(b2Vec2 forceVec, float timeToTrigger)
 	ForceNode* newForceNode = new ForceNode();
 	newForceNode->timer = timeToTrigger;
 	newForceNode->force = forceVec;
-
 	mForceNodes.push_back(newForceNode);
 }

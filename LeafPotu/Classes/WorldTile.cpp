@@ -5,6 +5,7 @@
 #include "Obstacle.h"
 #include "Rock.h"
 #include "Chlorophyll.h"
+#include "RotatingLog.h"
 #include "GameManager.h"
 
 using namespace cocos2d;
@@ -57,6 +58,18 @@ void WorldTile::generate(GameManager* gameManager)
     auto c2 = new Chlorophyll();
     c2->init(gameManager, screen.width/1.5f, screen.height/2.5f);
     mObstacles.push_back(c2);
+    
+    auto l1 = new RotatingLog();
+    l1->init(gameManager, screen.width/2.5f, screen.height/1.0f);
+    mObstacles.push_back(l1);
+    
+    auto l2 = new RotatingLog();
+    l2->init(gameManager, screen.width/2.1f, screen.height/0.85f);
+    mObstacles.push_back(l2);
+    
+    auto l3 = new RotatingLog();
+    l3->init(gameManager, screen.width/3.2f, screen.height/0.80f);
+    mObstacles.push_back(l3);
 
 	std::string tileStr = "Tile" + rd::StringFromInt(randomTileValue);
 	std::string spriteStr = tileStr + ".png";

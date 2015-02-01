@@ -22,6 +22,7 @@
 		32A182111A7D71D2004A32BE /* PauseScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 32A1820F1A7D71D2004A32BE /* PauseScene.cpp */; };
 		32A182131A7D7325004A32BE /* Audio in Resources */ = {isa = PBXBuildFile; fileRef = 32A182121A7D7325004A32BE /* Audio */; };
 		32A182171A7D825B004A32BE /* Chlorophyll.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 32A182151A7D825B004A32BE /* Chlorophyll.cpp */; };
+		32B3A7F41A7DC78F00C6BBA9 /* RotatingLog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 32B3A7F21A7DC78F00C6BBA9 /* RotatingLog.cpp */; };
 		32C50E011A7CEA0100C812FF /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 32C50DFF1A7CEA0100C812FF /* Player.cpp */; };
 		32C50E041A7CEC8200C812FF /* GameManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 32C50E021A7CEC8200C812FF /* GameManager.cpp */; };
 		32C50E0B1A7D05C200C812FF /* GB2ShapeCache-x.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 32C50E051A7D05C200C812FF /* GB2ShapeCache-x.cpp */; };
@@ -144,6 +145,8 @@
 		32A182121A7D7325004A32BE /* Audio */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Audio; sourceTree = "<group>"; };
 		32A182151A7D825B004A32BE /* Chlorophyll.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Chlorophyll.cpp; sourceTree = "<group>"; };
 		32A182161A7D825B004A32BE /* Chlorophyll.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Chlorophyll.h; sourceTree = "<group>"; };
+		32B3A7F21A7DC78F00C6BBA9 /* RotatingLog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RotatingLog.cpp; sourceTree = "<group>"; };
+		32B3A7F31A7DC78F00C6BBA9 /* RotatingLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RotatingLog.h; sourceTree = "<group>"; };
 		32C50DFF1A7CEA0100C812FF /* Player.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Player.cpp; sourceTree = "<group>"; };
 		32C50E001A7CEA0100C812FF /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
 		32C50E021A7CEC8200C812FF /* GameManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameManager.cpp; sourceTree = "<group>"; };
@@ -374,6 +377,8 @@
 				32A182091A7D3C12004A32BE /* Rock.h */,
 				32A182151A7D825B004A32BE /* Chlorophyll.cpp */,
 				32A182161A7D825B004A32BE /* Chlorophyll.h */,
+				32B3A7F21A7DC78F00C6BBA9 /* RotatingLog.cpp */,
+				32B3A7F31A7DC78F00C6BBA9 /* RotatingLog.h */,
 			);
 			name = Classes;
 			path = ../Classes;
@@ -582,6 +587,7 @@
 				3260AA171A7C21D900ED6ABE /* GLES-Render.cpp in Sources */,
 				32C50E041A7CEC8200C812FF /* GameManager.cpp in Sources */,
 				32A182171A7D825B004A32BE /* Chlorophyll.cpp in Sources */,
+				32B3A7F41A7DC78F00C6BBA9 /* RotatingLog.cpp in Sources */,
 				3260AA161A7C21D900ED6ABE /* GameScene.cpp in Sources */,
 				32C50E0C1A7D05C200C812FF /* Helpers.cpp in Sources */,
 				32C50E011A7CEA0100C812FF /* Player.cpp in Sources */,
