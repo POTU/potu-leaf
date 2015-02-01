@@ -13,6 +13,8 @@
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
 		322790861A7E442800D5C890 /* WaterStrider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 322790841A7E442800D5C890 /* WaterStrider.cpp */; };
+		3227908B1A7E5E7200D5C890 /* EndScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 322790871A7E5E7200D5C890 /* EndScene.cpp */; };
+		3227908C1A7E5E7200D5C890 /* GlobalManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 322790891A7E5E7200D5C890 /* GlobalManager.cpp */; };
 		3260AA161A7C21D900ED6ABE /* GameScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3260AA0E1A7C21D900ED6ABE /* GameScene.cpp */; };
 		3260AA171A7C21D900ED6ABE /* GLES-Render.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3260AA101A7C21D900ED6ABE /* GLES-Render.cpp */; };
 		3260AA181A7C21D900ED6ABE /* StartUpScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3260AA131A7C21D900ED6ABE /* StartUpScene.cpp */; };
@@ -129,6 +131,10 @@
 		288765A40DF7441C002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		322790841A7E442800D5C890 /* WaterStrider.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WaterStrider.cpp; sourceTree = "<group>"; };
 		322790851A7E442800D5C890 /* WaterStrider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaterStrider.h; sourceTree = "<group>"; };
+		322790871A7E5E7200D5C890 /* EndScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EndScene.cpp; sourceTree = "<group>"; };
+		322790881A7E5E7200D5C890 /* EndScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EndScene.h; sourceTree = "<group>"; };
+		322790891A7E5E7200D5C890 /* GlobalManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GlobalManager.cpp; sourceTree = "<group>"; };
+		3227908A1A7E5E7200D5C890 /* GlobalManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlobalManager.h; sourceTree = "<group>"; };
 		3260AA0D1A7C21BC00ED6ABE /* TileableWorld.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TileableWorld.h; sourceTree = "<group>"; };
 		3260AA0E1A7C21D900ED6ABE /* GameScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameScene.cpp; sourceTree = "<group>"; };
 		3260AA0F1A7C21D900ED6ABE /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameScene.h; sourceTree = "<group>"; };
@@ -349,6 +355,10 @@
 		46880B8319C43A87006E1F66 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				322790871A7E5E7200D5C890 /* EndScene.cpp */,
+				322790881A7E5E7200D5C890 /* EndScene.h */,
+				322790891A7E5E7200D5C890 /* GlobalManager.cpp */,
+				3227908A1A7E5E7200D5C890 /* GlobalManager.h */,
 				32A1820F1A7D71D2004A32BE /* PauseScene.cpp */,
 				32A182101A7D71D2004A32BE /* PauseScene.h */,
 				32C50E0E1A7D093200C812FF /* MenuScene.cpp */,
@@ -607,6 +617,8 @@
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				32A182071A7D3964004A32BE /* Obstacle.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
+				3227908C1A7E5E7200D5C890 /* GlobalManager.cpp in Sources */,
+				3227908B1A7E5E7200D5C890 /* EndScene.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
 				32C50E101A7D093200C812FF /* MenuScene.cpp in Sources */,
 			);
