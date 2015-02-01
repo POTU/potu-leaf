@@ -7,7 +7,7 @@ repeat: none
 ripple
   rotate: false
   xy: 2, 2
-  size: 361, 322
-  orig: 361, 322
+  size: 337, 337
+  orig: 337, 337
   offset: 0, 0
   index: -1

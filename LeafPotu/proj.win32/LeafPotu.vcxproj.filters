@@ -63,6 +63,12 @@
     <ClCompile Include="..\Classes\RotatingLog.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\GlobalManager.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\EndScene.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -117,6 +123,12 @@
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\RotatingLog.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GlobalManager.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\EndScene.h">
       <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>

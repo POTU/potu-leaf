@@ -23,6 +23,9 @@ public:
     void changeEnergy(float amount);
     bool isDead();
     Node* mRoot;
+
+	Sprite* getSprite();
+
 private:
 	b2Body* mBody;
     Sprite* mSprite;
