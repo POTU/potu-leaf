@@ -32,9 +32,8 @@ void Rock::init(GameManager* gameManager, float x, float y)
     mRoot->setPosition(Vec2(0, 0));
     gameManager->gameLayer->addChild(mRoot);
     
-    mSprite = Sprite::create("HelloWorld.png");
+	mSprite = Sprite::createWithSpriteFrameName("kivi1.png");
     mSprite->setPosition(Vec2(0, 0));
-    mSprite->setScale(0.4f, 0.4f);
     mRoot->addChild(mSprite);
 
 	spawnX = x;

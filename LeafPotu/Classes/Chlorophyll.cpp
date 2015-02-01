@@ -21,10 +21,15 @@ void Chlorophyll::init(GameManager* gameManager, float x, float y)
     mRoot->setPosition(Vec2(0, 0));
     gameManager->gameLayer->addChild(mRoot);
     
-    mSprite = Sprite::create("HelloWorld.png");
+	mSprite = Sprite::createWithSpriteFrameName("Chlorophyll.png");
     mSprite->setPosition(Vec2(0, 0));
-    mSprite->setScale(0.25f, 0.25f);
     mRoot->addChild(mSprite);
+
+	Sequence* fadeSeq = Sequence::createWithTwoActions(FadeTo::create(1.0f, 180), FadeTo::create(1.0f, 255));
+	Sequence* ScaleSeq = Sequence::createWithTwoActions(ScaleTo::create(1.0f, 1.3f), ScaleTo::create(1.0f, 1.0f));
+
+	mSprite->runAction(RepeatForever::create(fadeSeq));
+	mSprite->runAction(RepeatForever::create(ScaleSeq));
     
     spawnX = x;
     spawnY = y;
