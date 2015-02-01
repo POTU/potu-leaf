@@ -21,6 +21,7 @@ public:
     void update(float delta);
     void moveInResponseToTouchAt(Vec2 coordinates);
     void gainEnergy(float amount);
+    bool isDead();
     Node* mRoot;
 private:
 	b2Body* mBody;

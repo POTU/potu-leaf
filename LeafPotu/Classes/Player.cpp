@@ -21,7 +21,7 @@ Player::~Player()
 
 void Player::init(cocos2d::Layer* layer, b2World* world)
 {
-    maxEnergy = 15.0f;
+    maxEnergy = 20.0f;
     currentEnergy = maxEnergy;
     deathHandled = false;
     
@@ -66,6 +66,11 @@ void Player::updateLeafColor()
         (1.0f - ee) * 30.0f + ee * 60.0f));
 }
 
+bool Player::isDead()
+{
+    return (currentEnergy < 0.0f);
+}
+
 void Player::gainEnergy(float amount)
 {
     currentEnergy = currentEnergy + amount;
@@ -80,7 +85,6 @@ void Player::update(float delta)
     currentEnergy = currentEnergy - delta;
     if (currentEnergy < 0.0f && !deathHandled) {
         deathHandled = true;
-        // Why switching scenes here crashes?
         return;
     }
     updateLeafColor();
@@ -189,7 +193,7 @@ void Player::moveInResponseToTouchAt(cocos2d::Vec2 coordinates)
     if (difference.x < 0) {
         torqueSign = -1;
     }
-    mBody->ApplyTorque(0.01f * torqueSign, true);
+    mBody->ApplyTorque(0.02f * torqueSign, true);
 }
 
 void Player::addForceToQueue(b2Vec2 forceVec, float timeToTrigger)

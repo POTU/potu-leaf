@@ -34,7 +34,10 @@ void GameManager::init(Layer* gameLayer, Layer* bgLayer, b2World* physWorld)
 
 void GameManager::update(float delta)
 {
-    player->update(delta);	
+    player->update(delta);
+    if (player->isDead()) {
+        GameOver();
+    }
 }
 
 void GameManager::InputCoordinates(Vec2 coordinates)
@@ -84,6 +87,7 @@ void GameManager::GameOver()
 {
     // Add cause of death to function calls and show in end screen.
     // Show end screen wiht score and cause of death.
-    Director::getInstance()->replaceScene(TransitionFade::create(1.0f, MenuScene::scene()));
+    SimpleAudioEngine::getInstance()->stopBackgroundMusic();
+    Director::getInstance()->replaceScene(MenuScene::scene());
 }
 
