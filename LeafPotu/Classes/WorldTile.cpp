@@ -8,6 +8,7 @@
 #include "RotatingLog.h"
 #include "WaterStrider.h"
 #include "GameManager.h"
+#include <algorithm>
 
 using namespace cocos2d;
 
@@ -29,6 +30,24 @@ WorldTile::~WorldTile()
 	}
 }
 
+std::vector<Vec2> WorldTile::getValids(int tileId) {
+    std::vector<Vec2> valids;
+    if (tileId == 0) {
+        
+    }
+    else {
+        valids.push_back(rd::toTilePoint(Vec2(768, 3500)));
+        valids.push_back(rd::toTilePoint(Vec2(768, 3000)));
+        valids.push_back(rd::toTilePoint(Vec2(768, 2500)));
+        valids.push_back(rd::toTilePoint(Vec2(768, 2000)));
+        valids.push_back(rd::toTilePoint(Vec2(768, 1500)));
+        valids.push_back(rd::toTilePoint(Vec2(768, 1000)));
+        valids.push_back(rd::toTilePoint(Vec2(768, 500)));
+        valids.push_back(rd::toTilePoint(Vec2(768, 0)));
+    }
+    return valids;
+}
+
 void WorldTile::generate(GameManager* gameManager)
 {
 	Size screen = Director::getInstance()->getWinSize();
@@ -47,8 +66,29 @@ void WorldTile::generate(GameManager* gameManager)
 
 	int randomTileValue = rd::RandInt(1,3);
     
+    auto valids = getValids(randomTileValue);
+    int validCount = (int)valids.size();
+    std::random_shuffle(valids.begin(), valids.end());
+    for (int i = 0; i < validCount; i++) {
+        int oType = rd::RandInt(1, 10);
+        Obstacle* o;
+        if (oType <= 2) {
+            o = new RotatingLog();
+        }
+        else if (oType <= 6) {
+            o = new Rock();
+        }
+        else {
+            o = new Chlorophyll();
+        }
+        o->init(gameManager, valids[i].x, valids[i].y);
+        mObstacles.push_back(o);
+    }
+    
+    /*
     auto r = new Rock();
-	r->init(gameManager, screen.width/2, screen.height/2);
+    auto rp = rd::toTilePoint(Point(1536, 4096));
+	r->init(gameManager, rp.x, rp.y);
     mObstacles.push_back(r);
     
     auto c1 = new Chlorophyll();
@@ -74,6 +114,7 @@ void WorldTile::generate(GameManager* gameManager)
     auto w = new WaterStrider();
     w->init(gameManager, 1150, 600);
     mObstacles.push_back(w);
+    */
 
 	std::string tileStr = "Tile" + rd::StringFromInt(randomTileValue);
 	std::string spriteStr = tileStr + ".png";

@@ -8,6 +8,16 @@ namespace rd
 		float returnDistance = (float)distanceVar;
 		return distanceVar;
 	}
+    
+    /**
+     * From the play view:
+     * 0,0 = left, bottom
+     * 1536, 4096 = right, top
+     */
+    cocos2d::Vec2 toTilePoint(cocos2d::Vec2 vec)
+    {
+        return cocos2d::Vec2(vec.x, vec.y - 2048);
+    }
 
 	float RandFloat(float min, float max)
 	{
@@ -93,6 +103,7 @@ namespace rd
 		float deg = (rad/(2*RD_PI))*360.0;
 		return deg;
 	}
+    
 	float DegToRad(float deg)
 	{
 		float rad = (deg/360.0)*(2*RD_PI);

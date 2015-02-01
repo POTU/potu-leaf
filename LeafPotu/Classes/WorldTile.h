@@ -26,6 +26,7 @@ private:
 	Node* mBgRoot;
 	Sprite* mWaterWave1;
 	std::vector<Obstacle*> mObstacles;
+    std::vector<Vec2> getValids(int tileId);
 };
 
 #endif
