@@ -3,6 +3,7 @@
 #include "ui/CocosGUI.h"
 #include "GameScene.h"
 #include "SimpleAudioEngine.h"
+#include "Helpers.h"
 
 using namespace cocos2d;
 using namespace cocos2d::ui;
@@ -54,23 +55,23 @@ bool MenuScene::init()
 	exitButton->addTouchEventListener(this, toucheventselector(MenuScene::ExitGame));
 	exitButton->setPosition(Vec2(exitButton->getPosition().x, visibleSize.height - ((windowSize.height - visibleSize.height) / 2)));
 
-	ui::Text* labelTop1Name = (ui::Text*)uiNode->getChildByName("LABEL_top1name");
-	labelTop1Name->setText("ASD");
+	//ui::Text* labelTop1Name = (ui::Text*)uiNode->getChildByName("LABEL_top1name");
+	//labelTop1Name->setText(CCUserDefault::getInstance()->getStringForKey("Top1Name"));
+	
+	//ui::Text* labelTop2Name = (ui::Text*)uiNode->getChildByName("LABEL_top2name");
+	//labelTop2Name->setText(CCUserDefault::getInstance()->getStringForKey("Top2Name"));
 
-	ui::Text* labelTop2Name = (ui::Text*)uiNode->getChildByName("LABEL_top2name");
-	labelTop2Name->setText("DAS");
-
-	ui::Text* labelTop3Name = (ui::Text*)uiNode->getChildByName("LABEL_top3name");
-	labelTop3Name->setText("SDA");
+	//ui::Text* labelTop3Name = (ui::Text*)uiNode->getChildByName("LABEL_top3name");
+	//labelTop3Name->setText(CCUserDefault::getInstance()->getStringForKey("Top3Name"));
 
 	ui::Text* labelTop1Score = (ui::Text*)uiNode->getChildByName("LABEL_top1score");
-	labelTop1Score->setText("321");
+	labelTop1Score->setText(rd::StringFromInt(CCUserDefault::getInstance()->getIntegerForKey("Top1Score")));
 
 	ui::Text* labelTop2Score = (ui::Text*)uiNode->getChildByName("LABEL_top2score");
-	labelTop2Score->setText("231");
+	labelTop1Score->setText(rd::StringFromInt(CCUserDefault::getInstance()->getIntegerForKey("Top2Score")));
 
 	ui::Text* labelTop3Score = (ui::Text*)uiNode->getChildByName("LABEL_top3score");
-	labelTop3Score->setText("123");
+	labelTop1Score->setText(rd::StringFromInt(CCUserDefault::getInstance()->getIntegerForKey("Top3Score")));
 
 	return true;
 }

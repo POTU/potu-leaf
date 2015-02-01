@@ -27,6 +27,7 @@ bool EndScene::init()
 		return false;
 	}
 
+
 	Size screen = Director::getInstance()->getWinSize();
 
 	//BG
@@ -34,6 +35,9 @@ bool EndScene::init()
 	bg->setPosition(screen.width/2, screen.height/2);
 	this->addChild(bg);
 	
+
+	PlayerScore = GlobalManager::getInstance()->PlayerScore;
+
 	Node* uiNode = CSLoader::createNode("EndScene.csb");
 	this->addChild(uiNode);
 
@@ -50,11 +54,51 @@ bool EndScene::init()
 	ui::Text* labelScore = (ui::Text*)uiNode->getChildByName("LABEL_score");
 	labelScore->setText(rd::StringFromInt(GlobalManager::getInstance()->PlayerScore));
 
-	//ui::Text* labelScoreHeader = (ui::Text*)uiNode->getChildByName("LABEL_scoreheader");
-	//labelScoreHeader->setText("Score Header");
-
 	ui::TextField* inputTag = (ui::TextField*)uiNode->getChildByName("INPUT_tag");
-	inputTag->setText("ASD");
+
+	int Position = 0;
+
+	if (PlayerScore > CCUserDefault::getInstance()->getIntegerForKey("Top3Score"))
+	{
+		Position = 3;
+		if (PlayerScore > CCUserDefault::getInstance()->getIntegerForKey("Top2Score"))
+		{
+			Position = 2;
+			if (PlayerScore > CCUserDefault::getInstance()->getIntegerForKey("Top1Score"))
+			{
+				Position = 1;
+			}
+		}
+	}
+
+	switch (Position)
+	{
+		case 1:
+			//CCUserDefault::getInstance()->setStringForKey("Top3Name", CCUserDefault::getInstance()->getStringForKey("Top2Name"));
+			CCUserDefault::getInstance()->setIntegerForKey("Top3Score", CCUserDefault::getInstance()->getIntegerForKey("Top2Score"));
+
+			//CCUserDefault::getInstance()->setStringForKey("Top2Name", CCUserDefault::getInstance()->getStringForKey("Top1Name"));
+			CCUserDefault::getInstance()->setIntegerForKey("Top2Score", CCUserDefault::getInstance()->getIntegerForKey("Top1Score"));
+
+			//CCUserDefault::getInstance()->setStringForKey("Top1Name", PlayerName);
+			CCUserDefault::getInstance()->setIntegerForKey("Top1Score", PlayerScore);
+			break;
+		case 2:
+			//CCUserDefault::getInstance()->setStringForKey("Top3Name", CCUserDefault::getInstance()->getStringForKey("Top2Name"));
+			CCUserDefault::getInstance()->setIntegerForKey("Top3Score", CCUserDefault::getInstance()->getIntegerForKey("Top2Score"));
+
+			//CCUserDefault::getInstance()->setStringForKey("Top2Name", PlayerName);
+			CCUserDefault::getInstance()->setIntegerForKey("Top2Score", PlayerScore);
+			break;
+		case 3:
+			//CCUserDefault::getInstance()->setStringForKey("Top3Name", PlayerName);
+			CCUserDefault::getInstance()->setIntegerForKey("Top3Score", PlayerScore);
+			break;
+
+		case 0:
+			break;
+	}
+
 
 	return true;
 }
