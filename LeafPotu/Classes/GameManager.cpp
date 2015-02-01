@@ -4,6 +4,7 @@
 #include "Player.h"
 #include "Helpers.h"
 #include "PauseScene.h"
+#include "EndScene.h"
 #include "SimpleAudioEngine.h"
 
 using namespace cocos2d;
@@ -36,7 +37,7 @@ void GameManager::update(float delta)
 {
     player->update(delta);
     if (player->isDead()) {
-        GameOver();
+		GameOver();
     }
 }
 
@@ -88,6 +89,6 @@ void GameManager::GameOver()
     // Add cause of death to function calls and show in end screen.
     // Show end screen wiht score and cause of death.
     SimpleAudioEngine::getInstance()->stopBackgroundMusic();
-    Director::getInstance()->replaceScene(MenuScene::scene());
+    Director::getInstance()->replaceScene(EndScene::scene());
 }
 
