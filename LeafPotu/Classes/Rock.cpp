@@ -3,13 +3,14 @@
 #include "Box2D/Box2D.h"
 #include "standards.h"
 #include "Helpers.h"
+#include "GameManager.h"
 
 using namespace cocos2d;
 
 Rock::Rock() { }
 Rock::~Rock() { }
 
-void Rock::init(cocos2d::Layer* gameLayer, b2World* physicWorld, float x, float y)
+void Rock::init(GameManager* gameManager, float x, float y)
 {
     auto dir = Director::getInstance();
     auto screen = dir->getWinSize();
@@ -18,7 +19,7 @@ void Rock::init(cocos2d::Layer* gameLayer, b2World* physicWorld, float x, float 
     bd.position.Set(x/PTM_RATIO, y/PTM_RATIO);
 	bd.type = b2BodyType::b2_staticBody;
     bd.fixedRotation = true;
-    mBody = physicWorld->CreateBody(&bd);
+    mBody = gameManager->physWorld->CreateBody(&bd);
     
     b2CircleShape shape;
     shape.m_radius = 0.15f;
@@ -29,7 +30,7 @@ void Rock::init(cocos2d::Layer* gameLayer, b2World* physicWorld, float x, float 
     
     mRoot = Node::create();
     mRoot->setPosition(Vec2(0, 0));
-    gameLayer->addChild(mRoot);
+    gameManager->gameLayer->addChild(mRoot);
     
     mSprite = Sprite::create("HelloWorld.png");
     mSprite->setPosition(Vec2(0, 0));

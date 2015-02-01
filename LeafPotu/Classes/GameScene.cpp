@@ -55,12 +55,13 @@ bool GameScene::init()
 	auto gravityVec = b2Vec2(0, 0);
 	mWorld = new b2World(gravityVec);
     
+    mGameManager = NULL;
+    mGameManager = new GameManager();
+    mGameManager->init(mGameLayer, mBgLayer, mWorld);
+    
 	mTileableWorld = NULL;
     mTileableWorld = new TileableWorld();
-	mTileableWorld->init(mOverLayer, mWorld, mBgLayer);
-	
-    mGameManager = GameManager::getInstance();
-	mGameManager->init(mGameLayer, mTileableWorld, mWorld);
+	mTileableWorld->init(mGameManager);
 
 	Node* uiNode = CSLoader::createNode("InGameScene.csb");
 	this->addChild(uiNode);

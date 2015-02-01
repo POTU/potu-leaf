@@ -2,24 +2,20 @@
 #define TILE_WORLD_H
 
 #include <vector>
+#include "GameManager.h"
 #include "cocos2d.h"
 #include "Box2D/Box2D.h"
 #include "WorldTile.h"
-
-using namespace cocos2d;
 
 class TileableWorld
 {
 public:
 	TileableWorld();
 	~TileableWorld();
-	void init(Layer* gameLayer, b2World* physWorld, Layer* bgLayer);
+	void init(GameManager* gameManager);
 	void update(float delta);
-    b2World* physWorld;
-
 private:
-	Layer* gameLayer;
-	Layer* bgLayer;
+    GameManager* gameManager;
 	float mOffset;
 	int mTileIndex;
 	void generateTiles();

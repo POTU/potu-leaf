@@ -1,10 +1,9 @@
 #include "TileableWorld.h"
+#include "GameManager.h"
 
 using namespace cocos2d;
 
-TileableWorld::TileableWorld()
-{
-}
+TileableWorld::TileableWorld() { }
 
 TileableWorld::~TileableWorld()
 {
@@ -16,15 +15,11 @@ TileableWorld::~TileableWorld()
 	}
 }
 
-void TileableWorld::init(Layer* gameLayer, b2World* physWorld, Layer* bgLayer)
+void TileableWorld::init(GameManager* gameManager)
 {
-	this->gameLayer = gameLayer;
-	this->physWorld = physWorld;
-	this->bgLayer = bgLayer;
-
+    this->gameManager = gameManager;
 	mOffset = 0;
 	mTileIndex = 0;
-
 	this->generateTiles();
 }
 
@@ -33,7 +28,7 @@ void TileableWorld::generateTiles()
 	for (int i = 0; i < 50; i++)
 	{
 		WorldTile* newTile = new WorldTile();
-		newTile->generate(gameLayer, physWorld, bgLayer);
+		newTile->generate(gameManager);
 		newTile->cacheToPool();
 		mTiles.push_back(newTile);
 	}

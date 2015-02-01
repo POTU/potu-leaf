@@ -5,6 +5,7 @@
 #include "Obstacle.h"
 #include "Rock.h"
 #include "Chlorophyll.h"
+#include "GameManager.h"
 
 using namespace cocos2d;
 
@@ -26,35 +27,35 @@ WorldTile::~WorldTile()
 	}
 }
 
-void WorldTile::generate(Layer* layer, b2World* world, Layer* bgLayer)
+void WorldTile::generate(GameManager* gameManager)
 {
 	Size screen = Director::getInstance()->getWinSize();
 
 	mRoot = Node::create();
 	mRoot->setPosition(0,0);
-	layer->addChild(mRoot);
+	gameManager->gameLayer->addChild(mRoot);
 
 	mBgRoot = Node::create();
 	mBgRoot->setPosition(0,0);
-	bgLayer->addChild(mBgRoot);
+	gameManager->bgLayer->addChild(mBgRoot);
 
 	b2BodyDef bd;
 	bd.position = b2Vec2(0,0);
-	mBody = world->CreateBody(&bd);
+	mBody = gameManager->physWorld->CreateBody(&bd);
 
 	int randomTileValue = rd::RandInt(1,2);
 	randomTileValue = 1;
     
     auto r = new Rock();
-	r->init(layer, world, screen.width/2, screen.height/2);
+	r->init(gameManager, screen.width/2, screen.height/2);
     mObstacles.push_back(r);
     
     auto c1 = new Chlorophyll();
-    c1->init(layer, world, screen.width/2.5f, screen.height/2.5f);
+    c1->init(gameManager, screen.width/2.5f, screen.height/2.5f);
     mObstacles.push_back(c1);
     
     auto c2 = new Chlorophyll();
-    c2->init(layer, world, screen.width/1.5f, screen.height/2.5f);
+    c2->init(gameManager, screen.width/1.5f, screen.height/2.5f);
     mObstacles.push_back(c2);
 
 	std::string tileStr = "Tile" + rd::StringFromInt(randomTileValue);
