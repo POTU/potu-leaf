@@ -54,7 +54,7 @@ bool EndScene::init()
 	ui::Text* labelScore = (ui::Text*)uiNode->getChildByName("LABEL_score");
 	labelScore->setText(rd::StringFromInt(GlobalManager::getInstance()->PlayerScore));
 
-	ui::TextField* inputTag = (ui::TextField*)uiNode->getChildByName("INPUT_tag");
+	//ui::TextField* inputTag = (ui::TextField*)uiNode->getChildByName("INPUT_tag");
 
 	int Position = 0;
 
