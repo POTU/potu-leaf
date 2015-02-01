@@ -32,18 +32,26 @@ WorldTile::~WorldTile()
 
 std::vector<Vec2> WorldTile::getValids(int tileId) {
     std::vector<Vec2> valids;
-    if (tileId == 0) {
-        
+    // Order: from top to bottom of on the tile (y coordinate)
+    if (tileId == 1) {
+        valids.push_back(rd::photoshopPixeltoTilePixel(Vec2(430, 410)));
+        valids.push_back(rd::photoshopPixeltoTilePixel(Vec2(310, 900)));
+        valids.push_back(rd::photoshopPixeltoTilePixel(Vec2(440, 1210)));
+        valids.push_back(rd::photoshopPixeltoTilePixel(Vec2(300, 1460)));
     }
-    else {
-        valids.push_back(rd::toTilePoint(Vec2(768, 3500)));
-        valids.push_back(rd::toTilePoint(Vec2(768, 3000)));
-        valids.push_back(rd::toTilePoint(Vec2(768, 2500)));
-        valids.push_back(rd::toTilePoint(Vec2(768, 2000)));
-        valids.push_back(rd::toTilePoint(Vec2(768, 1500)));
-        valids.push_back(rd::toTilePoint(Vec2(768, 1000)));
-        valids.push_back(rd::toTilePoint(Vec2(768, 500)));
-        valids.push_back(rd::toTilePoint(Vec2(768, 0)));
+    else if (tileId == 2) {
+        valids.push_back(rd::photoshopPixeltoTilePixel(Vec2(430, 410)));
+        valids.push_back(rd::photoshopPixeltoTilePixel(Vec2(310, 900)));
+        valids.push_back(rd::photoshopPixeltoTilePixel(Vec2(440, 1600)));
+        valids.push_back(rd::photoshopPixeltoTilePixel(Vec2(300, 1600)));
+    }
+    else if (tileId == 3) {
+        valids.push_back(rd::photoshopPixeltoTilePixel(Vec2(270, 150)));
+        valids.push_back(rd::photoshopPixeltoTilePixel(Vec2(280, 340)));
+        valids.push_back(rd::photoshopPixeltoTilePixel(Vec2(420, 360)));
+        valids.push_back(rd::photoshopPixeltoTilePixel(Vec2(350, 900)));
+        valids.push_back(rd::photoshopPixeltoTilePixel(Vec2(440, 1210)));
+        valids.push_back(rd::photoshopPixeltoTilePixel(Vec2(300, 1560)));
     }
     return valids;
 }
@@ -64,7 +72,7 @@ void WorldTile::generate(GameManager* gameManager)
 	bd.position = b2Vec2(0,0);
 	mBody = gameManager->physWorld->CreateBody(&bd);
 
-	int randomTileValue = rd::RandInt(1,3);
+	int randomTileValue = rd::RandInt(1, 3);
     
     auto valids = getValids(randomTileValue);
     int validCount = (int)valids.size();
@@ -72,7 +80,7 @@ void WorldTile::generate(GameManager* gameManager)
     for (int i = 0; i < validCount; i++) {
         int oType = rd::RandInt(1, 10);
         Obstacle* o;
-        if (oType <= 2) {
+        if (oType <= 1) {
             o = new RotatingLog();
         }
         else if (oType <= 6) {
@@ -84,37 +92,6 @@ void WorldTile::generate(GameManager* gameManager)
         o->init(gameManager, valids[i].x, valids[i].y);
         mObstacles.push_back(o);
     }
-    
-    /*
-    auto r = new Rock();
-    auto rp = rd::toTilePoint(Point(1536, 4096));
-	r->init(gameManager, rp.x, rp.y);
-    mObstacles.push_back(r);
-    
-    auto c1 = new Chlorophyll();
-    c1->init(gameManager, screen.width/2.5f, screen.height/2.5f);
-    mObstacles.push_back(c1);
-    
-    auto c2 = new Chlorophyll();
-    c2->init(gameManager, screen.width/1.5f, screen.height/2.5f);
-    mObstacles.push_back(c2);
-    
-    auto l1 = new RotatingLog();
-    l1->init(gameManager, screen.width/2.5f, screen.height/1.0f);
-    mObstacles.push_back(l1);
-    
-    auto l2 = new RotatingLog();
-    l2->init(gameManager, screen.width/2.1f, screen.height/0.85f);
-    mObstacles.push_back(l2);
-    
-    auto l3 = new RotatingLog();
-    l3->init(gameManager, screen.width/3.2f, screen.height/0.80f);
-    mObstacles.push_back(l3);
-    
-    auto w = new WaterStrider();
-    w->init(gameManager, 1150, 600);
-    mObstacles.push_back(w);
-    */
 
 	std::string tileStr = "Tile" + rd::StringFromInt(randomTileValue);
 	std::string spriteStr = tileStr + ".png";

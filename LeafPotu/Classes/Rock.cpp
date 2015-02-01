@@ -22,7 +22,7 @@ void Rock::init(GameManager* gameManager, float x, float y)
     mBody = gameManager->physWorld->CreateBody(&bd);
     
     b2CircleShape shape;
-    shape.m_radius = 0.15f;
+    shape.m_radius = 0.20f;
     b2FixtureDef fd;
     fd.shape = &shape;
     fd.density = 0.75f;

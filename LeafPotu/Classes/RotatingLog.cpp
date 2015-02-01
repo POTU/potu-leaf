@@ -22,7 +22,7 @@ void RotatingLog::init(GameManager* gameManager, float x, float y)
     mBody = gameManager->physWorld->CreateBody(&bd);
     
     b2PolygonShape shape;
-    shape.SetAsBox(0.3f, 0.055f);
+    shape.SetAsBox(0.5f, 0.1f);
     b2FixtureDef fd;
     fd.shape = &shape;
     fd.density = 0.75f;

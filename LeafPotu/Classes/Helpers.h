@@ -9,7 +9,7 @@ namespace rd
 {
 	std::string strim(std::string str);
 	float distance(cocos2d::Point point1, cocos2d::Point point2);
-    cocos2d::Vec2 toTilePoint(cocos2d::Vec2 vec);
+    cocos2d::Vec2 photoshopPixeltoTilePixel(cocos2d::Vec2 vec);
 	float RandFloat(float min, float max);
 	int RandInt(int min, int max);
 	void RandomizeGenerators(float time);

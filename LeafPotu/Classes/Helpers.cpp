@@ -14,17 +14,16 @@ namespace rd
      * 0,0 = left, bottom
      * 1536, 4096 = right, top
      */
-    cocos2d::Vec2 toTilePoint(cocos2d::Vec2 vec)
+    cocos2d::Vec2 photoshopPixeltoTilePixel(cocos2d::Vec2 vec)
     {
-        return cocos2d::Vec2(vec.x, vec.y - 2048);
+        return cocos2d::Vec2((vec.x * 2), 2048 - (vec.y * 2));
     }
 
 	float RandFloat(float min, float max)
 	{
-		assert(max > min); 
+		assert(max > min);
 		float random = ((float) rand()) / (float) RAND_MAX;
-
-		float range = max - min;  
+		float range = max - min;
 		return (random*range) + min;
 	}
 
