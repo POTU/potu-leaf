@@ -54,6 +54,11 @@ void Player::init(cocos2d::Layer* layer, b2World* world)
     mRoot->addChild(mSprite);
 }
 
+Sprite* Player::getSprite()
+{
+	return mSprite;
+}
+
 void Player::updateLeafColor()
 {
     // Change leaf color between these values:

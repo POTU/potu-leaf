@@ -6,6 +6,7 @@
 #include "GameManager.h"
 #include "Helpers.h"
 #include "SimpleAudioEngine.h"
+#include "GlobalManager.h"
 
 using namespace cocos2d;
 using namespace cocos2d::ui;
@@ -40,7 +41,7 @@ bool EndScene::init()
 
 
 	ui::Text* labelScore = (ui::Text*)uiNode->getChildByName("LABEL_score");
-	labelScore->setText(rd::StringFromInt(123));
+	labelScore->setText(rd::StringFromInt(GlobalManager::getInstance()->PlayerScore));
 
 	//ui::Text* labelScoreHeader = (ui::Text*)uiNode->getChildByName("LABEL_scoreheader");
 	//labelScoreHeader->setText("Score Header");

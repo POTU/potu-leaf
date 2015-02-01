@@ -7,6 +7,7 @@
 #include "spine/spine-cocos2dx.h"
 #include "Helpers.h"
 #include "SimpleAudioEngine.h"
+#include "GlobalManager.h"
 
 USING_NS_CC;
 
@@ -150,6 +151,7 @@ void GameScene::update(float delta)
 		ScoreFloat = 0;
 		Score++;
 		labelScore->setText(rd::StringFromInt(Score));
+		GlobalManager::getInstance()->PlayerScore = Score;
 	}
 
 #ifdef DEBUG_PHYSICS
