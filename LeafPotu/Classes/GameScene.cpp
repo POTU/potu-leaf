@@ -100,7 +100,7 @@ bool GameScene::init()
 	mWaterBg = Sprite::createWithSpriteFrameName("water.png");
 	mWaterBg->setScale(4.0f);
 	mWaterBg->setPosition(screen.width/2, screen.height/2);
-	//mBgLayer->addChild(mWaterBg, -1);
+	mBgLayer->addChild(mWaterBg, -1);
 
 	this->scheduleUpdate();
 

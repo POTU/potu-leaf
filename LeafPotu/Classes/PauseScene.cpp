@@ -66,9 +66,7 @@ void PauseScene::CallResetGame(Ref *pSender, ui::TouchEventType type)
 		// TODO
 		break;
 	}
-
 }
-
 
 void PauseScene::CallPauseGame(Ref *pSender, ui::TouchEventType type)
 {
@@ -91,7 +89,6 @@ void PauseScene::CallPauseGame(Ref *pSender, ui::TouchEventType type)
 		// TODO
 		break;
 	}
-
 }
 
 void PauseScene::ExitGame(Ref *pSender, ui::TouchEventType type)
@@ -114,5 +111,4 @@ void PauseScene::ExitGame(Ref *pSender, ui::TouchEventType type)
 		// TODO
 		break;
 	}
-
 }

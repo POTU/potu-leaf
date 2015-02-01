@@ -20,13 +20,17 @@ public:
     void init(Layer* layer, b2World* world);
     void update(float delta);
     void moveInResponseToTouchAt(Vec2 coordinates);
+    void gainEnergy(float amount);
     Node* mRoot;
 private:
 	b2Body* mBody;
     Sprite* mSprite;
-
+    void updateLeafColor();
 	void addForceToQueue(b2Vec2 forceVec, float timeToTrigger);
 	std::vector<ForceNode*> mForceNodes;
+    float maxEnergy;
+    float currentEnergy;
+    bool deathHandled;
 };
 
 #endif

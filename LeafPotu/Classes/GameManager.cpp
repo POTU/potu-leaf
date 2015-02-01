@@ -45,8 +45,7 @@ void GameManager::init(cocos2d::Layer* gameLayer, TileableWorld* tileableWorld, 
 
 void GameManager::update(float delta)
 {
-    player->update(delta);
-	
+    player->update(delta);	
 }
 
 void GameManager::InputCoordinates(Vec2 coordinates)
@@ -92,8 +91,10 @@ void GameManager::ResetGame()
 	Director::getInstance()->replaceScene(GameScene::scene());
 }
 
-void GameManager::EndGame()
+void GameManager::GameOver()
 {
-
+    // Add cause of death to function calls and show in end screen.
+    // Show end screen wiht score and cause of death.
+    Director::getInstance()->replaceScene(TransitionFade::create(1.0f, MenuScene::scene()));
 }
 

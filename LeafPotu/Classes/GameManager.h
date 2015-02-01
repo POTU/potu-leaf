@@ -7,7 +7,6 @@
 #include "Box2D/Box2D.h"
 #include "Player.h"
 
-
 class GameManager
 {
 public:
@@ -21,9 +20,8 @@ public:
 	void PauseGame(bool Pause);
 	void MuteGame();
 	void ResetGame();
-	void EndGame();
+    void GameOver();
 	void update(float delta);
-    
     Player* player;
     
 private:

@@ -2,6 +2,7 @@
 #include "standards.h"
 #include "Helpers.h"
 #include "SimpleAudioEngine.h"
+#include "GameManager.h"
 
 USING_NS_CC;
 
@@ -20,6 +21,10 @@ Player::~Player()
 
 void Player::init(cocos2d::Layer* layer, b2World* world)
 {
+    maxEnergy = 15.0f;
+    currentEnergy = maxEnergy;
+    deathHandled = false;
+    
     auto dir = Director::getInstance();
     auto screen = dir->getWinSize();
     
@@ -49,8 +54,37 @@ void Player::init(cocos2d::Layer* layer, b2World* world)
     mRoot->addChild(mSprite);
 }
 
+void Player::updateLeafColor()
+{
+    // Change leaf color between these values:
+    //mSprite->setColor(Color3B(60, 220, 60));
+    //mSprite->setColor(Color3B(175, 80, 30));
+    float ee = (currentEnergy / maxEnergy);
+    mSprite->setColor(Color3B(
+        (1.0f - ee) * 175.0f + ee * 60.0f,
+        (1.0f - ee) * 80.0f + ee * 220.0f,
+        (1.0f - ee) * 30.0f + ee * 60.0f));
+}
+
+void Player::gainEnergy(float amount)
+{
+    currentEnergy = currentEnergy + amount;
+    if (currentEnergy > maxEnergy) {
+        currentEnergy = maxEnergy;
+    }
+}
+
 void Player::update(float delta)
 {
+    if (deathHandled) return;
+    currentEnergy = currentEnergy - delta;
+    if (currentEnergy < 0.0f && !deathHandled) {
+        deathHandled = true;
+        // Why switching scenes here crashes?
+        return;
+    }
+    updateLeafColor();
+    
     auto velocity = mBody->GetLinearVelocity();
     mBody->SetLinearVelocity(b2Vec2(velocity.x, velocity.y - 0.01f));
     if (mRoot)

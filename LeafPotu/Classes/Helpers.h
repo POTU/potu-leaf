@@ -12,16 +12,11 @@ namespace rd
 	float RandFloat(float min, float max);
 	int RandInt(int min, int max);
 	void RandomizeGenerators(float time);
-
 	std::string StringFromInt(int integer);
-
 	std::string encryptString(std::string str);
 	std::string decryptString(std::string str);
-
 	std::string atlasName(std::string fileName);
-
 	void limit(float *value, float minVal, float maxVal);
-
 	float RadToDeg(float rad);
 	float DegToRad(float deg);
 };

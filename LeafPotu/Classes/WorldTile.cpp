@@ -4,6 +4,7 @@
 #include "GB2ShapeCache-x.h"
 #include "Obstacle.h"
 #include "Rock.h"
+#include "Chlorophyll.h"
 
 using namespace cocos2d;
 
@@ -47,6 +48,14 @@ void WorldTile::generate(cocos2d::Layer* layer, b2World* world, cocos2d::Layer* 
     auto r = new Rock();
 	r->init(layer, world, screen.width/2, screen.height/2);
     mObstacles.push_back(r);
+    
+    auto c1 = new Chlorophyll();
+    c1->init(layer, world, screen.width/2.5f, screen.height/2.5f);
+    mObstacles.push_back(c1);
+    
+    auto c2 = new Chlorophyll();
+    c2->init(layer, world, screen.width/1.5f, screen.height/2.5f);
+    mObstacles.push_back(c2);
 
 	std::string tileStr = "Tile" + rd::StringFromInt(randomTileValue);
 	std::string spriteStr = tileStr + ".png";
@@ -70,28 +79,25 @@ void WorldTile::update(float x, float y, float delta)
 {
 	cocos2d::Size screen = Director::getInstance()->getWinSize();
 
+	if (mRoot) mRoot->setPosition(x+(screen.width/2),y);
+	if (mBgRoot) mBgRoot->setPosition(x+(screen.width/2),y);
+	if (mBody) mBody->SetTransform(b2Vec2((x+(screen.width/2))/PTM_RATIO, y/PTM_RATIO), 0);
 
-	if(mRoot) mRoot->setPosition(x+(screen.width/2),y);
-	if(mBgRoot) mBgRoot->setPosition(x+(screen.width/2),y);
-	if(mBody) mBody->SetTransform(b2Vec2((x+(screen.width/2))/PTM_RATIO, y/PTM_RATIO), 0);
-
-	// Obstacle update
 	std::vector<Obstacle*>::iterator it;
 	for (it = mObstacles.begin(); it < mObstacles.end(); it++)
 	{
 		Obstacle* iObs = *it;
-        iObs->update(delta,x,y);
+        iObs->update(delta, x, y);
 	}
 }
 
 
 void WorldTile::cacheToPool()
 {
-
-	if(mBgRoot) mBgRoot->setVisible(false);
-
+	if (mBgRoot) mBgRoot->setVisible(false);
 	if (mBody) mBody->SetActive(false);
 	if (mRoot) mRoot->setVisible(false);
+    
     std::vector<Obstacle*>::iterator it;
     for (it = mObstacles.begin(); it < mObstacles.end(); it++)
     {
@@ -103,12 +109,10 @@ void WorldTile::cacheToPool()
 
 void WorldTile::uncacheFromPool()
 {
-
-
-	if(mBgRoot) mBgRoot->setVisible(true);
-
+	if (mBgRoot) mBgRoot->setVisible(true);
 	if (mBody) mBody->SetActive(true);
 	if (mRoot) mRoot->setVisible(true);
+    
     std::vector<Obstacle*>::iterator it;
     for (it = mObstacles.begin(); it < mObstacles.end(); it++)
     {

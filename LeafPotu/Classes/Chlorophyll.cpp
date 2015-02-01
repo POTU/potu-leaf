@@ -41,8 +41,8 @@ void Chlorophyll::update(float delta, float x, float y)
         auto player = GameManager::getInstance()->player;
         auto distanceToPlayer = player->mRoot->getPosition().distance(cocoPos);
         if (distanceToPlayer < 150) {
-            CCLOG("++CHROLOPHYLL++");
-            // Do something to player.
+            CCLOG("+CHROLOPHYLL+");
+            player->gainEnergy(10.0f);
             mRoot->setVisible(false);
         }
     }
