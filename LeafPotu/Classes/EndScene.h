@@ -13,8 +13,11 @@ public:
 	static cocos2d::Scene* scene();
 	CREATE_FUNC(EndScene);
 private:
+	int PlayerScore;
+	std::string PlayerName;
 	void ExitGame(Ref *pSender, ui::TouchEventType type);
 	void CallResetGame(Ref *pSender, ui::TouchEventType type);
+	void leaderboardName(Ref *pSender, ui::TextField::EventType type);
 };
 
 

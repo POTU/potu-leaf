@@ -32,9 +32,8 @@ void RotatingLog::init(GameManager* gameManager, float x, float y)
     mRoot->setPosition(Vec2(0, 0));
     gameManager->gameLayer->addChild(mRoot);
     
-    mSprite = Sprite::create("HelloWorld.png");
+	mSprite = Sprite::createWithSpriteFrameName("tukki.png");
     mSprite->setPosition(Vec2(0, 0));
-    mSprite->setScale(0.6f, 0.15f);
     mRoot->addChild(mSprite);
     
     spawnX = x;
