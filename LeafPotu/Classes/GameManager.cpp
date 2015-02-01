@@ -21,7 +21,7 @@ void GameManager::init(Layer* gameLayer, Layer* bgLayer, b2World* physWorld)
     Muted = false;
 	Paused = false;
     
-    SimpleAudioEngine::getInstance()->playBackgroundMusic("Audio/taustaSolina.mp3", true);
+    SimpleAudioEngine::getInstance()->playBackgroundMusic("Audio/musiikki.mp3", true);
 	if (SimpleAudioEngine::getInstance()->getEffectsVolume() == 0.0f)
 	{
         MuteGame();
