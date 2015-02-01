@@ -206,12 +206,7 @@
         </struct>
         <key>fileList</key>
         <array>
-            <filename>Tile1.png</filename>
-            <filename>leaf.png</filename>
-            <filename>water.png</filename>
-            <filename>waterAlpha1.png</filename>
-            <filename>waterAlpha2.png</filename>
-            <filename>waterAlpha3.png</filename>
+            <filename>SheetGraphics</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>
