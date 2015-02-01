@@ -26,6 +26,13 @@ bool EndScene::init()
 	{
 		return false;
 	}
+
+	Size screen = Director::getInstance()->getWinSize();
+
+	//BG
+	Sprite* bg = Sprite::createWithSpriteFrameName("MENU_tausta.png");
+	bg->setPosition(screen.width/2, screen.height/2);
+	this->addChild(bg);
 	
 	Node* uiNode = CSLoader::createNode("EndScene.csb");
 	this->addChild(uiNode);

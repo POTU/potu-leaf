@@ -7,7 +7,7 @@
             <key>Chlorophyll.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1126,1759},{50,50}}</string>
+                <string>{{298,1238},{50,50}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -17,14 +17,40 @@
                 <key>sourceSize</key>
                 <string>{50,50}</string>
             </dict>
-            <key>Tile1.png</key>
+            <key>Logo.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{0,1524},{384,1024}}</string>
+                <string>{{0,1138},{464,221}}</string>
+                <key>offset</key>
+                <string>{-4,-10}</string>
+                <key>rotated</key>
+                <true/>
+                <key>sourceColorRect</key>
+                <string>{{14,87},{464,221}}</string>
+                <key>sourceSize</key>
+                <string>{500,375}</string>
+            </dict>
+            <key>MENU_tausta.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{770,0},{768,1136}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <true/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{768,1136}}</string>
+                <key>sourceSize</key>
+                <string>{768,1136}</string>
+            </dict>
+            <key>Tile1.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{1542,770},{384,1024}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
                 <key>sourceColorRect</key>
                 <string>{{0,0},{384,1024}}</string>
                 <key>sourceSize</key>
@@ -33,11 +59,11 @@
             <key>Tile2.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{0,1138},{384,1024}}</string>
+                <string>{{1156,770},{384,1024}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <true/>
+                <false/>
                 <key>sourceColorRect</key>
                 <string>{{0,0},{384,1024}}</string>
                 <key>sourceSize</key>
@@ -46,7 +72,7 @@
             <key>Tile3.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{770,0},{384,1024}}</string>
+                <string>{{770,770},{384,1024}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -59,11 +85,11 @@
             <key>kivi1.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1026,1127},{151,206}}</string>
+                <string>{{0,1604},{151,206}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
-                <false/>
+                <true/>
                 <key>sourceColorRect</key>
                 <string>{{0,0},{151,206}}</string>
                 <key>sourceSize</key>
@@ -72,7 +98,7 @@
             <key>kivi2.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1026,1612},{142,145}}</string>
+                <string>{{208,1604},{142,145}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -85,7 +111,7 @@
             <key>kivi3.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{770,1026},{99,369}}</string>
+                <string>{{352,1138},{99,369}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -95,14 +121,27 @@
                 <key>sourceSize</key>
                 <string>{99,369}</string>
             </dict>
-            <key>leaf.png</key>
+            <key>kruunu.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1026,1759},{98,103}}</string>
+                <string>{{223,1238},{73,63}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{73,63}}</string>
+                <key>sourceSize</key>
+                <string>{73,63}</string>
+            </dict>
+            <key>leaf.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{223,1138},{98,103}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <true/>
                 <key>sourceColorRect</key>
                 <string>{{0,0},{98,103}}</string>
                 <key>sourceSize</key>
@@ -111,15 +150,15 @@
             <key>tukki.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{1026,1335},{275,142}}</string>
+                <string>{{223,1303},{274,140}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
                 <true/>
                 <key>sourceColorRect</key>
-                <string>{{0,0},{275,142}}</string>
+                <string>{{0,0},{274,140}}</string>
                 <key>sourceSize</key>
-                <string>{275,142}</string>
+                <string>{274,140}</string>
             </dict>
             <key>water.png</key>
             <dict>
@@ -181,9 +220,9 @@
             <key>realTextureFileName</key>
             <string>envSheet1.png</string>
             <key>size</key>
-            <string>{1177,1908}</string>
+            <string>{1926,1794}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:aae7da508f5219da2e61523b2dc5eccc:c642871032f7fcefaa814fc5f313c842:1e6c89a6014e72ed4822eecbb66223ab$</string>
+            <string>$TexturePacker:SmartUpdate:1f16a7418eaa9378fc6514a135681bb5:04e00d1ed952e3d12485aea1ba7b61d6:1e6c89a6014e72ed4822eecbb66223ab$</string>
             <key>textureFileName</key>
             <string>envSheet1.png</string>
         </dict>

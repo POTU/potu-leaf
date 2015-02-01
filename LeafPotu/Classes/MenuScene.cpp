@@ -23,6 +23,19 @@ bool MenuScene::init()
 		return false;
 	}
 
+	Size screen = Director::getInstance()->getWinSize();
+
+	//BG
+	Sprite* bg = Sprite::createWithSpriteFrameName("MENU_tausta.png");
+	bg->setPosition(screen.width/2, screen.height/2);
+	this->addChild(bg);
+
+	Sprite* logo = Sprite::createWithSpriteFrameName("Logo.png");
+	logo->setPosition(screen.width/2, screen.height-330);
+	logo->setScale(0.5f);
+	this->addChild(logo);
+
+
 	Node* uiNode = CSLoader::createNode("MenuScene.csb");
 	this->addChild(uiNode);
 
