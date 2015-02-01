@@ -28,5 +28,9 @@ public:
 private:
 	bool Paused;
 	bool Muted;
+	bool isGameOver;
+	float gameOverTimer;
+
+	void exitToMainMenu();
 };
 #endif
