@@ -64,6 +64,7 @@ bool MenuScene::init()
 
 void MenuScene::PlayGame(Ref *pSender, ui::TouchEventType type)
 {
+	TransitionFade* gameScene;
 	switch (type)
 	{
 		case ui::TouchEventType::TOUCH_EVENT_BEGAN:
@@ -73,7 +74,9 @@ void MenuScene::PlayGame(Ref *pSender, ui::TouchEventType type)
 			break;
 		case ui::TouchEventType::TOUCH_EVENT_ENDED:
             SimpleAudioEngine::getInstance()->playEffect("button.mp3");
-			Director::getInstance()->replaceScene(GameScene::scene());
+
+			gameScene = TransitionFade::create(1.0f, GameScene::scene());
+			Director::getInstance()->replaceScene(gameScene);
 			break;
 		case ui::TouchEventType::TOUCH_EVENT_CANCELED:
 			// TODO

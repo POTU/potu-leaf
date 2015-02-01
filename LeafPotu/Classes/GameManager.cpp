@@ -42,6 +42,12 @@ void GameManager::update(float delta)
         GameOver();
     }
 
+	cocos2d::Vec2 playerPos = player->mRoot->getPosition();
+	if(playerPos.y < -200 || playerPos.y > 3000)
+	{
+		if(!isGameOver) this->GameOver();
+	}
+
 	if(isGameOver)
 	{
 		gameOverTimer = gameOverTimer + delta;
@@ -113,5 +119,7 @@ void GameManager::GameOver()
 void GameManager::exitToMainMenu()
 {
 	SimpleAudioEngine::getInstance()->stopBackgroundMusic();
-	Director::getInstance()->replaceScene(EndScene::scene());
+	Scene* endScene = EndScene::scene();
+	TransitionFade* transScene = TransitionFade::create(1.0f, endScene);
+	Director::getInstance()->replaceScene(transScene);
 }
