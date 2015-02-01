@@ -26,7 +26,7 @@ WorldTile::~WorldTile()
 	}
 }
 
-void WorldTile::generate(cocos2d::Layer* layer, b2World* world, cocos2d::Layer* bgLayer)
+void WorldTile::generate(Layer* layer, b2World* world, Layer* bgLayer)
 {
 	Size screen = Director::getInstance()->getWinSize();
 

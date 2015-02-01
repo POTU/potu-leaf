@@ -1,6 +1,6 @@
 #include "TileableWorld.h"
 
-USING_NS_CC;
+using namespace cocos2d;
 
 TileableWorld::TileableWorld()
 {
@@ -16,11 +16,11 @@ TileableWorld::~TileableWorld()
 	}
 }
 
-void TileableWorld::init(cocos2d::Layer* layer, b2World* world, cocos2d::Layer* bgLayer_)
+void TileableWorld::init(Layer* gameLayer, b2World* physWorld, Layer* bgLayer)
 {
-	gameLayer = layer;
-	physWorld = world;
-	bgLayer = bgLayer_;
+	this->gameLayer = gameLayer;
+	this->physWorld = physWorld;
+	this->bgLayer = bgLayer;
 
 	mOffset = 0;
 	mTileIndex = 0;

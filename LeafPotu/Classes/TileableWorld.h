@@ -6,18 +6,20 @@
 #include "Box2D/Box2D.h"
 #include "WorldTile.h"
 
+using namespace cocos2d;
+
 class TileableWorld
 {
 public:
 	TileableWorld();
 	~TileableWorld();
-	void init(cocos2d::Layer* layer, b2World* world, cocos2d::Layer* bgLayer_);
+	void init(Layer* gameLayer, b2World* physWorld, Layer* bgLayer);
 	void update(float delta);
     b2World* physWorld;
 
 private:
-	cocos2d::Layer* gameLayer;
-	cocos2d::Layer* bgLayer;
+	Layer* gameLayer;
+	Layer* bgLayer;
 	float mOffset;
 	int mTileIndex;
 	void generateTiles();

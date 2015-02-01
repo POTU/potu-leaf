@@ -16,10 +16,10 @@ typedef struct tagResource
 	char directory[100];
 } Resource;
 
-static Resource smallResource = { cocos2d::Size(1536/4,2272/4), "SD" };
-static Resource mediumResource = { cocos2d::Size(1536/2,2272/2), "HD" };
-static Resource largeResource = { cocos2d::Size(1536,2272), "HDR" };
-static cocos2d::Size designResolutionSize = cocos2d::Size(1536,2272);
+static Resource smallResource = { cocos2d::Size(1536/4, 2272/4), "SD" };
+static Resource mediumResource = { cocos2d::Size(1536/2, 2272/2), "HD" };
+static Resource largeResource = { cocos2d::Size(1536, 2272), "HDR" };
+static cocos2d::Size designResolutionSize = cocos2d::Size(1536, 2272);
 
 class  AppDelegate : private cocos2d::Application
 {
