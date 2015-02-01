@@ -45,11 +45,11 @@ void Rock::update(float delta, float x, float y)
 {
     if (mBody && mBody->IsActive())
     {
-		b2Vec2 pos;
-		pos.x = (x + spawnX)/PTM_RATIO;
-		pos.y = (y + spawnY)/PTM_RATIO;
-		mBody->SetTransform(pos, 0);
-        mRoot->setPosition(Vec2(pos.x*PTM_RATIO, pos.y*PTM_RATIO));
+		b2Vec2 boxPos;
+		boxPos.x = (x + spawnX)/PTM_RATIO;
+		boxPos.y = (y + spawnY)/PTM_RATIO;
+		mBody->SetTransform(boxPos, 0);
+        mRoot->setPosition(Vec2(boxPos.x*PTM_RATIO, boxPos.y*PTM_RATIO));
     }
 }
 

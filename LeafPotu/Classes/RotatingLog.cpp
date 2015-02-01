@@ -47,11 +47,12 @@ void RotatingLog::update(float delta, float x, float y)
     if (mBody && mBody->IsActive())
     {
         mOffset -= 2.0f;
-        b2Vec2 pos;
-        pos.x = (x + spawnX)/PTM_RATIO;
-        pos.y = (y + spawnY + mOffset)/PTM_RATIO;
-        mBody->SetTransform(pos, mBody->GetAngle() + 0.01f);
-        mRoot->setPosition(Vec2(pos.x*PTM_RATIO, pos.y*PTM_RATIO));
+        b2Vec2 boxPos;
+        boxPos.x = (x + spawnX)/PTM_RATIO;
+        boxPos.y = (y + spawnY + mOffset)/PTM_RATIO;
+        mBody->SetTransform(boxPos, mBody->GetAngle() + 0.01f);
+        Vec2 cocoPos = Vec2(boxPos.x*PTM_RATIO, boxPos.y*PTM_RATIO);
+        mRoot->setPosition(cocoPos);
         mRoot->setRotation(-rd::RadToDeg(mBody->GetAngle()));
     }
 }

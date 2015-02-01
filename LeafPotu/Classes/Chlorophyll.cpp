@@ -34,10 +34,10 @@ void Chlorophyll::update(float delta, float x, float y)
 {
     if (mRoot && mRoot->isVisible())
     {
-        b2Vec2 pos;
-        pos.x = (x + spawnX)/PTM_RATIO;
-        pos.y = (y + spawnY)/PTM_RATIO;
-        Vec2 cocoPos = Vec2(pos.x*PTM_RATIO, pos.y*PTM_RATIO);;
+        b2Vec2 boxPos;
+        boxPos.x = (x + spawnX)/PTM_RATIO;
+        boxPos.y = (y + spawnY)/PTM_RATIO;
+        Vec2 cocoPos = Vec2(boxPos.x*PTM_RATIO, boxPos.y*PTM_RATIO);;
         mRoot->setPosition(cocoPos);
         
         auto player = this->gameManager->player;
