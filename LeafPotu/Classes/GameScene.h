@@ -26,6 +26,7 @@ public:
 	virtual void potuTouchMoved(cocos2d::Touch* touch, cocos2d::Event* event);
 	virtual void potuTouchCanceled(cocos2d::Touch* touch, cocos2d::Event* event);
 	GameManager* mGameManager;
+	int Score;
 #ifdef DEBUG_PHYSICS
 	virtual void custdraw();
 #endif
@@ -55,7 +56,7 @@ private:
 	ui::Text* labelScore;
 
 	float ScoreFloat;
-	int Score;
+
 	bool shouldPause;
 
 	void CallPause(Ref *pSender, ui::TouchEventType type);

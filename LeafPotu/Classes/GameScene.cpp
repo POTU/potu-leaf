@@ -7,6 +7,7 @@
 #include "spine/spine-cocos2dx.h"
 #include "Helpers.h"
 #include "SimpleAudioEngine.h"
+#include "GlobalManager.h"
 
 USING_NS_CC;
 
@@ -72,11 +73,11 @@ bool GameScene::init()
 
 	ui::Button* pauseButton = (ui::Button*)uiNode->getChildByName("BTN_pause");
 	pauseButton->addTouchEventListener(this, toucheventselector(GameScene::CallPause));
-	pauseButton->setPosition(Vec2(pauseButton->getPosition().x, visibleSize.height - ((windowSize.height - visibleSize.height) / 2)));
+	pauseButton->setPosition(Vec2(pauseButton->getPosition().x - visibleSize.width * 0.15f, visibleSize.height - ((windowSize.height - visibleSize.height) / 2)));
 
 	ui::Button* muteButton = (ui::Button*)uiNode->getChildByName("BTN_mute");
 	muteButton->addTouchEventListener(this, toucheventselector(GameScene::CallMute));
-	muteButton->setPosition(Vec2(muteButton->getPosition().x, visibleSize.height - ((windowSize.height - visibleSize.height) / 2)));
+	muteButton->setPosition(Vec2(muteButton->getPosition().x + visibleSize.width * 0.15f, visibleSize.height - ((windowSize.height - visibleSize.height) / 2)));
 
 	Score = 0;
 	ScoreFloat = 0;
@@ -150,6 +151,7 @@ void GameScene::update(float delta)
 		ScoreFloat = 0;
 		Score++;
 		labelScore->setText(rd::StringFromInt(Score));
+		GlobalManager::getInstance()->PlayerScore = Score;
 	}
 
 #ifdef DEBUG_PHYSICS
@@ -226,7 +228,7 @@ void GameScene::CallMute(Ref *pSender, ui::TouchEventType type)
 		// TODO
 		break;
 	case ui::TouchEventType::TOUCH_EVENT_ENDED:
-        SimpleAudioEngine::getInstance()->playEffect("button.mp3");
+		SimpleAudioEngine::getInstance()->playEffect("button.mp3");
 		mGameManager->MuteGame();
 		break;
 	case ui::TouchEventType::TOUCH_EVENT_CANCELED:

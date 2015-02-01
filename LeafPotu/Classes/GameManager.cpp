@@ -4,6 +4,7 @@
 #include "Player.h"
 #include "Helpers.h"
 #include "PauseScene.h"
+#include "EndScene.h"
 #include "SimpleAudioEngine.h"
 
 using namespace cocos2d;
@@ -30,14 +31,29 @@ void GameManager::init(Layer* gameLayer, Layer* bgLayer, b2World* physWorld)
     
     player = new Player();
     player->init(this->gameLayer, this->physWorld);
+	isGameOver = false;
+	gameOverTimer = 0;
 }
 
 void GameManager::update(float delta)
 {
-    player->update(delta);
-    if (player->isDead()) {
+	if(!isGameOver) player->update(delta);
+	if (player->isDead() && !isGameOver) {
         GameOver();
     }
+
+	cocos2d::Vec2 playerPos = player->mRoot->getPosition();
+	if(playerPos.y < -200 || playerPos.y > 3000)
+	{
+		if(!isGameOver) this->GameOver();
+	}
+
+	if(isGameOver)
+	{
+		gameOverTimer = gameOverTimer + delta;
+		if(gameOverTimer > 2.0f) this->exitToMainMenu();
+	}
+
 }
 
 void GameManager::InputCoordinates(Vec2 coordinates)
@@ -87,7 +103,23 @@ void GameManager::GameOver()
 {
     // Add cause of death to function calls and show in end screen.
     // Show end screen wiht score and cause of death.
-    SimpleAudioEngine::getInstance()->stopBackgroundMusic();
-    Director::getInstance()->replaceScene(MenuScene::scene());
+	isGameOver = true;
+
+	Sprite* playerSprite = player->getSprite();
+	if(playerSprite)
+	{
+		FadeTo* fadeAction = FadeTo::create(2.0f, 30);
+		ScaleTo* scaleAction = ScaleTo::create(2.0f, 0.75f);
+		playerSprite->runAction(fadeAction);
+		playerSprite->runAction(scaleAction);
+	}
 }
 
+
+void GameManager::exitToMainMenu()
+{
+	SimpleAudioEngine::getInstance()->stopBackgroundMusic();
+	Scene* endScene = EndScene::scene();
+	TransitionFade* transScene = TransitionFade::create(1.0f, endScene);
+	Director::getInstance()->replaceScene(transScene);
+}

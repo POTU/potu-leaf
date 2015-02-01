@@ -33,15 +33,12 @@ bool PauseScene::init()
 
 	ui::Button* exitButton = (ui::Button*)uiNode->getChildByName("BTN_exit");
 	exitButton->addTouchEventListener(this, toucheventselector(PauseScene::ExitGame));
-	exitButton->setPosition(Vec2(exitButton->getPosition().x, visibleSize.height - ((windowSize.height - visibleSize.height) / 2)));
 
 	ui::Button* resetButton = (ui::Button*)uiNode->getChildByName("BTN_reset");
 	resetButton->addTouchEventListener(this, toucheventselector(PauseScene::CallResetGame));
-	resetButton->setPosition(Vec2(resetButton->getPosition().x, visibleSize.height - ((windowSize.height - visibleSize.height) / 2)));
 
 	ui::Button* resumeButton = (ui::Button*)uiNode->getChildByName("BTN_resume");
 	resumeButton->addTouchEventListener(this, toucheventselector(PauseScene::CallPauseGame));
-	resumeButton->setPosition(Vec2(resumeButton->getPosition().x, visibleSize.height - ((windowSize.height - visibleSize.height) / 2)));
 	return true;
 }
 
@@ -56,7 +53,7 @@ void PauseScene::CallResetGame(Ref *pSender, ui::TouchEventType type)
 		// TODO
 		break;
 	case ui::TouchEventType::TOUCH_EVENT_ENDED:
-        SimpleAudioEngine::getInstance()->playEffect("Audio/button.mp3");
+		SimpleAudioEngine::getInstance()->playEffect("Audio/button.mp3");
 		gameManager.ResetGame();
 		break;
 	case ui::TouchEventType::TOUCH_EVENT_CANCELED:
