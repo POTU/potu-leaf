@@ -57,6 +57,12 @@
     <ClCompile Include="..\Classes\PauseScene.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\Chlorophyll.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\RotatingLog.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -105,6 +111,12 @@
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\PauseScene.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Chlorophyll.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\RotatingLog.h">
       <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,5 +1,6 @@
 #include "AppDelegate.h"
 #include "StartUpScene.h"
+#include "SimpleAudioEngine.h"
 
 USING_NS_CC;
 
@@ -68,6 +69,7 @@ bool AppDelegate::applicationDidFinishLaunching()
 	FileUtils::getInstance()->addSearchPath("shaders");
 	FileUtils::getInstance()->addSearchPath("spine");
 	FileUtils::getInstance()->addSearchPath("UI");
+	FileUtils::getInstance()->addSearchPath("audio");
 
     Scene *scene = StartUpScene::scene();
     director->runWithScene(scene);
@@ -82,7 +84,7 @@ void AppDelegate::applicationDidEnterBackground()
     Director::getInstance()->stopAnimation();
 
     // if you use SimpleAudioEngine, it must be pause
-	//CocosDenshion::SimpleAudioEngine::getInstance()->pauseBackgroundMusic();
+	CocosDenshion::SimpleAudioEngine::getInstance()->pauseBackgroundMusic();
 }
 
 // This function will be called when the app is active again
@@ -91,6 +93,6 @@ void AppDelegate::applicationWillEnterForeground()
     Director::getInstance()->startAnimation();
 
     // if you use SimpleAudioEngine, it must resume here
-	//CocosDenshion::SimpleAudioEngine::getInstance()->resumeBackgroundMusic();
+	CocosDenshion::SimpleAudioEngine::getInstance()->resumeBackgroundMusic();
 }
 
